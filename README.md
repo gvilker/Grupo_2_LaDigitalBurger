@@ -10,5 +10,6 @@ Antares
 
 Quienes somos:
 Vilker Reali Gonzalo, iniciando el camino de la programacion y desarrollo web.
+
 Gabriel Alejandro Cano, con ganas de expardir mis conocimientos.
 
