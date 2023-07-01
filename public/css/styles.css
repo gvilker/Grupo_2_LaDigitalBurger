@@ -1,0 +1,63 @@
+*{
+    
+    margin:0% 0% 0% 0%;
+    padding:0% 0% 0% 0%;
+}
+.body{
+    background-color: #272525;
+}
+
+.headerNav{
+    background-color: #5e5c5c;
+}
+.logo{
+    width: 5vw;
+    float: left;
+}
+.headerNav{
+    overflow: auto;
+}
+
+.listaNav{
+    float: center;
+    list-style-type: none;
+}
+
+.listaNav li{
+    display: inline-block;
+    margin-left: 50px;
+    margin-top: 3.5vh;
+    border: solid 3px rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
+.loging{
+    float: right;
+    padding: 0;
+    margin-right: 50px;
+    margin-top: 3.5vh;
+    border-radius: 5px;
+}
+.carrito{
+    float: right;
+    margin-top: 3vh;
+    margin-right: 30px;
+    width: 2.7vw;
+    border-radius: 20px;
+}
+
+.listaNav a:link {
+    color: rgb(0, 0, 0); /* Cambia el color para los enlaces no visitados */
+    text-decoration: none;
+}
+.listaNav a:visited {
+    color: rgb(0, 0, 0); /* Cambia el color para los enlaces visitados */
+    text-decoration: none;
+}
+.titulo{
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
