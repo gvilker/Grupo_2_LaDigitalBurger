@@ -14,7 +14,7 @@
 
 .menu{
     display: flex;
-    width: 600px;
+    width: 60%;
     height: 470px;
     margin-left: auto;
     margin-right: auto;
@@ -25,11 +25,11 @@ section .fotomenu{
     flex-grow: 1;
     object-fit: cover;
     opacity: .55;
-    transition: 1.3s ease;
+    transition: 0.7s ease;
 }
 
 section .fotomenu:hover{
-    width: 300px;
+    width: 50%;
     opacity: 1;
     filter: contrast(120%);
 }
