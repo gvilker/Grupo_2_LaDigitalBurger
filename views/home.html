@@ -5,13 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/styles.css">
   <link rel="stylesheet" type="text/css" href="/css/inicio.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- VINCULACION A GOOLE FONTS Y FONTS AWESOME-->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Tektur&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/157adaf284.js" crossorigin="anonymous"></script>
   <title>DigitalBurguer</title>
 </head>
 
 <body>
     <header class="headerNav">
         <img class="logo" src="/images/dig.png" alt="Logo de la marca">
-        <nav>
+        <a href="#" class="hamburguer-boton"><i class="fa-solid fa-bars"></i></a>
+
+        <!--CAMBIOS EN EL NAVBAR, SEPARACION DE IZQUIERDA A DERECHA, CREACION CLASE GENERAL MAIN-NAVBAR Y CLASE LEFT-NAVBAR Y RIGHT-NAVBAR-->
+        <!--<nav>
             <ul class="listaNav">
                 <li><a href="#productos">Productos</a></li>
                 <li><a href="#locales">Locales</a></li>
@@ -20,11 +28,28 @@
                 <li><a href="#contacto">Contacto</a></li>
                 <a href="/carrito"><img class="carrito" src="/images/carrito.png" alt="carrito"></a>
                 <li class="loging"><a href="/login">Login</a></li>
-            </ul>    
+            </ul>
+        -->
+        <nav class="main-navbar">
+
+            <ul class="left-navbar">
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#locales">Locales</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+               <!--este esta de mas <li><a href="#home">Home</a></li>-->
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+
+            <ul class="right-navbar">
+                <a href="/carrito"><img class="carrito" src="/images/carrito.png" alt="carrito"></a>
+                <li class="loging"><a href="/login">Login</a></li>
+            </ul>
+
         </nav>
   </header>
     <div id="home">
         <h1 class="tituloPrinc">DIGITAL BURGER</h1>
+        
     </div>
     <div>
         <img class="imgPrinc" src="/images/localheager1.jpg" alt="imagenes varias">
