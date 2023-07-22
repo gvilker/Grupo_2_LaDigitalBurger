@@ -5,6 +5,11 @@
 }
 body{
     background-color: #272525;
+    /* LOS TIPOS DE LETRA PARA LA PAGINA
+    */
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Tektur', cursive;
+   
 }
 
 .headerNav{
@@ -25,27 +30,43 @@ body{
     float: left;
     border-radius: 50%; */
 }
-.listaNav li:hover {
-    background-color: #09ff00;
-    border: solid 7px #09ff00;
-    font-weight: bold;
-}
+
+    .hamburguer-boton{
+        background-color: #09ff00;
+        color:#ffffff;
+        display: block;
+        max-width: 60px;
+        padding: 15px 0;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 18px;
+        margin:auto;
+      
+      }
+
+
+
+/*
 .listaNav{
     float: center;
     list-style-type: none;
-/*     align-items: center;
- */}
-
+    display: none
+    align-items: center;
+ }
 .listaNav li{
     display: inline-block;
     margin-left: 50px;
-    margin-top: 3.5vh;
-    border: solid 7px rgb(255, 255, 255);
-    background-color: rgb(255, 255, 255);
+    margin-top: 3.5vh;*/
+    /* border: solid 7px rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255); */
+    /*CAMBIO DE COLOR PARA LAS LETRAS DE LOS BOTONES
+    */
+    /*border: solid 7px rgb(211, 211, 211);
+    background-color: rgb(211, 211, 211);
     border-radius: 5px;
-}
+}*/
 
-.listaNav .loging{
+/*.listaNav .loging{
     background-color: #09ff00;
     border: solid 7px #09ff00;
     float: right;
@@ -55,23 +76,73 @@ body{
     border-radius: 5px;
 }
 
-.carrito{
+
+}*/
+
+.main-navbar{
+    display: none;
+  }
+  .main-navbar ul {
+    list-style: none;
+    margin: 1vh;
+    padding: 0;
+    
+  }
+  .main-navbar ul li{
+    border: solid 7px rgb(211, 211, 211);
+    background-color: rgb(211, 211, 211);
+    border-radius: 5px;
+  }
+
+  .main-navbar a {
+    text-decoration: none;
+    color: #222222;
+    display: inline-block;
+    padding: 5px 0;
+    font-size: 17px;
+  }
+  .carrito{
     float: right;
-    margin-top: 3vh;
+    /*margin-top: 3vh;*/
     margin-right: 30px;
     width: 2.7vw;
     border-radius: 20px;
-}
+  }
 
-.listaNav a:link {
-    color: rgb(0, 0, 0); /* Cambia el color para los enlaces no visitados */
-    text-decoration: none;
-}
-.listaNav a:visited {
+.main-navbar a:visited {
     color: rgb(0, 0, 0); /* Cambia el color para los enlaces visitados */
     text-decoration: none;
+}
+
+.main-navbar ul li:hover {
+    background-color: #09ff00;
+    border: solid 7px #09ff00;
+    font-weight: bold;
+    
 }
 
 footer{
     background-color: #5e5c5c;
 }
+
+@media (min-width: 769px) {
+    .hamburguer-boton{
+        display: none;
+    }
+    /* .listaNav{
+        display: contents;
+        
+    } */
+    .main-navbar{
+        display: flex;
+        justify-content: space-between;
+      }
+    
+      .main-navbar ul {
+        display: flex;
+      }
+      .main-navbar li {
+        margin: 0 5px;
+      }
+
+}    
