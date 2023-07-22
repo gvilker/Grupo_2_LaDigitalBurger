@@ -123,6 +123,7 @@ body{
 
 footer{
     background-color: #5e5c5c;
+    bottom: 0;
 }
 
 @media (min-width: 769px) {

@@ -13,6 +13,11 @@ app.get("/login", (req, res) => {
     res.sendFile(ruta);
 });
 
+app.get("/Register", (req, res) => {
+    const ruta = path.join(__dirname, "./views/register.html");
+    res.sendFile(ruta);
+});
+
 app.get("/carrito", (req, res) => {
     const ruta = path.join(__dirname, "./views/carrito.html");
     res.sendFile(ruta);

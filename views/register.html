@@ -48,27 +48,40 @@
             </ul>    
         </nav>
   </header>-->
-
   <div class="Contenido">
-<div>
-  <h1 class="tituloPrinc">DIGITAL REGISTER - ACCEDER</h1>
-</div>
-<form action="" method="post" class="form-login">          
-    <div class="formulario">
-        <input type="text, email" name="usuario" placeholder="Nombre de usuario / Email" class="control" required>
-    </div>
-     
-    <div class="formulario">
-       <input type="password" name="contrasena" placeholder="Contraseña" class="control" required>
-    </div>
     <div>
-    <button type="submit" class="boton-formulario">Iniciar sesión</button>
+      <h1 class="tituloPrinc">DIGITAL REGISTER - CREAR CUENTA</h1>
     </div>
-    <div>
-     <p>¿Olvidaste tu contraseña? <a href="#">Recupérala aquí</a></p>
-    </div>
-  </form>
-</div>
+    <form action="" method="post" class="form-login">
+      <div class="formulario">
+        <input type="text" name="nombre_completo" placeholder="Nombre completo" class="control" required>
+      </div>
+  
+      <div class="formulario">
+        <input type="email" name="correo_electronico" placeholder="Correo electrónico" class="control" required>
+      </div>
+  
+      <div class="formulario">
+        <input type="text" name="nombre_usuario" placeholder="Nombre de usuario" class="control" required>
+      </div>
+  
+      <div class="formulario">
+        <input type="password" name="contrasena" placeholder="Contraseña" class="control" required>
+      </div>
+  
+      <div class="formulario">
+        <input type="password" name="confirmar_contrasena" placeholder="Confirmar contraseña" class="control" required>
+      </div>
+  
+      <div>
+        <button type="submit" class="boton-formulario">Registrarse</button>
+      </div>
+  
+      <div>
+        <p>¿Ya tienes una cuenta? <a href="/iniciar_sesion">Inicia sesión aquí</a></p>
+      </div>
+    </form>
+  </div>
 <footer>
     <h3>CONTACTO</h3>
     <a href="https://web.whatsapp.com/" target="_blank">whatsapp</a>

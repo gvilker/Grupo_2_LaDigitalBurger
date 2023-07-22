@@ -1,3 +1,9 @@
+body{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 .Contenido{
     padding-top: 100px;
 }
@@ -11,7 +17,7 @@
     padding-top: 45px;
     padding-left: 30vw;
     padding-right: 30vw;
-    padding-bottom: 275px; 
+    padding-bottom: 325px; 
     text-align: center;
   }
   .formulario {
