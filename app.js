@@ -2,14 +2,13 @@
 const express = require("express");
 const app = express();
 
-const path = require("path");
+
 const dotenv = require ("dotenv").config();
 const port = process.env.PORT ||3010;
 
-app.listen(port, () =>{
-    console.log("El servidor esta escuchando en el puerto" + port + "http://localhost:" + port);
-});
+app.use(express.static("public"));
 
+/*
 app.get("/", (req, res) => {
     const ruta = "./views/home.html";
     res.sendFile(path.resolve(__dirname, ruta))
@@ -33,8 +32,17 @@ app.get("/carrito", (req, res) => {
 app.get("/producto", (req, res) => {
     const ruta = "./views/producto.html";
     res.sendFile(path.resolve(__dirname, ruta))
+});*/
+
+
+const mainRouter = require ("./routers/main.js")
+
+app.listen(port,  () => {
+    console.log("Servidor escuchando en http://localhost:${port}");
 });
 
-const publicFolder = path.resolve(__dirname, "./public");
-app.use(express.static(publicFolder));
+app.use("/", mainRouter)
+
+
+
 
