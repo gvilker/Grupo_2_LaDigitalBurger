@@ -14,7 +14,7 @@ const controller = {
         res.sendFile(path.resolve(__dirname, "../views/producto.html"))
     },
     register: (req, res) => {
-        res.sendFile(path.resolve(__dirname, "../views/carrito.html"))
+        res.sendFile(path.resolve(__dirname, "../views/register.html"))
     }
 }
 
