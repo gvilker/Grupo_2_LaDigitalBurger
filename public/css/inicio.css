@@ -121,6 +121,31 @@ section .fotomenu:hover{
     }
   }
 
+  section#nosotros {
+    background-color: #272525;
+    padding: 40px;
+    text-align: justify;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto
+}
+
+
+section#nosotros .titulo {
+    font-size: 28px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+
+section#nosotros p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: white;
+}
+
 /*
 .sucursales{
     display: flex;
