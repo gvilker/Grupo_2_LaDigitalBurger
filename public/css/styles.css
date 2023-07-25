@@ -121,9 +121,26 @@ body{
     
 }
 
-footer{
-    background-color: #5e5c5c;
-    bottom: 0;
+
+footer#contacto {
+  background-color: #272525;
+  color: #fff; 
+  padding: 20px;
+  text-align: center;
+}
+
+footer#contacto a {
+  display: inline-block;
+  margin: 5px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+
+footer#contacto a i {
+  margin-right: 5px;
+  color: #09ff00;
 }
 
 @media (min-width: 769px) {
