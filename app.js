@@ -30,6 +30,11 @@ app.get("/carrito", (req, res) => {
     res.sendFile(path.resolve(__dirname, ruta))
 });
 
+app.get("/producto", (req, res) => {
+    const ruta = "./views/producto.html";
+    res.sendFile(path.resolve(__dirname, ruta))
+});
+
 const publicFolder = path.resolve(__dirname, "./public");
 app.use(express.static(publicFolder));
 

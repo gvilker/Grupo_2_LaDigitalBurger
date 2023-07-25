@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es"></html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+  <link rel="stylesheet" type="text/css" href="/css/producto.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- VINCULACION A GOOLE FONTS Y FONTS AWESOME-->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Tektur&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/157adaf284.js" crossorigin="anonymous"></script>
+  <title>DigitalBurguer</title>
+</head>
+
+<body>
+    <header class="headerNav">
+        <img class="logo" src="/images/dig.png" alt="Logo de la marca">
+        <a href="#" class="hamburguer-boton"><i class="fa-solid fa-bars"></i></a>
+
+        <!--CAMBIOS EN EL NAVBAR, SEPARACION DE IZQUIERDA A DERECHA, CREACION CLASE GENERAL MAIN-NAVBAR Y CLASE LEFT-NAVBAR Y RIGHT-NAVBAR-->
+        <!--<nav>
+            <ul class="listaNav">
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#locales">Locales</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <a href="/carrito"><img class="carrito" src="/images/carrito.png" alt="carrito"></a>
+                <li class="loging"><a href="/login">Login</a></li>
+            </ul>
+        -->
+        <nav class="main-navbar">
+
+            <ul class="left-navbar">
+                <li><a href="/">Volver</a></li>
+            </ul>
+
+            <ul class="right-navbar">
+                <a href="/carrito"><img class="carrito" src="/images/carrito.png" alt="carrito"></a>
+            </ul>
+
+        </nav>
+  </header>
+
+    <h1 class="titulo">PRODUCTOS</h1>
+    <section id="productos" class="menu">
+        <li class="producto">
+            <img class="fotopedido" src="/images/hamburguesa1.jpg" alt="Hamburguesa 1">
+            <div class="descripcion">
+                <h2 class="burger">Super Cheddar</h2>
+                <p>Descripción de la hamburguesa y sus ingredientes.</p>
+                <p>Precio: $XX.XX</p>
+                <a href="#">Añadir al carrito</a>
+            </div>
+        </li>
+        <li class="producto">
+            <img class="fotopedido" src="/images/hamburguesa2.jpg" alt="Hamburguesa 2">
+            <div class="descripcion">
+                <h2>Digital Burguer</h2>
+                <p>Descripción de la hamburguesa y sus ingredientes.</p>
+                <p>Precio: $XX.XX</p>
+                <a href="#">Añadir al carrito</a>
+            </div>
+        </li>
+        <li class="producto">
+            <img class="fotopedido" src="/images/hamburguesa3.jpg" alt="Hamburguesa 3">
+            <div class="descripcion">
+                <h2>Burguer Doble</h2>
+                <p>Descripción de la hamburguesa y sus ingredientes.</p>
+                <p>Precio: $XX.XX</p>
+                <a href="#">Añadir al carrito</a>
+            </div>
+        </li>
+        <li class="producto">
+            <img class="fotopedido" src="/images/hamburguesa4.jpg" alt="Hamburguesa 4">
+            <div class="descripcion">
+                <h2>Burguer simple</h2>
+                <p>Descripción de la hamburguesa y sus ingredientes.</p>
+                <p>Precio: $XX.XX</p>
+                <a href="#">Añadir al carrito</a>
+            </div>
+        </li>
+    </section>
+
+    <div class="content-boton-carrito">
+    <a href="/carrito" class="btn-carrito">Ir al carrito</a>
+    </div>
+
+    <footer id="contacto">
+      <h3>CONTACTO</h3>
+      <a href="https://web.whatsapp.com/" target="_blank">
+        <i class="fa-brands fa-square-whatsapp"></i> WhatsApp
+      </a>
+      <a href="https://www.instagram.com/" target="_blank">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+      <a href="https://www.google.com/intl/es-419/gmail/about/" target="_blank">
+        <i class="fas fa-envelope"></i> Gmail
+      </a>
+    </footer>
+</body>
+</html>
