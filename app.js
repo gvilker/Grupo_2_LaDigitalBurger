@@ -4,14 +4,14 @@ const app = express();
 
 
 const dotenv = require ("dotenv").config();
-const port = process.env.PORT ||3010;
+const port = process.PORT || 3010;
 
 const mainRouter = require ("./routers/main.js")
 
 app.use(express.static("public"));
 
 app.listen(port,  () => {
-    console.log("Servidor escuchando en http://localhost:${port}");
+    console.log("Servidor escuchando en http://localhost:" + port);
 });
 
 app.use("/", mainRouter)
