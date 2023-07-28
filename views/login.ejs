@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
+    <script src="https://kit.fontawesome.com/157adaf284.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Tektur&display=swap" rel="stylesheet">
+    <title>Login DigitalBurguer</title>
+</head>
+<body>
+    
+  <%- include ('./partials/headerViews')%>        
+
+  <div class="Contenido">
+<div>
+  <h1 class="tituloPrinc">DIGITAL REGISTER - ACCEDER</h1>
+</div>
+<form action="" method="post" class="form-login">          
+    <div class="formulario">
+        <input type="text, email" name="usuario" placeholder="Nombre de usuario / Email" class="control" required>
+    </div>
+     
+    <div class="formulario">
+       <input type="password" name="contrasena" placeholder="Contraseña" class="control" required>
+    </div>
+    <div>
+    <button type="submit" class="boton-formulario">Iniciar sesión</button>
+    </div>
+    <div>
+     <p>¿Olvidaste tu contraseña? <a href="#">Recupérala aquí</a></p>
+    </div>
+  </form>
+</div>
+<%-include ('./partials/footer') %>
+</body>
+</html>
