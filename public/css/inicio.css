@@ -1,3 +1,6 @@
+html {
+  scroll-behavior: smooth;
+}
  .titulo{
     text-align: center;
     margin-top: 30px;

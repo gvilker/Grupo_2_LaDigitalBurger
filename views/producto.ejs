@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <%- include ('./partials/headerViews')%>     
+    <%-include("./partials/header")%>
 
     <h1 class="titulo">PRODUCTOS</h1>
     <section id="productos" class="menu">
@@ -57,7 +57,7 @@
     </section>
 
     <div class="content-boton-carrito">
-    <a href="/carrito" class="btn-carrito">Ir al carrito</a>
+    <a href="/cart/carrito" class="btn-carrito">Ir al carrito</a>
     </div>
 
     <%-include ('./partials/footer') %>
