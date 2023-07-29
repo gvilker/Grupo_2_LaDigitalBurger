@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es"></html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+  <link rel="stylesheet" type="text/css" href="/css/producto.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- VINCULACION A GOOLE FONTS Y FONTS AWESOME-->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Tektur&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/157adaf284.js" crossorigin="anonymous"></script>
+  <title>DigitalBurguer</title>
+</head>
+
+<body>
+    <%-include("./partials/header")%>
+
+    <h1 class="titulo">PRODUCTOS</h1>
+    <section id="productos" class="menu">
+        <li class="producto">
+            <img class="fotopedido" src="/images/hamburguesa1.jpg" alt="Hamburguesa 1">
+            <div class="descripcion">
+                <h2 class="burger">Super Cheddar</h2>
+                <p>Descripción de la hamburguesa y sus ingredientes.</p>
+                <p>Precio: $XX.XX</p>
+                <a href="#">Añadir al carrito</a>
+            </div>
+        </li>
+        <li class="producto">
+            <img class="fotopedido" src="/images/hamburguesa2.jpg" alt="Hamburguesa 2">
+            <div class="descripcion">
+                <h2>Digital Burguer</h2>
+                <p>Descripción de la hamburguesa y sus ingredientes.</p>
+                <p>Precio: $XX.XX</p>
+                <a href="#">Añadir al carrito</a>
+            </div>
+        </li>
+        <li class="producto">
+            <img class="fotopedido" src="/images/hamburguesa3.jpg" alt="Hamburguesa 3">
+            <div class="descripcion">
+                <h2>Burguer Doble</h2>
+                <p>Descripción de la hamburguesa y sus ingredientes.</p>
+                <p>Precio: $XX.XX</p>
+                <a href="#">Añadir al carrito</a>
+            </div>
+        </li>
+        <li class="producto">
+            <img class="fotopedido" src="/images/hamburguesa4.jpg" alt="Hamburguesa 4">
+            <div class="descripcion">
+                <h2>Burguer simple</h2>
+                <p>Descripción de la hamburguesa y sus ingredientes.</p>
+                <p>Precio: $XX.XX</p>
+                <a href="#">Añadir al carrito</a>
+            </div>
+        </li>
+    </section>
+
+    <div class="content-boton-carrito">
+    <a href="/cart/carrito" class="btn-carrito">Ir al carrito</a>
+    </div>
+
+    <%-include ('./partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es"></html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+  <link rel="stylesheet" type="text/css" href="/css/inicio.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- VINCULACION A GOOLE FONTS Y FONTS AWESOME-->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Tektur&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/157adaf284.js" crossorigin="anonymous"></script>
+  <title>DigitalBurguer</title>
+</head>
+
+<body>
+<%-include("./partials/header")%>
+    <div id="home">
+        <h1 class="tituloPrinc">DIGITAL BURGER</h1>
+        
+    </div>
+    <div>
+        <img class="imgPrinc" src="/images/localheager1.jpg" alt="imagenes varias">
+      <!--  <img src="/images/localheader2.jpg" alt="imagenes varias2">
+        <img src="/images/localheader3.jpg" alt="imagenes varias3">  -->
+    </div>
+    <h2 class="titulo">PRODUCTOS</h2>
+    <section id="productos" class="menu">
+        <img class="fotomenu" src="/images/hamburguesa1.jpg" alt="imagenes de hamburguesa">
+        <img class="fotomenu" src="/images/hamburguesa2.jpg" alt="imagenes de hamburguesa">
+        <img class="fotomenu" src="/images/hamburguesa3.jpg" alt="imagenes de hamburguesa">
+        <img class="fotomenu" src="/images/hamburguesa4.jpg" alt="imagenes de hamburguesa">
+    </section>
+    <section id="locales">
+        <h2 class="titulo">LOCALES</h2>
+
+        <div class="sucursales">
+            <div class="card">
+              <img src="/images/localheager1.jpg" alt="SUCPALERMO">
+              <div class="card-content">
+                <h5 class="card-title">PALERMO</h5>
+                <p class="card-text">Información de la sucursal Palermo.</p>
+                <a href="#" class="btn btn-primary">Ver</a>
+              </div>
+            </div>
+            <div class="card">
+                <img src="/images/localheader2.jpg" alt="SUCBELGRANO">
+                <div class="card-content">
+                <h5 class="card-title">Belgrano</h5>
+                <p class="card-text">informacion de la sucursal</p>
+                <a href="#" class="btn btn-primary">Ver</a>
+              </div>
+            </div>
+            <div class="card">
+                <img src="/images/localheager1.jpg" alt="SUCPALERMO">
+                <div class="card-content">
+                  <h5 class="card-title">PALERMO</h5>
+                  <p class="card-text">Información de la sucursal Palermo.</p>
+                  <a href="#" class="btn btn-primary">Ver</a>
+                </div>
+              </div>
+              <div class="card">
+                <img src="/images/localheager1.jpg" alt="SUCPALERMO">
+                <div class="card-content">
+                  <h5 class="card-title">PALERMO</h5>
+                  <p class="card-text">Información de la sucursal Palermo.</p>
+                  <a href="#" class="btn btn-primary">Ver</a>
+                </div>
+              </div>                  
+        </div> 
+      
+                
+    </section>
+    <section id="nosotros">
+        <h2 class="titulo">SOBRE NOSOTROS</h2>
+        <p>
+          Bienvenido a Digital Burger, el lugar donde la pasión por las hamburguesas se encuentra con la innovación digital.
+          Somos más que una simple hamburguesería, somos una experiencia gastronómica que combina lo mejor de ambos mundos:
+          deliciosas hamburguesas artesanales y tecnología de vanguardia.
+      </p>
+      <p>
+          En Digital Burger, nos enorgullecemos de ofrecer hamburguesas de la más alta calidad, elaboradas con ingredientes
+          frescos y locales. Nuestros chefs expertos trabajan con pasión para crear combinaciones únicas de sabores que
+          deleitarán tu paladar en cada bocado.
+      </p>
+      <p>
+          Pero no nos detenemos ahí. Somos una marca comprometida con la innovación y la comodidad. Nuestro sitio web te permite
+          explorar nuestro menú en línea, hacer pedidos desde la comodidad de tu hogar y realizar seguimiento en tiempo real
+          de tu entrega. ¿Prefieres visitarnos en persona? Contamos con diversas sucursales estratégicamente ubicadas para
+          que puedas disfrutar de la experiencia Digital Burger donde quiera que estés.
+      </p>
+      <p>
+          En Digital Burger, también valoramos a nuestra comunidad y el medio ambiente. Nos esforzamos por utilizar envases
+          y materiales sostenibles, minimizando nuestro impacto en el planeta. Además, colaboramos con organizaciones locales
+          para apoyar causas importantes y devolver a la comunidad que tanto nos apoya.
+      </p>
+      <p>
+          Nuestro equipo está formado por apasionados amantes de la comida y la tecnología, comprometidos en brindarte la mejor
+          experiencia posible. Nos esforzamos por superar tus expectativas en cada visita y convertirte en parte de la familia
+          Digital Burger.
+      </p>
+      <p>
+          Gracias por acompañarnos en este viaje culinario y digital. Te invitamos a sumergirte en el sabor único de nuestras
+          hamburguesas y a descubrir el mundo de posibilidades que ofrece Digital Burger. ¡Esperamos verte pronto!
+      </p>
+    </section>
+
+    <%-include ('./partials/footer') %>
+
+</body>
+</html>
