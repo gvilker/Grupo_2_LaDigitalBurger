@@ -1,8 +1,9 @@
 const path = require ("path");
 
 const controller = {
-    home: (req, res) => {
-        res.render("home");
-        },
+    modificar: (req, res) => {
+        res.render("modificar");
+    }
 }
+
 module.exports = controller;

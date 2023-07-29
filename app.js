@@ -10,6 +10,7 @@ const mainRouter = require ("./routers/mainRouter.js")
 const usersRouter = require ("./routers/usersRouter.js")
 const productRouter = require ("./routers/productRouter.js")
 const cartRouter = require ("./routers/cartRouter.js")
+const modificarRouter = require ("./routers/modificarRouter.js")
 
 app.use(express.static("public"));
 
@@ -23,6 +24,7 @@ app.use("/product", productRouter)
 
 app.use("/cart", cartRouter)
 
+app.use("/modificar", modificarRouter)
 
 
 
