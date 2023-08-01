@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/styles.css">
-  <link rel="stylesheet" type="text/css" href="/css/producto.css">
+  <link rel="stylesheet" type="text/css" href="/css/productoDetail.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- VINCULACION A GOOLE FONTS Y FONTS AWESOME-->
@@ -16,26 +16,30 @@
 <body>
     <%-include("./partials/header")%>
 
-    <h1 class="titulo">PRODUCTOS</h1>
-    <section id="productos" class="menu">
-        <% productos.forEach((producto, index) => { %>
+    <body>
+        <h1 class="titulo">DETALLE DEL PRODUCTO</h1>
+        <section id="detalle-producto">
             <div class="producto">
                 <img class="fotopedido" src="<%= producto.imagen %>" alt="<%= producto.nombre %>">
                 <div class="descripcion">
                     <h2 class="burger"><%= producto.nombre %></h2>
                     <p><%= producto.descripcion %></p>
                     <p>Precio: $<%= producto.precio.toFixed(2) %></p>
-                    <a href="/product/productoDetail/<%= index %>" class="ver-detalle">Ver detalle</a>
+                    <p>Calorías por porción: <%= producto.calorias %> kcal</p>
+                    <p>Grasas por porción: <%= producto.grasas %> g</p>
+                    <p>Proteínas por porción: <%= producto.proteinas %> g</p>
+                    <p>Carbohidratos por porción: <%= producto.carbohidratos %> g</p>
+                    <p>Tamaño de la hamburguesa: <%= producto.tamano %> g</p>
+                    <p>Ingredientes adicionales: <%= producto.ingredientesAdicionales.join(', ') %></p>
+                    <p>Nivel de picante: <%= producto.picante ? 'Picante' : 'No picante' %></p>
+                    <p>Sugerencias de acompañamientos: <%= producto.sugerenciasAcompanamiento.join(', ') %></p>
+                    <p>Información adicional: <%= producto.informacionAdicional %></p>
                     <br></br>
-                    
+                    <a href="#" class="ver-detalle">Añadir al carrito</a>
                 </div>
             </div>
-        <% }); %>
-    </section>
-
-    <div class="content-boton-carrito">
-    <a href="/cart/carrito" class="btn-carrito">Ir al carrito</a>
-    </div>
+        </section>
+    </body>
 
     <%-include ('./partials/footer') %>
 </body>

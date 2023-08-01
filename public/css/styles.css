@@ -148,24 +148,35 @@ footer#contacto a i {
   color: #09ff00;
 }
 
-@media (min-width: 769px) {
-    .hamburguer-boton{
-        display: none;
-    }
-    /* .listaNav{
-        display: contents;
-        
-    } */
-    .main-navbar{
-        display: flex;
-        justify-content: space-between;
-      }
-    
-      .main-navbar ul {
-        display: flex;
-      }
-      .main-navbar li {
-        margin: 0 5px;
-      }
 
-}    
+@media (min-width: 769px) {
+  .hamburguer-boton {
+      display: none;
+  }
+
+
+  .main-navbar {
+      display: flex;
+      justify-content: space-between;
+  }
+
+  .main-navbar ul {
+      display: flex;
+  }
+
+  .main-navbar li {
+      margin: 0 5px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .hamburguer-boton {
+      display: block; 
+  }
+
+
+  .main-navbar {
+      display: none; 
+  }
+}
