@@ -19,25 +19,27 @@
     <body>
         <h1 class="titulo">DETALLE DEL PRODUCTO</h1>
         <section id="detalle-producto">
+            <div class="contenedor-detalle">
             <div class="producto">
-                <img class="fotopedido" src="<%= producto.imagen %>" alt="<%= producto.nombre %>">
+                <img class="fotopedido" src="<%= product.imagen %>" alt="<%= product.nombre %>">
                 <div class="descripcion">
-                    <h2 class="burger"><%= producto.nombre %></h2>
-                    <p><%= producto.descripcion %></p>
-                    <p>Precio: $<%= producto.precio.toFixed(2) %></p>
-                    <p>Calorías por porción: <%= producto.calorias %> kcal</p>
-                    <p>Grasas por porción: <%= producto.grasas %> g</p>
-                    <p>Proteínas por porción: <%= producto.proteinas %> g</p>
-                    <p>Carbohidratos por porción: <%= producto.carbohidratos %> g</p>
-                    <p>Tamaño de la hamburguesa: <%= producto.tamano %> g</p>
-                    <p>Ingredientes adicionales: <%= producto.ingredientesAdicionales.join(', ') %></p>
-                    <p>Nivel de picante: <%= producto.picante ? 'Picante' : 'No picante' %></p>
-                    <p>Sugerencias de acompañamientos: <%= producto.sugerenciasAcompanamiento.join(', ') %></p>
-                    <p>Información adicional: <%= producto.informacionAdicional %></p>
+                    <h2 class="burger"><%= product.nombre %></h2>
+                    <p><%= product.descripcion %></p>
+                    <p>Precio: $<%= product.precio.toFixed(2) %></p>
+                    <p>Calorías por porción: <%= product.calorias %> kcal</p>
+                    <p>Grasas por porción: <%= product.grasas %> g</p>
+                    <p>Proteínas por porción: <%= product.proteinas %> g</p>
+                    <p>Carbohidratos por porción: <%= product.carbohidratos %> g</p>
+                    <p>Tamaño de la hamburguesa: <%= product.tamano %> g</p>
+                    <p>Ingredientes adicionales: <%= product.ingredientesAdicionales.join(', ') %></p>
+                    <p>Nivel de picante: <%= product.picante ? 'Picante' : 'No picante' %></p>
+                    <p>Sugerencias de acompañamientos: <%= product.sugerenciasAcompanamiento.join(', ') %></p>
+                    <p>Información adicional: <%= product.informacionAdicional %></p>
                     <br></br>
                     <a href="#" class="ver-detalle">Añadir al carrito</a>
                 </div>
             </div>
+        </div>
         </section>
     </body>
 

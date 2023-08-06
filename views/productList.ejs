@@ -18,14 +18,14 @@
 
     <h1 class="titulo">PRODUCTOS</h1>
     <section id="productos" class="menu">
-        <% productos.forEach((producto, index) => { %>
+        <% products.forEach((producto, index) => { %>
             <div class="producto">
                 <img class="fotopedido" src="<%= producto.imagen %>" alt="<%= producto.nombre %>">
                 <div class="descripcion">
                     <h2 class="burger"><%= producto.nombre %></h2>
                     <p><%= producto.descripcion %></p>
                     <p>Precio: $<%= producto.precio.toFixed(2) %></p>
-                    <a href="/product/productoDetail/<%= index %>" class="ver-detalle">Ver detalle</a>
+                    <a href="/products/<%= producto.id %>/detail" class="ver-detalle">Ver detalle</a>
                     <br></br>
                     
                 </div>

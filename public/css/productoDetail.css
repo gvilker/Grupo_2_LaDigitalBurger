@@ -83,12 +83,25 @@
   }
   
   /* Estilos para la página de detalle del producto */
+
+
   #detalle-producto {
-    margin: -10vh;
+    background-color: #272525;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    padding-top: 20px; /* Espacio en la parte superior */
+    padding-bottom: 50px; /* Espacio en la parte inferior */
+  }
+  
+  .contenedor-detalle {
+    max-width: 1200px; /* Limitar el ancho del contenido */
+    margin: 0 auto; /* Centrar horizontalmente */
+    padding: 20px; /* Espacio interno */
+    border: 1px solid #09ff00;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #272525;
   }
   
   #detalle-producto .producto {
