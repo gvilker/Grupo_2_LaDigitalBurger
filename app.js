@@ -21,6 +21,12 @@ const modificarRouter = require ("./routers/modificarRouter.js")
 
 app.set("view engine", "ejs");
 
+app.set('views', [
+    path.join(__dirname, './views')
+]);
+
+
+
 app.use(express.static("public"));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
@@ -34,6 +40,10 @@ app.use("/user", usersRouter)
 app.use("/products", productRouter)
 
 app.use("/cart", cartRouter)
+
+app.use((req, res) => {
+    res.render('404');
+});
 /*
 app.use("/modificar", modificarRouter)
 */

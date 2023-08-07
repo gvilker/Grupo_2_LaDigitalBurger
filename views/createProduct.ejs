@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
+    <script src="https://kit.fontawesome.com/157adaf284.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Tektur&display=swap" rel="stylesheet">
+    <title>Login DigitalBurguer</title>
+</head>
+<body>
+    
+  <%-include("./partials/header")%>  
+    
+  <div class="Contenido">
+    <div>
+      <h1 class="tituloPrinc">DIGITAL REGISTER - MODIFICACION / CREACIÓN DE PRODUCTOS</h1>
+    </div>
+
+
+    <form action="/products" method="POST" class="form-login"enctype="multipart/form-data">
+      <label class="formulario" for="nombre">Nombre:
+      <input class="control" type="text" id="nombre" name="nombre" value="<%= product ? product.nombre : '' %>" required>
+            </label>
+      
+      <label class="formulario" for="descripcion">Descripción:
+      <textarea class="control" id="descripcion" name="descripcion" required><%= product ? product.descripcion : '' %></textarea>
+    </label>
+      
+      <label class="formulario" for="precio">Precio:
+      <input class="control" type="number" step="0.01" id="precio" name="precio" value="<%= product ? product.precio.toFixed(2) : '' %>" required>
+    </label>
+    <label class="formulario" for="imagen">Imagen:
+<input class="control" type="file" id="imagen" name="img" accept="image/*">
+</label>
+
+      <label class="formulario" for="calorias">Calorías por porción:
+      <input class="control" type="number" id="calorias" name="calorias" value="<%= product ? product.calorias : '' %>" required>
+    </label>
+
+      <label class="formulario" for="grasas">Grasas por porción:
+      <input class="control" type="number" step="0.01" id="grasas" name="grasas" value="<%= product ? product.grasas : '' %>" required>
+    </label>
+
+      <label class="formulario" for="proteinas">Proteínas por porción:
+      <input class="control" type="number" step="0.01" id="proteinas" name="proteinas" value="<%= product ? product.proteinas : '' %>" required>
+    </label>
+
+      <label class="formulario" for="carbohidratos">Carbohidratos por porción:
+      <input class="control" type="number" step="0.01" id="carbohidratos" name="carbohidratos" value="<%= product ? product.carbohidratos : '' %>" required>
+    </label>
+
+      <label class="formulario" for="tamano">Tamaño de la hamburguesa (en gramos):
+      <input class="control" type="number" id="tamano" name="tamano" value="<%= product ? product.tamano : '' %>" required>
+    </label>
+
+      <label class="formulario" for="ingredientesAdicionales">Ingredientes adicionales (separados por coma):
+      <input class="control" type="text" id="ingredientesAdicionales" name="ingredientesAdicionales" value="<%= product ? product.ingredientesAdicionales.join(', ') : '' %>" required>
+      </label>
+      <label class="formulario" for="picante">Nivel de picante:
+      <select class="control" class="formulario" id="picante" name="picante">
+        <option value="true" <%= product && product.picante ? 'selected' : '' %>>Picante</option>
+        <option value="false" <%= product && !product.picante ? 'selected' : '' %>>No picante</option>
+      </select></label>
+      
+      <label class="formulario" for="sugerenciasAcompanamiento">Sugerencias de acompañamientos (separados por coma):
+      <input class="control" type="text" id="sugerenciasAcompanamiento" name="sugerenciasAcompanamiento" value="<%= product ? product.sugerenciasAcompanamiento.join(', ') : '' %>" required>
+    </label> 
+
+      <label class="formulario" for="informacionAdicional">Información adicional:
+      <textarea class="control" id="informacionAdicional" name="informacionAdicional"><%= product ? product.informacionAdicional : '' %></textarea>
+    </label>
+
+      <button type="submit" class="boton-formulario">
+        <%= product ? 'Actualizar Producto' : 'Crear Producto' %>
+      </button>
+    </form>
+
+  </div>
+  <%-include ('./partials/footer') %>
+</body>
+</html>

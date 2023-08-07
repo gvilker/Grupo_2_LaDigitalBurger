@@ -41,6 +41,14 @@
             </div>
         </div>
         </section>
+        <section id="content-eliminar-modificar">
+            <br></br>
+            <a href="/products/<%= product._id %>/edit" class="ver-editar">Editar producto</a>
+        
+            <form action="/products/<%= product._id %>/delete" method="post">
+                <button type="submit" class="ver-eliminar">Eliminar producto</button>
+            </form>
+        </section>
     </body>
 
     <%-include ('./partials/footer') %>

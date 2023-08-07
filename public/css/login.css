@@ -24,6 +24,7 @@ body{
     margin-bottom: 45px;
     text-align: left; 
     margin-left: 10%;
+    color: white;
   }
   .control{
     width: 88.5%;
@@ -45,3 +46,4 @@ body{
   .boton-formulario:hover{
     background-color: #09ff00;
   }
+

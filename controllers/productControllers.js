@@ -9,7 +9,7 @@ const controller = {
 
       res.render('productList', { products: products });
     },
-    getDetail: (req, res) => {
+  getDetail: (req, res) => {
 
     const productId = req.params.id;
     const selectedProduct = productModel.findById(productId);
@@ -20,39 +20,72 @@ const controller = {
     res.render('productDetail', { product: selectedProduct });
   },
 
-    getCreate: (req, res) => {
-       res.render('createProduct');
-    },
+  getCreate: (req, res) => {
+    const products = productModel.findAll();
+    const product = null;
+    res.render('createProduct', { products: products, product: product });
+  },
+
 
     postProduct: (req, res) => {
-      console.log(req.files);
-      
-      const filename = req.file.map(file => file.filename);
+      const filenames = req.files.map(file => file.filename);
+      console.log(filenames)
 
-        const newProduct = { 
-        nombre:"Clásica",
-        descripcion:"La hamburguesa clásica con lechuga, tomate y cebolla.",
-        precio:9.99,
-        imagen: filename,
-        calorias:380,
-        grasas:20,
-        proteinas:25,
-        carbohidratos:35,
-        tamano:220,
-        ingredientesAdicionales:["Queso suizo","Tocino crujiente","Salsa barbacoa"],
-        picante:false,
-        sugerenciasAcompanamiento:["Papas fritas tradicionales","Refresco frío","Té helado"],
-        informacionAdicional:"La clásica que nunca pasa de moda"
+      const imagePath = '/images/products/' + filenames[0];
+  
+      const newProduct = {
+        nombre: req.body.nombre,
+        descripcion: req.body.descripcion,
+        precio: parseFloat(req.body.precio),
+        imagen: imagePath,
+        calorias: parseInt(req.body.calorias),
+        grasas: parseFloat(req.body.grasas),
+        proteinas: parseFloat(req.body.proteinas),
+        carbohidratos: parseFloat(req.body.carbohidratos),
+        tamano: parseInt(req.body.tamano),
+        ingredientesAdicionales: req.body.ingredientesAdicionales.split(',').map(ingrediente => ingrediente.trim()),
+        picante: req.body.picante === 'true', 
+        sugerenciasAcompanamiento: req.body.sugerenciasAcompanamiento.split(',').map(sugerencia => sugerencia.trim()),
+        informacionAdicional: req.body.informacionAdicional,
       }
-
-      const createdProduct = productModel.productoCreate(newProduct);
-
+  
+      const createdProduct = productModel.createProduct(newProduct);
+  
       res.redirect('/products/' + createdProduct.id + '/detail');
+    },
+    getEdit: (req, res) => {
+      const product = productModel.findById(Number(req.params.id));
 
-      // Desde los POST no renderizamos vistas, solo redireccionamos
-      //res.redirect('/products');
+      res.render('editProduct', { product });
   },
+
+  deleteProduct: (req, res) => {
+      productModel.destroy(Number(req.params.id));
+
+      res.redirect('/products');
+  },
+
+  updateProduct: (req, res) => {
+      let updatedProduct = {
+          id: Number(req.params.id)
+      };
+
+      updatedProduct = {
+          ...updatedProduct,
+          ...req.body
+      };
+
+      /* 
+          const updatedProduct = req.body;
+          updatedProduct.id = Number(req.params.id); 
+      */
+
+      productModel.updateProduct(updatedProduct);
+
+      res.redirect('/products/' + updatedProduct.id + '/detail');
   }
+}
+
 
 
 
