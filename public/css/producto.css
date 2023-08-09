@@ -30,7 +30,7 @@ p {
   gap: 20px;
   justify-items: center; 
 }
-
+/*
 .producto {
   border: 1px solid #09ff00;
   padding: 10px;
@@ -47,6 +47,30 @@ p {
   max-height: 200px;
   object-fit: cover;
   border-radius: 5px;
+}*/
+.producto {
+  min-width: 300px;
+  max-width: 300px;
+  border: 1px solid #09ff00;
+  padding: 10px;
+  background-color: #272525;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.producto img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+#productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px; /* Espaciado entre los contenedores */
 }
 
 .descripcion {

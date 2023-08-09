@@ -33,6 +33,6 @@ router.get('/:id/edit', productControllers.getEdit);
 // @DELETE - /products/:id/delete
 router.delete('/:id/delete', productControllers.deleteProduct);
 
-router.put('/:id/edit', productControllers.updateProduct);
+router.put('/:id/edit', upload.any('img'), productControllers.updateProduct);
 
 module.exports = router;

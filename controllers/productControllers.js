@@ -66,11 +66,13 @@ const controller = {
   },
 
   updateProduct: (req, res) => {
-
-    const filenames = req.files.map(file => file.filename);
-    console.log(filenames)
-
-    const imagePath = '/images/products/' + filenames[0];
+    const product = productModel.findById(Number(req.params.id));
+    const filenames = req.files && req.files.length > 0 ? req.files.map(file => file.filename) : [];
+    console.log(filenames);
+    
+    let imagePath = req.files && req.files.length > 0
+    ? path.join('/images/products/', req.files[0].filename)
+    : product.imagen;
     
     let updatedProduct = {
       id: Number(req.params.id),
@@ -83,27 +85,15 @@ const controller = {
       proteinas: parseFloat(req.body.proteinas),
       carbohidratos: parseFloat(req.body.carbohidratos),
       tamano: parseInt(req.body.tamano),
-      ingredientesAdicionales: req.body.ingredientesAdicionales,
+      ingredientesAdicionales: req.body.ingredientesAdicionales
+      ? req.body.ingredientesAdicionales.split(',').map(ingrediente => ingrediente.trim())
+      : [],
       picante: req.body.picante === 'true', 
-      sugerenciasAcompanamiento: req.body.sugerenciasAcompanamiento,
+      sugerenciasAcompanamiento: req.body.sugerenciasAcompanamiento
+      ? req.body.sugerenciasAcompanamiento.split(',').map(sugerencia => sugerencia.trim())
+      : [],
       informacionAdicional: req.body.informacionAdicional,
     }
-    
-    /* let updatedProduct = {
-          id: Number(req.params.id)
-      };
-
-      updatedProduct = {
-          ...updatedProduct,
-          ...req.body
-      };*/
-
-
-      /* 
-          const updatedProduct = req.body;
-          updatedProduct.id = Number(req.params.id); 
-      */
-
       productModel.updateProduct(updatedProduct);
 
       res.redirect('/products/' + updatedProduct.id + '/detail');

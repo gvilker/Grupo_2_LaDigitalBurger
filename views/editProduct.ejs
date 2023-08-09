@@ -32,8 +32,10 @@
       <input class="control" type="number" step="0.01" id="precio" name="precio" value="<%= product ? product.precio.toFixed(2) : '' %>" required>
     </label>
     <label class="formulario" for="imagen">Imagen:
-<input class="control" type="file" id="imagen" name="img" accept="image/*">
-</label>
+      <input class="control" type="file" id="imagen" name="img" accept="image/*">
+  </label>
+  <p>Imagen actual:</p>
+  <img src="<%= product.imagen %>" alt="Imagen actual del producto">
 
       <label class="formulario" for="calorias">Calorías por porción:
       <input class="control" type="number" id="calorias" name="calorias" value="<%= product ? product.calorias : '' %>" required>
@@ -72,7 +74,7 @@
       <textarea class="control" id="informacionAdicional" name="informacionAdicional"><%= product ? product.informacionAdicional : '' %></textarea>
     </label>
 
-    <button type="submit" class="boton-formulario">  
+    <button type="submit" class="boton-formulario">Editar Producto  
       </button> 
   
     </form>
