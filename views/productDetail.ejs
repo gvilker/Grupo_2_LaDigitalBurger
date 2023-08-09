@@ -35,6 +35,7 @@
                     <p>Nivel de picante: <%= product.picante ? 'Picante' : 'No picante' %></p>
                     <p>Sugerencias de acompañamientos: <%= product.sugerenciasAcompanamiento.join(', ') %></p>
                     <p>Información adicional: <%= product.informacionAdicional %></p>
+                    <a href="/products/<%= product.id %>/edit" class="ver-editar">Editar producto</a>
                     <br></br>
                     <a href="#" class="ver-detalle">Añadir al carrito</a>
                 </div>
@@ -43,9 +44,9 @@
         </section>
         <section id="content-eliminar-modificar">
             <br></br>
-            <a href="/products/<%= product._id %>/edit" class="ver-editar">Editar producto</a>
+            
         
-            <form action="/products/<%= product._id %>/delete" method="post">
+            <form action="/products/<%= product.id %>/delete" method="post">
                 <button type="submit" class="ver-eliminar">Eliminar producto</button>
             </form>
         </section>

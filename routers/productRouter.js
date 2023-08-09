@@ -26,7 +26,7 @@ router.get('/create', productControllers.getCreate);
 
 // @POST - /products
 router.post('/', upload.any('img'), productControllers.postProduct);
-/*
+
 // @GET - /products/:id/edit
 router.get('/:id/edit', productControllers.getEdit);
 
@@ -34,5 +34,5 @@ router.get('/:id/edit', productControllers.getEdit);
 router.delete('/:id/delete', productControllers.deleteProduct);
 
 router.put('/:id/edit', productControllers.updateProduct);
-*/
+
 module.exports = router;

@@ -66,14 +66,38 @@ const controller = {
   },
 
   updateProduct: (req, res) => {
-      let updatedProduct = {
+
+    const filenames = req.files.map(file => file.filename);
+    console.log(filenames)
+
+    const imagePath = '/images/products/' + filenames[0];
+    
+    let updatedProduct = {
+      id: Number(req.params.id),
+      nombre: req.body.nombre,
+      descripcion: req.body.descripcion,
+      precio: parseFloat(req.body.precio),
+      imagen: imagePath,
+      calorias: parseInt(req.body.calorias),
+      grasas: parseFloat(req.body.grasas),
+      proteinas: parseFloat(req.body.proteinas),
+      carbohidratos: parseFloat(req.body.carbohidratos),
+      tamano: parseInt(req.body.tamano),
+      ingredientesAdicionales: req.body.ingredientesAdicionales,
+      picante: req.body.picante === 'true', 
+      sugerenciasAcompanamiento: req.body.sugerenciasAcompanamiento,
+      informacionAdicional: req.body.informacionAdicional,
+    }
+    
+    /* let updatedProduct = {
           id: Number(req.params.id)
       };
 
       updatedProduct = {
           ...updatedProduct,
           ...req.body
-      };
+      };*/
+
 
       /* 
           const updatedProduct = req.body;
