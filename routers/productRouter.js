@@ -2,6 +2,8 @@ const express = require ("express");
 const router = express.Router();
 const productControllers = require ("../controllers/productControllers");
 const multer = require('multer');
+const { check } = require('express-validator');
+const { productValidationRules } = require('../middlewares/validation_Creation.js');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -25,7 +27,7 @@ router.get('/:id/detail', productControllers.getDetail);
 router.get('/create', productControllers.getCreate);
 
 // @POST - /products
-router.post('/', upload.any('img'), productControllers.postProduct);
+router.post('/', upload.any('img'), productValidationRules ,productControllers.postProduct);
 
 // @GET - /products/:id/edit
 router.get('/:id/edit', productControllers.getEdit);
@@ -33,6 +35,6 @@ router.get('/:id/edit', productControllers.getEdit);
 // @DELETE - /products/:id/delete
 router.delete('/:id/delete', productControllers.deleteProduct);
 
-router.put('/:id/edit', upload.any('img'), productControllers.updateProduct);
+router.put('/:id/edit', upload.any('img'), productValidationRules ,productControllers.updateProduct);
 
 module.exports = router;

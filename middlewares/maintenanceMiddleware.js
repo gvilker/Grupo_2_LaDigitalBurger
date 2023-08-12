@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-let isMaintenanceMode = false;
+let isMaintenanceMode = true;
 
 function maintenanceMiddleware(req, res, next) {
 

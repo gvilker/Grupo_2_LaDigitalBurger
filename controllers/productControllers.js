@@ -1,6 +1,8 @@
 const path = require ("path");
 const productModel = require('../models/productModels');
 const fs = require("fs");
+const { validationResult } = require('express-validator');
+const { productValidationRules } = require("../middlewares/validation_Creation");
 
 const controller = {
   getList: (req, res) => {
@@ -27,7 +29,17 @@ const controller = {
   },
 
 
-    postProduct: (req, res) => {
+    postProduct:  [
+      productValidationRules, // Agregar las reglas de validación aquí
+      async (req, res) => {
+        const errors = validationResult(req);
+  
+        if (!errors.isEmpty()) {
+          // Si hay errores de validación, renderiza la vista nuevamente con los errores
+          const products = productModel.findAll();
+          const product = null;
+          return res.render('createProduct', { product, errors: errors.array() });
+        }
       const filenames = req.files.map(file => file.filename);
       console.log(filenames)
 
@@ -52,7 +64,8 @@ const controller = {
       const createdProduct = productModel.createProduct(newProduct);
   
       res.redirect('/products/' + createdProduct.id + '/detail');
-    },
+    }],
+
     getEdit: (req, res) => {
       const product = productModel.findById(Number(req.params.id));
 
@@ -65,7 +78,15 @@ const controller = {
       res.redirect('/products');
   },
 
-  updateProduct: (req, res) => {
+  updateProduct:  [productValidationRules, // Agregar las mismas reglas de validación aquí
+  async (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      // Si hay errores de validación, renderiza la vista nuevamente con los errores
+      const product = productModel.findById(Number(req.params.id));
+      return res.render('editProduct', { product, errors: errors.array() });
+    }
     const product = productModel.findById(Number(req.params.id));
     const filenames = req.files && req.files.length > 0 ? req.files.map(file => file.filename) : [];
     console.log(filenames);
@@ -97,7 +118,7 @@ const controller = {
       productModel.updateProduct(updatedProduct);
 
       res.redirect('/products/' + updatedProduct.id + '/detail');
-  }
+  }]
 }
 
 
