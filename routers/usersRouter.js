@@ -1,11 +1,8 @@
 const express = require ("express");
 const router = express.Router();
-
-
 const path = require('path');
 const multer = require('multer');
-
-const { body } = require('express-validator');
+const { body, check } = require('express-validator');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -22,38 +19,52 @@ const uploadFile = multer({ storage });
 
 const usersController = require ("../controllers/usersControllers");
 
-const validations = [
+const registerValidations = [
     body('nombre_completo').notEmpty().withMessage('Escribe un nombre'),
     body('nombre_usuario').notEmpty().withMessage('Ingrese un alias'),
     body('correo_electronico')
         .notEmpty().withMessage('Escribe tu correo electrónico').bail()
         .isEmail().withMessage('Debes escribir un formato correro válido'),
-    body('contrasena').notEmpty().withMessage('Debes proporcionar una contraseña'),
+    body('contrasena')
+        .notEmpty().withMessage('Debes proporcionar una contraseña').bail()
+        .isLength({min: 8}).withMessage('La contraseña debe tenes al menos 8 caracteres'),
     body('confirmar_contrasena').notEmpty().withMessage('Repita su contraseña'),
-    body('avatar').custom((value, {req}) => {
+    body("avatar").custom((value, { req }) => {
         let file = req.file;
-        let acceptedExtensions = ['.jpg', '.png', '.jpeg', '.gif']
-
-        if (!file){
-            throw new Error('Tienes que subir una imagen')
-        } else{
-            let fileExtension = path.extname(file.originalname);
-            if (!acceptedExtensions.includes(fileExtension)){
-                throw new Error(`Las extensiones de archivo permitidas son ${acceptedExtensions.join(', ')}`);
-        }       
-    }
+        let acceptedExtensions = [".jpg", ".png", ".jpeg", ".gif"];
+    
+        if (!file) {
+          throw new Error("Tienes que subir una imagen");
+        } else {
+          let fileExtension = path.extname(file.originalname);
+          if (!acceptedExtensions.includes(fileExtension)) {
+            throw new Error(
+              `Las extensiones de archivo permitidas son ${acceptedExtensions.join(
+                ", "
+              )}`
+            );
+          }
+        }
         return true;
-    })
+      }),
+    ];
+
+const loginValidator = [
+    check('correo_electronico').isEmail().withMessage('Email invalido'),
+    check('contrasena').isLength({min: 8}).withMessage('La contraseña debe tenes al menos 8 caracteres')
 ]
 
 // Formulario de registro
 router.get("/register", usersController.register);
 
 // Procesar el registro
-router.post("/register", uploadFile.single('avatar'), validations,  usersController.processRegister);
+router.post("/register", uploadFile.single('avatar'), registerValidations,  usersController.processRegister);
 
 // Formulario de login
 router.get("/login", usersController.login);
+
+// Procesar el login
+router.post("/login", loginValidator, usersController.processLogin);
 
 // Perfil de usuario
 router.get('/profile/:userId', usersController.profile)

@@ -1,0 +1,16 @@
+<!-- profile.ejs -->
+<%- include('./partials/header') %>
+
+<div class="contenido">
+  <h1>Perfil de Usuario</h1>
+  <p>Nombre: <%= user.nombre_completo %></p>
+  <p>Nombre de Usuario: <%= user.nombre_usuario %></p>
+  <p>Correo Electrónico: <%= user.correo_electronico %></p>
+  <img src="/images/avatars/<%= user.avatar %>" alt="Avatar">
+
+  <!-- Add more profile information as needed -->
+
+  <a href="/">Volver a la página principal</a>
+</div>
+
+<%- include('./partials/footer') %>

@@ -4,6 +4,7 @@ const methodOverride = require('method-override');
 const dotenv = require ("dotenv").config();
 const port = process.env.PORT || 3010;
 const path = require('path');
+const session = require('express-session')
 const logMiddleware = require('./middlewares/logMiddleware');
 const maintenanceMiddleware = require('./middlewares/maintenanceMiddleware');
 const app = express();
@@ -34,6 +35,11 @@ app.use(express.static("public"));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(methodOverride('_method'));
+app.use(session({
+    secret: 'No me comprenden', // cadena de texto secreta
+    resave: false, // para que se guarde solo si se hicieron cambios
+    saveUninitialized: true
+  }));
 app.use("/", mainRouter)
 app.use("/user", usersRouter)
 app.use("/products", productRouter)
@@ -51,6 +57,8 @@ app.listen(port,  () => {
 });
 
 
+// npm i express-session,
+// npm i bcrypt,
 
 
 

@@ -17,14 +17,26 @@
 <div>
   <h1 class="tituloPrinc">DIGITAL REGISTER - ACCEDER</h1>
 </div>
-<form action="" method="post" class="form-login">          
+<form action="/user/login" method="POST" class="form-login">          
     <div class="formulario">
-        <input type="text, email" name="usuario" placeholder="Nombre de usuario / Email" class="control" required>
-    </div>
+        <input type="email" name="correo_electronico" placeholder="escriba su Email" class="control <%= locals.errors && errors.correo_electronico ? 'is-invalid' : null %>"
+        value="<%= locals.oldData ? oldData.correo_electronico : null %>">>
+        <% if (locals.errors && errors.correo_electronico) { %>
+          <div>
+            <%= errors.correo_electronico.msg %>
+          </div>         
+        <% } %>
+      </div> 
      
     <div class="formulario">
-       <input type="password" name="contrasena" placeholder="Contraseña" class="control" required>
-    </div>
+       <input type="password" name="contrasena" placeholder="Contraseña" class="control">
+       <% if (locals.errors && errors.contrasena) { %>
+        <div>
+          <%= errors.contrasena.msg %>
+        </div>         
+      <% } %>
+    </div> 
+
     <div>
     <button type="submit" class="boton-formulario">Iniciar sesión</button>
     </div>
