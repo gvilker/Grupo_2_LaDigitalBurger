@@ -47,3 +47,11 @@ body{
   .boton-formulario:hover{
     background-color: #09ff00;
   }
+  .formulario.is-invalid {
+    margin-bottom: 10px; 
+  }
+  .is-invalid {
+    border: 1px solid red; 
+    background-color: #ffeeee;
+    margin-bottom: 10px;
+  }
