@@ -27,6 +27,11 @@ const controller = {
     
             if (userToLogin) {
                 req.session.UserLoggedIn = userToLogin;
+
+                if (req.body.recordame != undefined) {
+                    res.cookie('recordame', userToLogin.correo_electronico, { maxAge: 1000 *60 *60 *24 *365})
+                }
+
                 return res.send('Inicio de sesión exitoso'); 
             } else {
                 return res.render('login', {errors: [
@@ -50,8 +55,10 @@ const controller = {
             oldData: req.body,
           });
         }
+        const { confirmar_contrasena, ...userDataWithoutConfirm } = req.body;
+
         let imageName = req.file.filename;
-        let newUser = userModel.createUser(req.body, imageName); // Usar req.file.filename directamente
+        let newUser = userModel.createUser(userDataWithoutConfirm, imageName); 
         res.render("profile", { user: newUser });
         /*return res.send('las validaciones se pasaron correctamente')*/
     },

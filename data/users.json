@@ -1,20 +1,18 @@
 [
     {
-        "id": "1111111",
-        "nombre_completo": "Seipac",
-        "nombre_usuario": "Saica",
-        "correo_electronico": "laboratorio@seipac.com.ar",
-        "contrasena": "$2b$10$psWtEwIQGBAuRtROr/Geiu/qdgqK2N1d/XEf1zhVlXdrlo0FE6foy",
-        "confirmar_contrasena": "12345678",
-        "avatar": "/images/avatars/1692132938674_img.jpg"
+        "id": "a9ba556d-a5f3-4297-80a1-3acb946568ee",
+        "nombre_completo": "Delfina Julieta ",
+        "nombre_usuario": "Delfinita",
+        "correo_electronico": "delfi2016@gmail.com",
+        "contrasena": "$2b$10$ppLj2zlcyCRpwlUAEQn2ou3ys9J0AW2riRXeDIRY4Klu6ql5B7Pdm",
+        "avatar": "/images/avatars/1692147085617_img.png"
     },
     {
-        "id": "11111111",
-        "nombre_completo": "Gabriel Alejandro Cano",
-        "nombre_usuario": "GCano89",
-        "correo_electronico": "canogabriel89@gmail.com",
-        "contrasena": "$2b$10$gkI4AVElHNkAF70fApfNvOVfKz6X5yNYxccdqOmohQLcKP26xtlYu",
-        "confirmar_contrasena": "12345678",
-        "avatar": "/images/avatars/1692133026596_img.jpg"
+        "id": "895232c4-e778-4fba-97e9-4ce35fa10e08",
+        "nombre_completo": "Arturo",
+        "nombre_usuario": "El Gato",
+        "correo_electronico": "arporo@gmail.com",
+        "contrasena": "$2b$10$yjBRP43yeaLRwvVNJpCaPOmrFKrZhXZtwyg/dCLSTRUu2AlKWQAdq",
+        "avatar": "/images/avatars/1692147498207_img.png"
     }
 ]

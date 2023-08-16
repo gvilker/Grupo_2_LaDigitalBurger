@@ -5,8 +5,10 @@ const dotenv = require ("dotenv").config();
 const port = process.env.PORT || 3010;
 const path = require('path');
 const session = require('express-session')
+const cookieParser = require('cookie-parser');
 const logMiddleware = require('./middlewares/logMiddleware');
 const maintenanceMiddleware = require('./middlewares/maintenanceMiddleware');
+const cookieAuthMiddleware = require('./middlewares/cookieAuthMiddleware');
 const app = express();
 
 
@@ -17,6 +19,7 @@ const mainRouter = require ("./routers/mainRouter.js")
 const usersRouter = require ("./routers/usersRouter.js")
 const productRouter = require ("./routers/productRouter.js")
 const cartRouter = require ("./routers/cartRouter.js");
+const { cookie } = require("express-validator");
 
 /*
 const modificarRouter = require ("./routers/modificarRouter.js")
@@ -33,6 +36,7 @@ app.use(maintenanceMiddleware);
 app.use(logMiddleware);
 app.use(express.static("public"));
 app.use(express.urlencoded({extended: true}));
+app.use(cookieParser());
 app.use(express.json());
 app.use(methodOverride('_method'));
 app.use(session({
@@ -40,6 +44,7 @@ app.use(session({
     resave: false, // para que se guarde solo si se hicieron cambios
     saveUninitialized: true
   }));
+app.use(cookieAuthMiddleware);  
 app.use("/", mainRouter)
 app.use("/user", usersRouter)
 app.use("/products", productRouter)

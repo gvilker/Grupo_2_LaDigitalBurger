@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcrypt');
+const uuid = require('uuid');
 
 const userModel = {
   fileRoute: path.join(__dirname, '../data/users.json'),
@@ -21,7 +22,7 @@ const userModel = {
     let users = userModel.findAll();
     const lastUserId = users.length > 0 ? users[users.length - 1].id : 0;
     const newUser = {
-      id: lastUserId + 1,
+      id: uuid.v4(),
       ...userData, 
       avatar: `/images/avatars/${imageName}`  // Asegúrate de que la ruta sea correcta
     };
