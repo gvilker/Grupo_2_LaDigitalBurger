@@ -1,18 +1,1 @@
-[
-    {
-        "id": "a9ba556d-a5f3-4297-80a1-3acb946568ee",
-        "nombre_completo": "Delfina Julieta ",
-        "nombre_usuario": "Delfinita",
-        "correo_electronico": "delfi2016@gmail.com",
-        "contrasena": "$2b$10$ppLj2zlcyCRpwlUAEQn2ou3ys9J0AW2riRXeDIRY4Klu6ql5B7Pdm",
-        "avatar": "/images/avatars/1692147085617_img.png"
-    },
-    {
-        "id": "895232c4-e778-4fba-97e9-4ce35fa10e08",
-        "nombre_completo": "Arturo",
-        "nombre_usuario": "El Gato",
-        "correo_electronico": "arporo@gmail.com",
-        "contrasena": "$2b$10$yjBRP43yeaLRwvVNJpCaPOmrFKrZhXZtwyg/dCLSTRUu2AlKWQAdq",
-        "avatar": "/images/avatars/1692147498207_img.png"
-    }
-]
+[{"id":"a9ba556d-a5f3-4297-80a1-3acb946568ee","nombre_completo":"Delfina Julieta ","nombre_usuario":"Delfinita","correo_electronico":"delfi2016@gmail.com","contrasena":"$2b$10$ppLj2zlcyCRpwlUAEQn2ou3ys9J0AW2riRXeDIRY4Klu6ql5B7Pdm","avatar":"/images/avatars/1692147085617_img.png"},{"id":"895232c4-e778-4fba-97e9-4ce35fa10e08","nombre_completo":"Arturo","nombre_usuario":"El Gato","correo_electronico":"arporo@gmail.com","contrasena":"$2b$10$yjBRP43yeaLRwvVNJpCaPOmrFKrZhXZtwyg/dCLSTRUu2AlKWQAdq","avatar":"/images/avatars/1692147498207_img.png"},{"id":"1464db60-6c4f-4b78-a297-74d0521fa52d","nombre_completo":"Casa","nombre_usuario":"del Arlbol","correo_electronico":"casaArbol@gmail.com","contrasena":"$2b$10$ygvbFRYTWdYn5agPHqHNsulrz0qbtzXnXFszO4SFs.H.GnQzyKe/W","avatar":"/images/avatars/1692201631909_img.jpg"},{"id":"15f52394-7d5a-4f33-ae4e-5782a5d82f2f","nombre_completo":"Mario Paz","nombre_usuario":"Otto","correo_electronico":"otto@gmail.com","contrasena":"$2b$10$9uzs2AcXXOBTDG14aUwcEe76FqFHAAvaiGMubSUmA0jGpLl1peGpi","avatar":"/images/avatars/1692204334444_img.jpg"}]

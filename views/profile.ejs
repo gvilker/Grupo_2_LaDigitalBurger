@@ -17,11 +17,11 @@
 <%- include('./partials/header') %>
 
 <div class="contenido">
-  <h1>Perfil de Usuario</h1>
-  <p>Nombre: <%= user.nombre_completo %></p>
-  <p>Nombre de Usuario: <%= user.nombre_usuario %></p>
-  <p>Correo Electrónico: <%= user.correo_electronico %></p>
-  <img src="/images/avatars/<%= user.avatar %>" alt="Avatar">
+  <h1 class="tituloPrinc">Perfil de Usuario</h1>
+  <p class="card-title">Nombre: <%= user.nombre_completo %></p>
+  <p class="card-title">Nombre de Usuario: <%= user.nombre_usuario %></p>
+  <p class="card-title">Correo Electrónico: <%= user.correo_electronico %></p>
+  <img src="<%= user.avatar %>" alt="Avatar">
 
   <!-- Add more profile information as needed -->
 

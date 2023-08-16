@@ -1,3 +1,5 @@
+const userModel = require('../models/userModels');
+
 function rememberMeMiddleware (req, res, next) {
 
     if(req.cookies.recordame != undefined && req.session.UserLoggedIn == undefined) {
