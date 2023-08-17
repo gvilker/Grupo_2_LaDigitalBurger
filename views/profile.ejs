@@ -16,16 +16,17 @@
 <body>
 <%- include('./partials/header') %>
 
-<div class="contenido">
+<div class="contentUser">
   <h1 class="tituloPrinc">Perfil de Usuario</h1>
+  <br></br>
+  <img class="perfilUser" src="<%= user.avatar %>" alt="Avatar">
+  <br></br>
   <p class="card-title">Nombre: <%= user.nombre_completo %></p>
   <p class="card-title">Nombre de Usuario: <%= user.nombre_usuario %></p>
   <p class="card-title">Correo Electrónico: <%= user.correo_electronico %></p>
-  <img src="<%= user.avatar %>" alt="Avatar">
-
-  <!-- Add more profile information as needed -->
-
-  <a href="/">Volver a la página principal</a>
+  <br></br>
+  <br></br>
+  <br></br>
 </div>
 
 <%- include('./partials/footer') %>

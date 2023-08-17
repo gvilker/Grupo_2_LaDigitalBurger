@@ -180,3 +180,21 @@ footer#contacto a i {
       display: none; 
   }
 }
+
+/*Estilos para el perfil de usuario*/
+.contentUser {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+}
+.perfilUser {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
