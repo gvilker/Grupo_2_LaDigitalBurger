@@ -64,7 +64,7 @@ const controller = {
     },
     profile: (req, res) => {
         const userId = req.params.userId;
-        const user = userModel.findById(userId);
+        const user = userModel.findByPk(userId);
     
         if (!user) {          
           return res.status(404).send('Usuario no encontrado');

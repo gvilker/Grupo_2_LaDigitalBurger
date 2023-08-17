@@ -12,10 +12,16 @@ const userModel = {
     return users;
   },
 
-  findById: (id) => {
+  findByPk: (id) => {
     const users = userModel.findAll();
-    const selectedUser = users.find(user => user.id === id);
-    return selectedUser;
+    const userFound = users.find(user => user.id === id);
+    return userFound;
+  },
+
+  findByFiels: (field, text) => {
+    const users = userModel.findAll();
+    const userFound = users.find(user => user[field] === text);
+    return userFound;
   },
 
   createUser: (userData, imageName) => {
@@ -41,8 +47,8 @@ const userModel = {
 
   deleteUser: (id) => {
     let users = userModel.findAll();
-    users = users.filter(user => user.id !== id);
-    const jsonUsers = JSON.stringify(users);
+    let finalUsers = users.filter(user => user.id !== id);
+    const jsonUsers = JSON.stringify(finalUsers);
     fs.writeFileSync(userModel.fileRoute, jsonUsers, 'utf-8');
   },
 
