@@ -7,4 +7,6 @@ Terminando el tercer sprint el grupo se sigue afianzando y eso se ve en que el p
 
 El tercer sprint, se trabajo con separación de tareas y realizando subidas parciales de los trabajos.
 
-El cuarto sprint nos encontró con que algunos integrantes se vieron ocupados con sus obligaciones personales, con lo cual no se pudo dedicar mucho tiempo al desarrollo del proyecto, pero como la adaptación es una característica del equipo, nos organizamos de forma tal que el que estaba libre avanzaba en el código y el resto hacían de controllers y verificaban el correcto funcionamiento del proyecto y aportaban mejoras al mismo.
+El cuarto sprint nos encontró con que algunos integrantes se vieron ocupados con sus obligaciones personales, con lo cual no se pudo dedicar mucho tiempo al desarrollo del proyecto, pero como la adaptación es una característica del equipo, nos organizamos de forma tal que el que estaba libre avanzaba en el código y el resto hacían de controllers y verificaban el correcto funcionamiento del proyecto y aportaban mejoras al mismo. 
+
+NOTA: Como esta funcionando el proceso de registro y logueo, el boton del carrito de compras no se ve porque lo pusimos que se vea solo para las perosnas logueadas.
