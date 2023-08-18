@@ -18,7 +18,7 @@ const userModel = {
     return userFound;
   },
 
-  findByFiels: (field, text) => {
+  findByFields: (field, text) => {
     const users = userModel.findAll();
     const userFound = users.find(user => user[field] === text);
     return userFound;
@@ -26,11 +26,10 @@ const userModel = {
 
   createUser: (userData, imageName) => {
     let users = userModel.findAll();
-    const lastUserId = users.length > 0 ? users[users.length - 1].id : 0;
     const newUser = {
       id: uuid.v4(),
       ...userData, 
-      avatar: `/images/avatars/${imageName}`  // Asegúrate de que la ruta sea correcta
+      avatar: `/images/avatars/${imageName}` 
     };
 
     // Hashear la contraseña antes de almacenarla

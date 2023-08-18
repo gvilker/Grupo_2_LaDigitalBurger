@@ -2,13 +2,35 @@ const path = require ("path");
 const fs = require('fs');
 const bcrypt = require('bcrypt');
 const userModel = require('../models/userModels');
-const { validationResult } = require('express-validator')
+const { validationResult } = require('express-validator');
+const { error } = require("console");
+
 
 const controller = {
     login: (req, res) => {
         res.render("login");
     }, 
     processLogin: (req, res) => {
+        let userToLogin = userModel.findByFields('correo_electronico', req.body.correo_electronico);
+        
+        if(userToLogin) {
+            let isOkThePassword = bcrypt.compareSync(req.body.contrasena, userToLogin.contrasena);
+            if (isOkThePassword) {
+                delete userToLogin.contrasena; 
+                req.session.userLogged = userToLogin
+                return res.redirect('/user/profile');
+    }
+
+    return res.render('login', {
+        errors: {
+            correo_electronico: {
+                msg: 'Las credenciales son incorrectas'
+            }
+        }
+    });
+    }
+    },
+    /*processLogin: (req, res) => {
         let errors = validationResult(req);
     
         if (errors.isEmpty()) { 
@@ -41,7 +63,7 @@ const controller = {
         } else {
             return res.render('login', {errors: errors.array()});
         }
-    },
+    },*/
 
     register: (req, res) => {
         res.render("register");
@@ -55,21 +77,35 @@ const controller = {
             oldData: req.body,
           });
         }
+        let userInDB = userModel.findByFields('correo_electronico', req.body.correo_electronico);
+
+        if (userInDB){
+            return res.render("register", {
+                errors: { 
+                    correo_electronico:  { 
+                        msg: 'El Email proporcionado corresponde a un usuario registrado'
+                    }
+                },
+                oldData: req.body,
+              });
+        }
+
         const { confirmar_contrasena, ...userDataWithoutConfirm } = req.body;
 
         let imageName = req.file.filename;
-        let newUser = userModel.createUser(userDataWithoutConfirm, imageName); 
-        res.render("profile", { user: newUser });
+        let newUser = userModel.createUser(userDataWithoutConfirm, imageName);
+        return res.redirect('login');
+        /*res.render("profile", { user: newUser });*/
         /*return res.send('las validaciones se pasaron correctamente')*/
     },
     profile: (req, res) => {
-        const userId = req.params.userId;
-        const user = userModel.findByPk(userId);
-    
-        if (!user) {          
-          return res.status(404).send('Usuario no encontrado');
-        }
-        res.render('profile', { user });
+        return res.render('profile', {
+            user: req.session.userLogged
+        });
+    },
+    logout: (req, res) => {
+        req.session.destroy();
+        return res.redirect('/')
     }
 }
 
