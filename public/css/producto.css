@@ -124,7 +124,7 @@ p {
 
 /* Estilos para la página de detalle del producto */
 #detalle-producto {
-  margin: -10vh;
+  margin: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;

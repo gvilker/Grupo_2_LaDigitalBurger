@@ -96,6 +96,7 @@ html {
     
     /* Estilos para los botones dentro de las tarjetas */
     .btn {
+      border: none;
       display: inline-block;
       padding: 6px 12px;
       background-color:rgb(211, 211, 211);

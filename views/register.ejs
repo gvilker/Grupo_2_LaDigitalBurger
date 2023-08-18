@@ -31,7 +31,7 @@
   
       <div class="formulario">
         <input type="text" name="nombre_usuario" placeholder="Nombre de usuario" class="control <%= locals.errors && errors.nombre_usuario ? 'is-invalid' : null %>"
-        value="<%= locals.oldData ? oldData.nombre_usuario : null %>">>
+        value="<%= locals.oldData ? oldData.nombre_usuario : null %>">
         <% if (locals.errors && errors.nombre_usuario) { %>
           <div>
             <%= errors.nombre_usuario.msg %>
@@ -41,7 +41,7 @@
 
       <div class="formulario">
         <input type="email" name="correo_electronico" placeholder="Correo electrónico" class="control <%= locals.errors && errors.correo_electronico ? 'is-invalid' : null %>"
-        value="<%= locals.oldData ? oldData.correo_electronico : null %>">>
+        value="<%= locals.oldData ? oldData.correo_electronico : null %>">
         <% if (locals.errors && errors.correo_electronico) { %>
           <div>
             <%= errors.correo_electronico.msg %>

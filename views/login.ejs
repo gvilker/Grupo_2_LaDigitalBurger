@@ -20,7 +20,7 @@
 <form action="/user/login" method="POST" class="form-login">          
     <div class="formulario">
         <input type="email" name="correo_electronico" placeholder="escriba su Email" class="control <%= locals.errors && errors.correo_electronico ? 'is-invalid' : null %>"
-        value="<%= locals.oldData ? oldData.correo_electronico : null %>">>
+        value="<%= locals.oldData ? oldData.correo_electronico : null %>">
         <% if (locals.errors && errors.correo_electronico) { %>
           <div>
             <%= errors.correo_electronico.msg %>
