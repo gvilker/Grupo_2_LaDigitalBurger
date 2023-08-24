@@ -109,59 +109,63 @@ const controller = {
         });
     },
     
-    processEditProfile: (req, res) => {
-        let resultValidation = validationResult(req);
-    
+    processEditProfile : async (req, res) => {
+        const resultValidation = validationResult(req);
+      
         if (resultValidation.errors.length > 0) {
-            return res.render("editProfile", {
-                errors: resultValidation.mapped(),
-                oldData: req.body,
-            });
+          return res.render("editProfile", {
+            errors: resultValidation.mapped(),
+            oldData: req.body,
+          });
         }
-    
-        // Obtén el usuario actualmente logueado desde la sesión
-        const users = req.session.userLogged;
-    
-        // Actualiza los campos del usuario con los nuevos valores
-        users.nombre_completo = req.body.nombre_completo;
-        users.nombre_usuario = req.body.nombre_usuario;
-        users.correo_electronico = req.body.correo_electronico;
-    
-        // Verifica si se proporcionó una nueva contraseña
-        if (req.body.nueva_contrasena && req.body.confirmar_nueva_contrasena) {
+      
+        try {
+          // Obtén el usuario actualmente logueado desde la sesión
+          const userToUpdate = req.session.userLogged;
+      
+          // Actualiza los campos del usuario con los nuevos valores
+          userToUpdate.nombre_completo = req.body.nombre_completo;
+          userToUpdate.nombre_usuario = req.body.nombre_usuario;
+          userToUpdate.correo_electronico = req.body.correo_electronico;
+      
+          // Verifica si se proporcionó una nueva contraseña
+          if (req.body.nueva_contrasena && req.body.confirmar_nueva_contrasena) {
             if (req.body.nueva_contrasena === req.body.confirmar_nueva_contrasena) {
-                // Hasheamos y actualizamos la nueva contraseña
-                const hashedPassword = bcrypt.hashSync(req.body.nueva_contrasena, 10);
-                users.contrasena = hashedPassword;
+              // Hasheamos y actualizamos la nueva contraseña
+              const saltRounds = 10;
+              const hashedPassword = bcrypt.hashSync(req.body.nueva_contrasena, saltRounds);
+              userToUpdate.contrasena = hashedPassword;
             } else {
-                return res.render('editProfile', {
-                    errors: {
-                        confirmar_nueva_contrasena: {
-                            msg: 'Las contraseñas no coinciden'
-                        }
-                    },
-                    oldData: req.body,
-                });
+              return res.render('editProfile', {
+                errors: {
+                  confirmar_nueva_contrasena: {
+                    msg: 'Las contraseñas no coinciden'
+                  }
+                },
+                oldData: req.body,
+              });
             }
+          }
+      
+          if (req.file && req.file.filename) {
+            // Si se subió una nueva imagen, actualiza la ruta de la imagen
+            userToUpdate.avatar = `/images/avatars/${req.file.filename}`;
+          
+            // Luego, actualiza el usuario en el archivo JSON y en la sesión
+            userModel.updateUser(userToUpdate);
+            req.session.userLogged = userToUpdate;
+          } else {
+            // Si no se subió una nueva imagen, no es necesario actualizar la imagen en el archivo JSON
+          }
+      
+          // Redireccionar a la página de perfil actualizado o mostrar un mensaje de éxito
+          res.redirect('/user/profile');
+        } catch (error) {
+          // Manejar cualquier error que ocurra durante el proceso
+          console.error(error);
+          res.redirect('/user/editProfile'); // Redirigir de nuevo al formulario de edición con un mensaje de error
         }
-    
-// Obtén el nombre de archivo de la imagen subida (si existe)
-const imageName = req.file ? req.file.filename : users.avatar; // Usar la imagen actual si no se subió una nueva
-
-// Asegurarse de que la ruta de la imagen sea correcta
-const avatarPath = imageName ? `${imageName}` : users.avatar;
-
-// Actualizar la ruta de la imagen en los datos del usuario
-users.avatar = avatarPath;
-
-// Llama a la función updateUser del modelo para actualizar los datos en users.json
-userModel.updateUser(users, avatarPath);
-
-// Actualizar la información en la sesión
-req.session.userLogged = users;
-        req.session.destroy();
-        return res.redirect('login')
-    },
+},
     logout: (req, res) => {
         req.session.destroy();
         return res.redirect('/')

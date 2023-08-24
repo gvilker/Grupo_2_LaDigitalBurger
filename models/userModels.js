@@ -101,51 +101,51 @@ const userModel = {
 } */
 updateUser: (userData, imageName) => {
   let users = userModel.findAll();
-  
+
   // Buscar el usuario a actualizar por su ID
   const userToUpdate = userModel.findByPk(userData.id);
-  
+
   if (userToUpdate) {
-      // Actualizar los datos del usuario
-      userToUpdate.nombre_completo = userData.nombre_completo;
-      userToUpdate.nombre_usuario = userData.nombre_usuario;
-      userToUpdate.correo_electronico = userData.correo_electronico;
-      
-      // Verifica si se proporcionó una nueva contraseña
-      if (userData.nueva_contrasena && userData.confirmar_nueva_contrasena) {
-          if (userData.nueva_contrasena === userData.confirmar_nueva_contrasena) {
-              // Hasheamos y actualizamos la nueva contraseña
-              const saltRounds = 10;
-              const hashedPassword = bcrypt.hashSync(userData.nueva_contrasena, saltRounds);
-              userToUpdate.contrasena = hashedPassword;
-          } else {
-              return userToUpdate; // Retorna el usuario con mensaje de error
-          }
+    // Actualizar los datos del usuario
+    userToUpdate.nombre_completo = userData.nombre_completo;
+    userToUpdate.nombre_usuario = userData.nombre_usuario;
+    userToUpdate.correo_electronico = userData.correo_electronico;
+
+    // Verifica si se proporcionó una nueva contraseña
+    if (userData.nueva_contrasena && userData.confirmar_nueva_contrasena) {
+      if (userData.nueva_contrasena === userData.confirmar_nueva_contrasena) {
+        // Hasheamos y actualizamos la nueva contraseña
+        const saltRounds = 10;
+        const hashedPassword = bcrypt.hashSync(userData.nueva_contrasena, saltRounds);
+        userToUpdate.contrasena = hashedPassword;
+      } else {
+        return userToUpdate; // Retorna el usuario con mensaje de error
       }
-      
-      // Actualizar la imagen solo si se proporcionó una nueva
-      if (imageName) {
-        userToUpdate.avatar = `/images/avatars/${imageName}`; // Use the new image path
-    } else {
-        userToUpdate.avatar = users.avatar; // Use the existing avatar path
     }
-      
-      // Encuentra el índice del usuario a actualizar en la matriz
-      const userIndex = users.findIndex(user => user.id === userToUpdate.id);
-      
-      if (userIndex !== -1) {
-          // Actualiza los datos del usuario en la matriz
-          users[userIndex] = userToUpdate;
-          
-          // Escribir los datos actualizados en el archivo JSON
-          const usersJson = JSON.stringify(users);
-          fs.writeFileSync(userModel.fileRoute, usersJson, 'utf-8');
-          
-          return userToUpdate; // Retorna el usuario actualizado
-      }
-  }
-  
-  return null; // Si el usuario no se encontró, retorna null
+
+    // Actualizar la imagen solo si se proporcionó una nueva
+    if (imageName) {
+      console.log('New image name:', imageName); // Agregar esta línea para verificar
+      userToUpdate.avatar = `/images/avatars/${imageName}`; // Use the new image path
+    }
+
+    // Encuentra el índice del usuario a actualizar en la matriz
+    const userIndex = users.findIndex(user => user.id === userToUpdate.id);
+
+    if (userIndex !== -1) {
+      // Actualiza los datos del usuario en la matriz
+      users[userIndex] = userToUpdate;
+    
+      // Actualizar la ruta de la imagen en el archivo JSON
+      users[userIndex].avatar = userToUpdate.avatar; // Esta línea es importante
+    
+      // Escribir los datos actualizados en el archivo JSON
+      const usersJson = JSON.stringify(users);
+      fs.writeFileSync(userModel.fileRoute, usersJson, 'utf-8');
+    
+      return userToUpdate; // Retorna el usuario actualizado
+    }
+  }  
 }
 };
 
