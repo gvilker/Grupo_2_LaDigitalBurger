@@ -103,6 +103,65 @@ const controller = {
             user: req.session.userLogged
         });
     },
+    editProfile: (req, res) => {
+        return res.render('editProfile', {
+            users: req.session.userLogged
+        });
+    },
+    
+    processEditProfile: (req, res) => {
+        let resultValidation = validationResult(req);
+    
+        if (resultValidation.errors.length > 0) {
+            return res.render("editProfile", {
+                errors: resultValidation.mapped(),
+                oldData: req.body,
+            });
+        }
+    
+        // Obtén el usuario actualmente logueado desde la sesión
+        const users = req.session.userLogged;
+    
+        // Actualiza los campos del usuario con los nuevos valores
+        users.nombre_completo = req.body.nombre_completo;
+        users.nombre_usuario = req.body.nombre_usuario;
+        users.correo_electronico = req.body.correo_electronico;
+    
+        // Verifica si se proporcionó una nueva contraseña
+        if (req.body.nueva_contrasena && req.body.confirmar_nueva_contrasena) {
+            if (req.body.nueva_contrasena === req.body.confirmar_nueva_contrasena) {
+                // Hasheamos y actualizamos la nueva contraseña
+                const hashedPassword = bcrypt.hashSync(req.body.nueva_contrasena, 10);
+                users.contrasena = hashedPassword;
+            } else {
+                return res.render('editProfile', {
+                    errors: {
+                        confirmar_nueva_contrasena: {
+                            msg: 'Las contraseñas no coinciden'
+                        }
+                    },
+                    oldData: req.body,
+                });
+            }
+        }
+    
+// Obtén el nombre de archivo de la imagen subida (si existe)
+const imageName = req.file ? req.file.filename : users.avatar; // Usar la imagen actual si no se subió una nueva
+
+// Asegurarse de que la ruta de la imagen sea correcta
+const avatarPath = imageName ? `${imageName}` : users.avatar;
+
+// Actualizar la ruta de la imagen en los datos del usuario
+users.avatar = avatarPath;
+
+// Llama a la función updateUser del modelo para actualizar los datos en users.json
+userModel.updateUser(users, avatarPath);
+
+// Actualizar la información en la sesión
+req.session.userLogged = users;
+        req.session.destroy();
+        return res.redirect('login')
+    },
     logout: (req, res) => {
         req.session.destroy();
         return res.redirect('/')

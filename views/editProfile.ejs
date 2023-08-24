@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
+    <script src="https://kit.fontawesome.com/157adaf284.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Tektur&display=swap" rel="stylesheet">
+    <title>Login DigitalBurguer</title>
+</head>
+<body>
+    
+  <%-include("./partials/header")%>  
+
+   
+  <div class="Contenido">
+    <div>
+      <h1 class="tituloPrinc">DIGITAL EDIT - EDITAR PERFIL</h1>
+    </div>
+    <form action="/user/editProfile" method="POST" class="form-login" enctype="multipart/form-data">
+      <div class="formulario">
+        <input type="text" name="nombre_completo" placeholder="Nombre completo" class="control <%= locals.errors && errors.nombre_completo ? 'is-invalid' : null %>"
+        value="<%= userLogged.nombre_completo %>">
+        <% if (locals.errors && errors.nombre_completo) { %>
+          <div>
+            <%= errors.nombre_completo.msg %>
+          </div>         
+        <% } %>
+      </div>  
+  
+      <div class="formulario">
+        <input type="text" name="nombre_usuario" placeholder="Nombre de usuario" class="control <%= locals.errors && errors.nombre_usuario ? 'is-invalid' : null %>"
+        value="<%= userLogged.nombre_usuario %>">
+        <% if (locals.errors && errors.nombre_usuario) { %>
+          <div>
+            <%= errors.nombre_usuario.msg %>
+          </div>         
+        <% } %>
+      </div>  
+  
+      <div class="formulario">
+        <input type="email" name="correo_electronico" placeholder="Correo electrónico" class="control <%= locals.errors && errors.correo_electronico ? 'is-invalid' : null %>"
+        value="<%= userLogged.correo_electronico %>">
+        <% if (locals.errors && errors.correo_electronico) { %>
+          <div>
+            <%= errors.correo_electronico.msg %>
+          </div>         
+        <% } %>
+      </div>  
+  
+      <div class="formulario">
+        <input type="file" name="avatar" class="control">
+        <img src="<%= userLogged.avatar %>" alt="Avatar actual" width="100">
+        <% if (locals.errors && errors.avatar) { %>
+          <div>
+            <%= errors.avatar.msg %>
+          </div>         
+        <% } %>
+      </div> 
+  
+      <div class="formulario">
+        <input type="password" name="contrasena" placeholder="Nueva contraseña" class="control <%= locals.errors && errors.contrasena ? 'is-invalid' : null %>">
+        <% if (locals.errors && errors.contrasena) { %>
+          <div>
+            <%= errors.contrasena.msg %>
+          </div>         
+        <% } %>
+      </div> 
+  
+      <div class="formulario">
+        <input type="password" name="confirmar_contrasena" placeholder="Confirmar nueva contraseña" class="control <%= locals.errors && errors.confirmar_contrasena ? 'is-invalid' : null %>">
+        <% if (locals.errors && errors.confirmar_contrasena) { %>
+          <div>
+            <%= errors.confirmar_contrasena.msg %>
+          </div>         
+        <% } %>
+      </div> 
+  
+      <div>
+        <button type="submit" class="boton-formulario">Guardar Cambios</button>
+      </div>
+  
+      <div>
+        <p><a href="/user/profile">Volver a tu perfil</a></p>
+      </div>
+    </form>
+  </div>
+  <%- include ('./partials/footer') %>
+  </body>
+  </html>
