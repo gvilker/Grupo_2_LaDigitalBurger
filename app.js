@@ -9,7 +9,11 @@ const cookieParser = require('cookie-parser');
 const logMiddleware = require('./middlewares/logMiddleware');
 const maintenanceMiddleware = require('./middlewares/maintenanceMiddleware');
 const cookieAuthMiddleware = require('./middlewares/cookieAuthMiddleware');
+
 const app = express();
+
+
+const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware');
 
 
 
@@ -31,7 +35,12 @@ app.set('views', [
     path.join(__dirname, './views')
 ]);
 
-
+app.use(session({
+    secret: 'No me comprenden', // cadena de texto secreta
+    resave: false, // para que se guarde solo si se hicieron cambios
+    saveUninitialized: true
+  }));
+app.use(userLoggedMiddleware);
 app.use(maintenanceMiddleware);
 app.use(logMiddleware);
 app.use(express.static("public"));
@@ -39,11 +48,8 @@ app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(express.json());
 app.use(methodOverride('_method'));
-app.use(session({
-    secret: 'No me comprenden', // cadena de texto secreta
-    resave: false, // para que se guarde solo si se hicieron cambios
-    saveUninitialized: true
-  }));
+
+
 app.use(cookieAuthMiddleware);  
 app.use("/", mainRouter)
 app.use("/user", usersRouter)

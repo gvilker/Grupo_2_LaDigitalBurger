@@ -3,6 +3,8 @@ const router = express.Router();
 const path = require('path');
 const multer = require('multer');
 const { body, check } = require('express-validator');
+const guestMiddleware = require('../middlewares/guestMiddleware');
+const authMiddleware = require('../middlewares/authMiddleware');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -18,7 +20,34 @@ const uploadFile = multer({ storage });
 
 
 const usersController = require ("../controllers/usersControllers");
+const registerValidations = [
+  body('nombre_completo').notEmpty().withMessage('Escribe un nombre'),
+  body('nombre_usuario').notEmpty().withMessage('Ingrese un alias'),
+  body('correo_electronico')
+      .notEmpty().withMessage('Escribe tu correo electrónico').bail()
+      .isEmail().withMessage('Debes escribir un formato correro válido'),
+  body('contrasena')
+      .notEmpty().withMessage('Debes proporcionar una contraseña').bail()
+      .isLength({min: 8}).withMessage('La contraseña debe tener al menos 8 caracteres'),
+  body('confirmar_contrasena').notEmpty().withMessage('Repita su contraseña'),
+  body("avatar").custom((value, { req }) => {
+      let file = req.file;
+      if (!file) {
+          return true; // No se subió una nueva imagen, lo cual es válido
+      }
 
+      let acceptedExtensions = [".jpg", ".png", ".jpeg", ".gif"];
+
+      let fileExtension = path.extname(file.originalname);
+      if (!acceptedExtensions.includes(fileExtension)) {
+          throw new Error(
+              `Las extensiones de archivo permitidas son ${acceptedExtensions.join(", ")}`
+          );
+      }
+      return true;
+  }),
+];
+/*
 const registerValidations = [
     body('nombre_completo').notEmpty().withMessage('Escribe un nombre'),
     body('nombre_usuario').notEmpty().withMessage('Ingrese un alias'),
@@ -48,25 +77,34 @@ const registerValidations = [
         return true;
       }),
     ];
-
+*/
 const loginValidator = [
     check('correo_electronico').isEmail().withMessage('Email invalido'),
     check('contrasena').isLength({min: 8}).withMessage('La contraseña debe tenes al menos 8 caracteres')
 ]
 
 // Formulario de registro
-router.get("/register", usersController.register);
+router.get("/register", guestMiddleware, usersController.register);
 
 // Procesar el registro
 router.post("/register", uploadFile.single('avatar'), registerValidations,  usersController.processRegister);
 
 // Formulario de login
-router.get("/login", usersController.login);
+router.get("/login", guestMiddleware, usersController.login);
 
 // Procesar el login
 router.post("/login", loginValidator, usersController.processLogin);
 
 // Perfil de usuario
-router.get('/profile/:userId', usersController.profile)
+router.get('/profile', authMiddleware,  usersController.profile)
+
+// Formulario para editar un usuario
+router.get('/editProfile', authMiddleware, usersController.editProfile);
+
+// Procesar el formulario de edición de perfil de usuario
+router.post('/editProfile', uploadFile.single('avatar'), registerValidations, usersController.processEditProfile);
+
+// Logout
+router.get('/logout',  usersController.logout)
 
 module.exports = router;

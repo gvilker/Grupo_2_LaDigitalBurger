@@ -2,13 +2,35 @@ const path = require ("path");
 const fs = require('fs');
 const bcrypt = require('bcrypt');
 const userModel = require('../models/userModels');
-const { validationResult } = require('express-validator')
+const { validationResult } = require('express-validator');
+const { error } = require("console");
+
 
 const controller = {
     login: (req, res) => {
         res.render("login");
     }, 
     processLogin: (req, res) => {
+        let userToLogin = userModel.findByFields('correo_electronico', req.body.correo_electronico);
+        
+        if(userToLogin) {
+            let isOkThePassword = bcrypt.compareSync(req.body.contrasena, userToLogin.contrasena);
+            if (isOkThePassword) {
+                delete userToLogin.contrasena; 
+                req.session.userLogged = userToLogin
+                return res.redirect('/user/profile');
+    }
+
+    return res.render('login', {
+        errors: {
+            correo_electronico: {
+                msg: 'Las credenciales son incorrectas'
+            }
+        }
+    });
+    }
+    },
+    /*processLogin: (req, res) => {
         let errors = validationResult(req);
     
         if (errors.isEmpty()) { 
@@ -41,7 +63,7 @@ const controller = {
         } else {
             return res.render('login', {errors: errors.array()});
         }
-    },
+    },*/
 
     register: (req, res) => {
         res.render("register");
@@ -55,21 +77,97 @@ const controller = {
             oldData: req.body,
           });
         }
+        let userInDB = userModel.findByFields('correo_electronico', req.body.correo_electronico);
+
+        if (userInDB){
+            return res.render("register", {
+                errors: { 
+                    correo_electronico:  { 
+                        msg: 'El Email proporcionado corresponde a un usuario registrado'
+                    }
+                },
+                oldData: req.body,
+              });
+        }
+
         const { confirmar_contrasena, ...userDataWithoutConfirm } = req.body;
 
         let imageName = req.file.filename;
-        let newUser = userModel.createUser(userDataWithoutConfirm, imageName); 
-        res.render("profile", { user: newUser });
-        /*return res.send('las validaciones se pasaron correctamente')*/
+        let newUser = userModel.createUser(userDataWithoutConfirm, imageName);
+        return res.redirect('login');
+    
     },
     profile: (req, res) => {
-        const userId = req.params.userId;
-        const user = userModel.findByPk(userId);
+        return res.render('profile', {
+            user: req.session.userLogged
+        });
+    },
+    editProfile: (req, res) => {
+        return res.render('editProfile', {
+            users: req.session.userLogged
+        });
+    },
     
-        if (!user) {          
-          return res.status(404).send('Usuario no encontrado');
+    processEditProfile : async (req, res) => {
+        const resultValidation = validationResult(req);
+      
+        if (resultValidation.errors.length > 0) {
+          return res.render("editProfile", {
+            errors: resultValidation.mapped(),
+            oldData: req.body,
+          });
         }
-        res.render('profile', { user });
+      
+        try {
+         
+          const userToUpdate = req.session.userLogged;
+      
+         
+          userToUpdate.nombre_completo = req.body.nombre_completo;
+          userToUpdate.nombre_usuario = req.body.nombre_usuario;
+          userToUpdate.correo_electronico = req.body.correo_electronico;
+      
+        
+          if (req.body.nueva_contrasena && req.body.confirmar_nueva_contrasena) {
+            if (req.body.nueva_contrasena === req.body.confirmar_nueva_contrasena) {
+            
+              const saltRounds = 10;
+              const hashedPassword = bcrypt.hashSync(req.body.nueva_contrasena, saltRounds);
+              userToUpdate.contrasena = hashedPassword;
+            } else {
+              return res.render('editProfile', {
+                errors: {
+                  confirmar_nueva_contrasena: {
+                    msg: 'Las contraseñas no coinciden'
+                  }
+                },
+                oldData: req.body,
+              });
+            }
+          }
+      
+          if (req.file && req.file.filename) {
+           
+            userToUpdate.avatar = `/images/avatars/${req.file.filename}`;
+          
+            
+            userModel.updateUser(userToUpdate);
+            req.session.userLogged = userToUpdate;
+          } else {
+          
+          }
+      
+         
+          res.redirect('/user/profile');
+        } catch (error) {
+         
+          console.error(error);
+          res.redirect('/user/editProfile'); 
+        }
+},
+    logout: (req, res) => {
+        req.session.destroy();
+        return res.redirect('/')
     }
 }
 

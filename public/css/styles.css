@@ -197,4 +197,27 @@ footer#contacto a i {
   object-fit: cover;
   margin-bottom: 10px;
 }
+.boton-formulario{
+  width: 80%;
+  background-color: #000000;
+  border: none;
+  font-size: 20px;
+  color:#ffffff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  transition: all 450ms;
+  text-decoration: none;
+}
+.boton-formulario:hover{
+  background-color: #09ff00;
+}
+.formulario.is-invalid {
+  margin-bottom: 10px; 
+}
+.is-invalid {
+  border: 1px solid red; 
+  background-color: #ffeeee;
+  margin-bottom: 10px;
+}
 
