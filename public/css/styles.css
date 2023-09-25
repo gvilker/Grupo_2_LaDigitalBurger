@@ -197,27 +197,48 @@ footer#contacto a i {
   object-fit: cover;
   margin-bottom: 10px;
 }
-.boton-formulario{
-  width: 80%;
-  background-color: #000000;
-  border: none;
-  font-size: 20px;
-  color:#ffffff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  margin-bottom: 30px;
-  transition: all 450ms;
-  text-decoration: none;
-}
-.boton-formulario:hover{
-  background-color: #09ff00;
-}
-.formulario.is-invalid {
-  margin-bottom: 10px; 
-}
-.is-invalid {
-  border: 1px solid red; 
-  background-color: #ffeeee;
-  margin-bottom: 10px;
+
+/* Estilos para el formulario de búsqueda */
+.search-form {
+  display: flex;
+  flex-direction: row; /* Alinea los elementos en una fila horizontal */
+  align-items: center; /* Alinea verticalmente los elementos al centro */
+  margin-top: 20px; /* Espacio entre el formulario y otros elementos */
+  justify-content: center; /* Centrar horizontalmente */
 }
 
+.search-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px; /* Espacio entre el campo de búsqueda y el menú desplegable */
+  font-family: 'Tektur', cursive; /* Tipo de letra personalizado */
+  color: #000; /* Color del texto del campo de búsqueda */
+  background-color: #fff; /* Color de fondo del campo de búsqueda */
+}
+
+.search-criteria {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px; /* Espacio entre el menú desplegable y el botón de búsqueda */
+  font-family: 'Tektur', cursive; /* Tipo de letra personalizado */
+  color: #000; /* Color del texto del menú desplegable */
+  background-color: #fff; /* Color de fondo del menú desplegable */
+}
+
+.search-button {
+  padding: 8px 16px;
+  background-color: #000; /* Color de fondo del botón (negro) */
+  color: #fff; /* Color del texto del botón (blanco) */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Tektur', cursive; /* Tipo de letra personalizado */
+  transition: background-color 0.3s ease; /* Efecto de transición al pasar el mouse */
+}
+
+.search-button:hover {
+  background-color: #09ff00; /* Color de fondo del botón al pasar el mouse (verde) */
+  color: #000; /* Color del texto del botón al pasar el mouse (negro) */
+}

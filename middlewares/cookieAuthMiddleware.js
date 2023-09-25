@@ -1,24 +1,21 @@
-const userModel = require('../models/userModels');
+const db = require('../database/models');
+const User = require ('../database/models/User');
 
-function rememberMeMiddleware (req, res, next) {
+async function rememberMeMiddleware(req, res, next) {
+  if (req.cookies.recordame && !req.session.userLogged) {
+    try {
+      const users = await db.User.findAll();
+      const userToLogin = users.find((user) => user.email === req.cookies.recordame);
 
-    if(req.cookies.recordame != undefined && req.session.UserLoggedIn == undefined) {
-        const users = userModel.findAll();
-    
-        let userToLogin;
-
-        for (let i = 0; i < users.length; i++) {
-            if (users[i].correo_electronico == req.cookies.recordame){
-                userToLogin = users[i];
-                break;
-                }
-            }
-            if (userToLogin) {
-                req.session.UserLoggedIn = userToLogin;
-            }
-        }    
-        
-        next();
+      if (userToLogin) {
+        req.session.userLogged = userToLogin;
+      }
+    } catch (error) {
+      console.error(error);
     }
-    
+  }
+
+  next();
+}
+
 module.exports = rememberMeMiddleware;

@@ -1,1 +1,82 @@
-[{"id":"a9ba556d-a5f3-4297-80a1-3acb946568ee","nombre_completo":"Delfina Julieta ","nombre_usuario":"Delfinitaaa","correo_electronico":"delfi2016@gmail.com","contrasena":"$2b$10$ppLj2zlcyCRpwlUAEQn2ou3ys9J0AW2riRXeDIRY4Klu6ql5B7Pdm","avatar":"/images/avatars/1692855387737_img.jpg"},{"id":"895232c4-e778-4fba-97e9-4ce35fa10e08","nombre_completo":"Arturo","nombre_usuario":"El Gato","correo_electronico":"arporo@gmail.com","contrasena":"$2b$10$yjBRP43yeaLRwvVNJpCaPOmrFKrZhXZtwyg/dCLSTRUu2AlKWQAdq","avatar":"/images/avatars/1692147498207_img.png"},{"id":"1464db60-6c4f-4b78-a297-74d0521fa52d","nombre_completo":"Casa","nombre_usuario":"del Arlbol","correo_electronico":"casaArbol@gmail.com","contrasena":"$2b$10$ygvbFRYTWdYn5agPHqHNsulrz0qbtzXnXFszO4SFs.H.GnQzyKe/W","avatar":"/images/avatars/1692201631909_img.jpg"},{"id":"15f52394-7d5a-4f33-ae4e-5782a5d82f2f","nombre_completo":"Mario Paz","nombre_usuario":"Otto","correo_electronico":"otto@gmail.com","contrasena":"$2b$10$9uzs2AcXXOBTDG14aUwcEe76FqFHAAvaiGMubSUmA0jGpLl1peGpi","avatar":"/images/avatars/1692204334444_img.jpg"},{"id":"a7c03c80-cb4f-4d13-bd80-3c031a94dbae","nombre_completo":"Tamara Giselle Muñoz","nombre_usuario":"Tamagiu","correo_electronico":"tamagiu@gmail.com","contrasena":"$2b$10$USLIxplMcu8OG7nQ2d7H7egWX/HRCUMaMLOE.hv9VnTnwmqkQ0saW","avatar":"/images/avatars/1692238436134_img.jpg"},{"id":"2dd49223-422d-4d6b-8fe3-e8af9e37121e","nombre_completo":"bruno","nombre_usuario":"brucio","correo_electronico":"ciotola.bruno@gmail.com","contrasena":"$2b$10$H2iojBts4jPWKj/HfVbqO.htwXqTOxRDSFoVqxQb7rLrXd7NneS8q","avatar":"/images/avatars/1692323683517_img.png"},{"id":"bbc75847-f4b5-4428-9089-c6cd0245de97","nombre_completo":"JUAN","nombre_usuario":"JUANCITO","correo_electronico":"ciotola.bruno@gmail.com","contrasena":"$2b$10$EK9ny6xq7tHfTcYYMyAzLeHdhM3iWQPE6VOzEPsrpOFH3Lf1wI1VC","avatar":"/images/avatars/1692323742114_img.png"},{"id":"63c9d3ff-64bc-4fa3-8d87-26c74085d1a2","nombre_completo":"Usuario test1","nombre_usuario":"Test1","correo_electronico":"test1@test.com","contrasena":"$2b$10$nyICQUnVkGoBC.0POSUtT.qPobRLcg.WvrG5RwOmDtKAkDNDB0XCW","avatar":"/images/avatars/1692371057373_img.jpg"},{"id":"c9214e11-4257-43c7-bc8d-e5139853042a","nombre_completo":"cosme","nombre_usuario":"Fulanote","correo_electronico":"donfulanote@gmail.com","contrasena":"$2b$10$AWtJWWURzCuJ.R1jwpSoqOsADBy4mkbqthnF4FZJT8XLSQt6R8JG.","avatar":"/images/avatars/1692855425382_img.jpg"},{"id":"6ceeb465-6a60-4f03-baf0-c1db0af73135","nombre_completo":"velutina","nombre_usuario":"ACRS-K","correo_electronico":"velutina@gmail.com","contrasena":"$2b$10$yCVgT0gXNSPA71ixXFpvouLENXmRs8wW.3lKd6Ovn4.kug/qo.dBS","avatar":"/images/avatars/1692905374468_img.jpg"}]
+[
+    {
+        "id": "a9ba556d-a5f3-4297-80a1-3acb946568ee",
+        "nombre_completo": "Delfina Julieta ",
+        "nombre_usuario": "Delfinita",
+        "correo_electronico": "delfi2016@gmail.com",
+        "contrasena": "$2b$10$ppLj2zlcyCRpwlUAEQn2ou3ys9J0AW2riRXeDIRY4Klu6ql5B7Pdm",
+        "avatar": "/images/avatars/1692147085617_img.png"
+    },
+    {
+        "id": "895232c4-e778-4fba-97e9-4ce35fa10e08",
+        "nombre_completo": "Arturo",
+        "nombre_usuario": "El Gato",
+        "correo_electronico": "arporo@gmail.com",
+        "contrasena": "$2b$10$yjBRP43yeaLRwvVNJpCaPOmrFKrZhXZtwyg/dCLSTRUu2AlKWQAdq",
+        "avatar": "/images/avatars/1692147498207_img.png"
+    },
+    {
+        "id": "1464db60-6c4f-4b78-a297-74d0521fa52d",
+        "nombre_completo": "Casa",
+        "nombre_usuario": "del Arlbol",
+        "correo_electronico": "casaArbol@gmail.com",
+        "contrasena": "$2b$10$ygvbFRYTWdYn5agPHqHNsulrz0qbtzXnXFszO4SFs.H.GnQzyKe/W",
+        "avatar": "/images/avatars/1692201631909_img.jpg"
+    },
+    {
+        "id": "15f52394-7d5a-4f33-ae4e-5782a5d82f2f",
+        "nombre_completo": "Mario Paz",
+        "nombre_usuario": "Otto",
+        "correo_electronico": "otto@gmail.com",
+        "contrasena": "$2b$10$9uzs2AcXXOBTDG14aUwcEe76FqFHAAvaiGMubSUmA0jGpLl1peGpi",
+        "avatar": "/images/avatars/1692204334444_img.jpg"
+    },
+    {
+        "id": "a7c03c80-cb4f-4d13-bd80-3c031a94dbae",
+        "nombre_completo": "Tamara Giselle Muñoz",
+        "nombre_usuario": "Tamagiu",
+        "correo_electronico": "tamagiu@gmail.com",
+        "contrasena": "$2b$10$USLIxplMcu8OG7nQ2d7H7egWX/HRCUMaMLOE.hv9VnTnwmqkQ0saW",
+        "avatar": "/images/avatars/1692238436134_img.jpg"
+    },
+    {
+        "id": "5aed40f9-fde2-464d-9ee4-24435f040e84",
+        "nombre_completo": "Cosme Fulanito",
+        "nombre_usuario": "El Fulano",
+        "correo_electronico": "cosme_fulanito@gmail.com",
+        "contrasena": "$2b$10$J1XcLr2TwFCZnRjPPKV8Ie5LLzD35lYfTPOga8XP9DImf9d1Alywy",
+        "avatar": "/images/avatars/1692326736146_img.jpg"
+    },
+    {
+        "id": "95fa729d-df2f-4fc0-adcb-a59abf425b1b",
+        "nombre_completo": "Leon",
+        "nombre_usuario": "Leoncito",
+        "correo_electronico": "excelenteleon@gmail.com",
+        "contrasena": "$2b$10$RxnJ7PauvpdF2y4JP4FQiuq153qAXE7GIeMUn5rejYB9AGfzRUaKq",
+        "avatar": "/images/avatars/1692328564315_img.png"
+    },
+    {
+        "id": "7c12497a-d128-400d-ab9e-e7b1ebe7db4c",
+        "nombre_completo": "Leona",
+        "nombre_usuario": "Leoncita",
+        "correo_electronico": "excelenteleona@gmail.com",
+        "contrasena": "$2b$10$KR7wUK1ClstAAIJxtHHc8.NaMo2NMoPVfIHZzeOxS2ONQ7Sky.nha",
+        "avatar": "/images/avatars/1692328629849_img.png"
+    },
+    {
+        "id": "bbaa1dd7-10ba-48cd-b757-6de724712647",
+        "nombre_completo": "Gabriel",
+        "nombre_usuario": "Gabi",
+        "correo_electronico": "gabi@gmail.com",
+        "contrasena": "$2b$10$tIdbwgPRtpCDN4hcsaSIXe7/bWC3DB74keoNOpoP3yldi4Cpt24I.",
+        "avatar": "/images/avatars/1692333091833_img.png"
+    },
+    {
+        "id": "79087c7b-3c6d-44c1-8479-8e1673d4bde2",
+        "nombre_completo": "Genius",
+        "nombre_usuario": "TheGenius",
+        "correo_electronico": "genius@gmail.com",
+        "contrasena": "$2b$10$RrUFjPhz/FDDuZSi7cDeBukXs.YwUdC3Qf3889.6q0VPiq5h/A9ki",
+        "avatar": "/images/avatars/1692337120784_img.png"
+    }
+]

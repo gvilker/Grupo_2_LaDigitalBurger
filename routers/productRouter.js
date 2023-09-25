@@ -4,6 +4,7 @@ const productControllers = require ("../controllers/productControllers");
 const multer = require('multer');
 const { check } = require('express-validator');
 const { productValidationRules } = require('../middlewares/validation_Creation.js');
+const isAdminMiddleware = require('../middlewares/isAdminMiddleware');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -23,18 +24,22 @@ router.get('/', productControllers.getList);
 // @GET - /products/:id/detail -> /products/5/detail
 router.get('/:id/detail', productControllers.getDetail);
 
-// @GET - /products/create
-router.get('/create', productControllers.getCreate);
+// @GET - /products/create  como Administrador
+router.get('/create',isAdminMiddleware, productControllers.getCreate);
 
-// @POST - /products
-router.post('/', upload.any('img'), productValidationRules ,productControllers.postProduct);
+// @POST - /products como Administrador
+router.post('/', upload.any('img'), isAdminMiddleware, productValidationRules ,productControllers.postProduct);
 
-// @GET - /products/:id/edit
-router.get('/:id/edit', productControllers.getEdit);
+// @GET - /products/:id/edit como Administrador
+router.get('/:id/edit', isAdminMiddleware, productControllers.getEdit);
 
-// @DELETE - /products/:id/delete
-router.delete('/:id/delete', productControllers.deleteProduct);
+// @DELETE - /products/:id/delete  como Administrador
+router.delete('/:id/delete',isAdminMiddleware, productControllers.deleteProduct);
 
-router.put('/:id/edit', upload.any('img'), productValidationRules ,productControllers.updateProduct);
+// @UPDATE - /products/:id/edit  como Administrador
+router.put('/:id/edit',isAdminMiddleware, upload.any('img'), productValidationRules ,productControllers.updateProduct);
+
+// buscar productos
+router.get('/search', productControllers.searchProducts);
 
 module.exports = router;

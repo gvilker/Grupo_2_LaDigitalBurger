@@ -19,20 +19,20 @@
 </div>
 <form action="/user/login" method="POST" class="form-login">          
     <div class="formulario">
-        <input type="email" name="correo_electronico" placeholder="escriba su Email" class="control <%= locals.errors && errors.correo_electronico ? 'is-invalid' : null %>"
-        value="<%= locals.oldData ? oldData.correo_electronico : null %>">
-        <% if (locals.errors && errors.correo_electronico) { %>
+        <input type="email" name="email" placeholder="escriba su Email" class="control <%= locals.errors && errors.email ? 'is-invalid' : null %>"
+        value="<%= locals.oldData ? oldData.email : null %>">
+        <% if (locals.errors && errors.email) { %>
           <div>
-            <%= errors.correo_electronico.msg %>
+            <%= errors.email.msg %>
           </div>         
         <% } %>
       </div> 
      
     <div class="formulario">
-       <input type="password" name="contrasena" placeholder="Contraseña" class="control">
-       <% if (locals.errors && errors.contrasena) { %>
+       <input type="password" name="password" placeholder="Contraseña" class="control">
+       <% if (locals.errors && errors.password) { %>
         <div>
-          <%= errors.contrasena.msg %>
+          <%= errors.password.msg %>
         </div>         
       <% } %>
     </div> 

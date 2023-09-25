@@ -9,20 +9,28 @@
             <li><a href="/#locales">Locales</a></li>
             <li><a href="/#nosotros">Nosotros</a></li>
             <li><a href="#contacto">Contacto</a></li>
-        </ul>
-
-        <ul class="right-navbar">
             <% if (locals.isLogged) { %>
-                <a href="/cart/carrito"><img class="carrito" src="/images/carrito.png" alt="Carrito"></a>
-                <img class="carrito" src="<%= locals.userLogged.avatar %>" alt="Usuario"></a>
-                <li class="loging"><a href="/user/profile"><%= locals.userLogged.nombre_usuario %></a></li>
-                <li class="loging"><a href="/user/logout">Salir</a></li>
-                <% } else {  %>
-            
-            <li class="loging"><a href="/user/login">Iniciar Sesión</a></li>
-            <li class="loging"><a href="/user/register">Registrarme</a></li>
+                <% if (locals.userType === 2) { %>
+                    <li><a href="/user">Usuarios</a></li>
+                <% } %>
             <% } %>
         </ul>
+    
+    <ul class="right-navbar">
+    <% if (locals.isLogged) { %>
+        <a href="/cart/carrito"><img class="carrito" src="/images/carrito.png" alt="Carrito"></a>
+        <img class="carrito" src="<%= locals.userLogged.avatar %>" alt="Usuario"></a>
+        <li class="loging"><a href="/user/profile"><%= locals.userLogged.alias %></a></li>
+        <li class="loging"><a href="/user/logout">Salir</a></li>
+        <% } else {  %>
+    
+    <li class="loging"><a href="/user/login">Iniciar Sesión</a></li>
+    <li class="loging"><a href="/user/register">Registrarme</a></li>
+    <% } %>
+</ul>
+
+
+      
 
     </nav>
 </header>

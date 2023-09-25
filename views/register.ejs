@@ -20,31 +20,31 @@
     </div>
     <form action="/user/register" method="POST" class="form-login" enctype="multipart/form-data">
       <div class="formulario">
-        <input type="text" name="nombre_completo" placeholder="Nombre completo" class="control <%= locals.errors && errors.nombre_completo ? 'is-invalid' : null %>"
-        value="<%= locals.oldData ? oldData.nombre_completo : null %>">
-        <% if (locals.errors && errors.nombre_completo) { %>
+        <input type="text" name="name" placeholder="Nombre completo" class="control <%= locals.errors && errors.name ? 'is-invalid' : null %>"
+        value="<%= locals.oldData ? oldData.name : null %>">
+        <% if (locals.errors && errors.name) { %>
           <div>
-            <%= errors.nombre_completo.msg %>
+            <%= errors.name.msg %>
           </div>         
         <% } %>
       </div>  
   
       <div class="formulario">
-        <input type="text" name="nombre_usuario" placeholder="Nombre de usuario" class="control <%= locals.errors && errors.nombre_usuario ? 'is-invalid' : null %>"
-        value="<%= locals.oldData ? oldData.nombre_usuario : null %>">
-        <% if (locals.errors && errors.nombre_usuario) { %>
+        <input type="text" name="alias" placeholder="Nombre de usuario" class="control <%= locals.errors && errors.alias ? 'is-invalid' : null %>"
+        value="<%= locals.oldData ? oldData.alias : null %>">
+        <% if (locals.errors && errors.alias) { %>
           <div>
-            <%= errors.nombre_usuario.msg %>
+            <%= errors.alias.msg %>
           </div>         
         <% } %>
       </div>  
 
       <div class="formulario">
-        <input type="email" name="correo_electronico" placeholder="Correo electrónico" class="control <%= locals.errors && errors.correo_electronico ? 'is-invalid' : null %>"
-        value="<%= locals.oldData ? oldData.correo_electronico : null %>">
-        <% if (locals.errors && errors.correo_electronico) { %>
+        <input type="email" name="email" placeholder="Correo electrónico" class="control <%= locals.errors && errors.email ? 'is-invalid' : null %>"
+        value="<%= locals.oldData ? oldData.email : null %>">
+        <% if (locals.errors && errors.email) { %>
           <div>
-            <%= errors.correo_electronico.msg %>
+            <%= errors.email.msg %>
           </div>         
         <% } %>
       </div>  
@@ -59,19 +59,19 @@
       </div> 
 
       <div class="formulario">
-        <input type="password" name="contrasena" placeholder="Contraseña" class="control <%= locals.errors && errors.contrasena ? 'is-invalid' : null %>">
-        <% if (locals.errors && errors.contrasena) { %>
+        <input type="password" name="password" placeholder="Contraseña" class="control <%= locals.errors && errors.password ? 'is-invalid' : null %>">
+        <% if (locals.errors && errors.password) { %>
           <div>
-            <%= errors.contrasena.msg %>
+            <%= errors.password.msg %>
           </div>         
         <% } %>
       </div> 
   
       <div class="formulario">
-        <input type="password" name="confirmar_contrasena" placeholder="Confirmar contraseña" class="control <%= locals.errors && errors.confirmar_contrasena ? 'is-invalid' : null %>">
-        <% if (locals.errors && errors.confirmar_contrasena) { %>
+        <input type="password" name="confirm_password" placeholder="Confirmar contraseña" class="control <%= locals.errors && errors.confirm_password ? 'is-invalid' : null %>">
+        <% if (locals.errors && errors.confirm_password) { %>
           <div>
-            <%= errors.confirmar_contrasena.msg %>
+            <%= errors.confirm_password.msg %>
           </div>         
         <% } %>
       </div> 

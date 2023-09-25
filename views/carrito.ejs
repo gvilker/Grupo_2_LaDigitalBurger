@@ -11,55 +11,38 @@
     <title>Carrito DigitalBurguer</title>
 </head>
 <body>
-
-  <%-include("./partials/header")%>
+  <%- include("./partials/header") %>
 
   <h1>CARRITO</h1>
-  <ul class="lista-pedidos">
-    <li class="pedido">
-        <img class="fotopedido" src="/images/products/hamburguesa1.jpg" alt="hamburguesa1">
-        <div class="pedido-content">
-        <h2 class="burguer">Super Cheddar</h2>
-        <p>Precio: $XX.XX</p>
-        <p>Cantidad: 2</p>
-        <p>Subtotal: $XX.XX</p>
-        <a href="#" class="eliminar">Eliminar</a>
-      </div>
-    </li>
-    <li class="pedido">
-        <img class="fotopedido" src="/images/products/hamburguesa2.jpg" alt="hamburguesa1">
-        <div class="pedido-content">
-        <h2 class="burguer">Digital Burguer</h2>
-        <p >Precio: $XX.XX</p>
-        <p>Cantidad: 1</p>
-        <p>Subtotal: $XX.XX</p>
-        <a href="#" class="eliminar">Eliminar</a>
-      </div>
-    </li>
-    <li class="pedido">
-        <img class="fotopedido" src="/images/products/hamburguesa3.jpg" alt="hamburguesa1">
-        <div class="pedido-content">
-        <h2 class="burguer">Burguer Doble</h2>
-        <p>Precio: $XX.XX</p>
-        <p>Cantidad: 1</p>
-        <p>Subtotal: $XX.XX</p>
-        <a href="#" class="eliminar">Eliminar</a>
-      </div>
-    </li>
-    <li class="pedido">
-        <img class="fotopedido" src="/images/products/hamburguesa4.jpg" alt="hamburguesa1">
-        <div class="pedido-content">
-        <h2 class="burguer">Burguer simple</h2>
-        <p>Precio: $XX.XX</p>
-        <p>Cantidad: 1</p>
-        <p>Subtotal: $XX.XX</p>
-        <a href="#" class="eliminar">Eliminar</a>
-      </div>
-    </li>
-<br></br>
-<div class="boton-finalizar-compra">
-  <button class="boton-formulario">Finalizar compra</button>
-</div>
-<%-include ('./partials/footer') %>
+
+  <% if (carrito.length === 0) { %>
+    <p>El carrito está vacío.</p>
+  <% } else { %>
+    <ul class="lista-pedidos">
+      <% carrito.forEach((item) => { %>
+        <li class="pedido">
+          <img class="fotopedido" src="<%= item.producto.image %>" alt="<%= item.producto.name %>">
+          <div class="pedido-content">
+            <h2 class="burguer"><%= item.producto.name %></h2>
+            <p>Precio: $<%= typeof item.producto.price === 'number' ? item.producto.price.toFixed(2) : 'Precio no válido' %></p>
+            <p>Cantidad: <%= item.quantity %></p>
+            <p>Subtotal: $<%= (item.producto.price * item.quantity).toFixed(2) %></p>
+            <!---! <a href="#" class="eliminar">Eliminar</a>--->
+            <form action="/cart/carrito/<%= item.producto.id %>/delete?_method=DELETE" method="post">
+              <input type="hidden" name="_method" value="DELETE">
+              <button type="submit">Eliminar</button>
+            </form>
+              
+          </div>
+        </li>
+      <% }); %>
+    </ul>
+
+    <div class="boton-finalizar-compra">
+      <button class="boton-formulario">Finalizar compra</button>
+    </div>
+  <% } %>
+
+  <%- include('./partials/footer') %>
 </body>
 </html>

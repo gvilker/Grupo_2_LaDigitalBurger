@@ -15,63 +15,63 @@
     
   <div class="Contenido">
     <div>
-      <h1 class="tituloPrinc">DIGITAL REGISTER - MODIFICACION / CREACIÓN DE PRODUCTOS</h1>
+      <h1 class="tituloPrinc">DIGITAL REGISTER - CREACIÓN DE PRODUCTOS</h1>
     </div>
 
     <form action="/products" method="POST" class="form-login" enctype="multipart/form-data">
-      <label class="formulario" for="nombre">Nombre:
-        <input class="control" type="text" id="nombre" name="nombre" required>
+      <label class="formulario" for="name">Nombre:
+        <input class="control" type="text" id="name" name="name" required>
       </label>
     
-      <label class="formulario" for="descripcion">Descripción:
-        <textarea class="control" id="descripcion" name="descripcion" required></textarea>
+      <label class="formulario" for="description">Descripción:
+        <textarea class="control" id="description" name="description" required></textarea>
       </label>
     
-      <label class="formulario" for="precio">Precio:
-        <input class="control" type="number" step="0.01" id="precio" name="precio" required>
+      <label class="formulario" for="price">Precio:
+        <input class="control" type="number" id="price" name="price" required>
       </label>
     
-      <label class="formulario" for="imagen">Imagen:
-        <input class="control" type="file" id="imagen" name="img" accept="image/*">
+      <label class="formulario" for="image">Imagen:
+        <input class="control" type="file" id="image" name="img" accept="image/*">
       </label>
     
-      <label class="formulario" for="calorias">Calorías por porción:
-        <input class="control" type="number" id="calorias" name="calorias" required>
+      <label class="formulario" for="calories">Calorías por porción:
+        <input class="control" type="number" id="calories" name="calories" required>
       </label>
     
-      <label class="formulario" for="grasas">Grasas por porción:
-        <input class="control" type="number" step="0.01" id="grasas" name="grasas" required>
+      <label class="formulario" for="fat">Grasas por porción:
+        <input class="control" type="number" step="0.01" id="fat" name="fat" required>
       </label>
     
-      <label class="formulario" for="proteinas">Proteínas por porción:
-        <input class="control" type="number" step="0.01" id="proteinas" name="proteinas" required>
+      <label class="formulario" for="protein">Proteínas por porción:
+        <input class="control" type="number" step="0.01" id="protein" name="protein" required>
       </label>
     
-      <label class="formulario" for="carbohidratos">Carbohidratos por porción:
-        <input class="control" type="number" step="0.01" id="carbohidratos" name="carbohidratos" required>
+      <label class="formulario" for="carbohydrates">Carbohidratos por porción:
+        <input class="control" type="number" step="0.01" id="carbohydrates" name="carbohydrates" required>
       </label>
     
-      <label class="formulario" for="tamano">Tamaño de la hamburguesa (en gramos):
-        <input class="control" type="number" id="tamano" name="tamano" required>
+      <label class="formulario" for="size">Tamaño de la hamburguesa (en gramos):
+        <input class="control" type="number" id="size" name="size" required>
       </label>
     
-      <label class="formulario" for="ingredientesAdicionales">Ingredientes adicionales (separados por coma):
-        <input class="control" type="text" id="ingredientesAdicionales" name="ingredientesAdicionales" required>
+      <label class="formulario" for="additional_ingredients">Ingredientes adicionales (separados por coma):
+        <input class="control" type="text" id="additional_ingredients" name="additional_ingredients" required>
       </label>
     
-      <label class="formulario" for="picante">Nivel de picante:
-        <select class="control" id="picante" name="picante">
+      <label class="formulario" for="spicy">Nivel de picante:
+        <select class="control" id="spicy" name="spicy">
           <option value="true">Picante</option>
           <option value="false">No picante</option>
         </select>
       </label>
     
-      <label class="formulario" for="sugerenciasAcompanamiento">Sugerencias de acompañamientos (separados por coma):
-        <input class="control" type="text" id="sugerenciasAcompanamiento" name="sugerenciasAcompanamiento" required>
+      <label class="formulario" for="suggested_Acompaniments">Sugerencias de acompañamientos (separados por coma):
+        <input class="control" type="text" id="suggested_Acompaniments" name="suggested_Acompaniments" required>
       </label> 
     
-      <label class="formulario" for="informacionAdicional">Información adicional:
-        <textarea class="control" id="informacionAdicional" name="informacionAdicional"></textarea>
+      <label class="formulario" for="additional_Information">Información adicional:
+        <textarea class="control" id="additional_Information" name="additional_Information"></textarea>
       </label>
     
       <button type="submit" class="boton-formulario">

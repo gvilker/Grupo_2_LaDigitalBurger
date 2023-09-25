@@ -73,6 +73,9 @@ app.listen(port,  () => {
 
 
 
+// adicionales: carrito de compras y pago con mercado pago
+
+
 
 
 

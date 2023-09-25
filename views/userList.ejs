@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+  <link rel="stylesheet" type="text/css" href="/css/producto.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- VINCULACION A GOOLE FONTS Y FONTS AWESOME-->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Tektur&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/157adaf284.js" crossorigin="anonymous"></script>
+  <title>DigitalBurguer</title>
+</head>
+
+<body>
+    <%-include("./partials/header")%>
+
+    <h1 class="titulo">USUARIOS</h1>
+
+    <form action="/user/admin/search" method="GET" class="search-form">
+        <input type="text" name="query" placeholder="Buscar por ID, nombre, alias o email" class="search-input">
+        <select name="criteria" class="search-criteria">
+          <option value="id">ID</option>
+          <option value="name">Nombre</option>
+          <option value="alias">Alias</option>
+          <option value="email">Email</option>
+        </select>
+        <button type="submit" class="search-button">Buscar</button>
+      </form>
+      <br></br>
+      <br></br>
+    <section id="productos" class="menu">
+        <% users.forEach((user, index) => { %>
+            <div class="producto">
+                <img class="fotopedido" src="/images/avatars/<%= user.avatar %>" alt="<%= user.avatar %>">
+                <div class="descripcion">
+                    <h2 class="burger"><%= user.name %></h2>
+                    <p>Id: <%= user.id %></p>
+                    <p>Alias: <%= user.alias %></p>
+                    <p>Tipo de Usuario: <%= user.user_type %></p>
+                    <a href="/user/admin/<%= user.id %>/detail" class="ver-detalle">Ver Perfil del Usuario</a>
+                    <br></br>
+                    
+                </div>
+            </div>
+        <% }); %>
+    </section>
+
+<br></br>
+    <%-include ('./partials/footer') %>
+</body>
+</html>

@@ -96,7 +96,6 @@ html {
     
     /* Estilos para los botones dentro de las tarjetas */
     .btn {
-      border: none;
       display: inline-block;
       padding: 6px 12px;
       background-color:rgb(211, 211, 211);
@@ -106,6 +105,36 @@ html {
       text-decoration: none;
       font-size: 14px;
     }
+    
+.ver-eliminar,
+.ver-editar {
+  font-family: 'Tektur', cursive;
+  margin: 0px auto;
+  display: block;
+  text-align: center;
+  color: #fff;
+  background-color: #000000;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  max-width: 300px;
+  width: 100%;
+}
+
+.ver-eliminar:hover,
+.ver-editar:hover {
+  background-color: #09ff00;
+  color: #000000;
+}
+
+.content-eliminar-modificar {
+  background-color: #272525;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
     
     /* Media query para pantallas grandes */
     @media screen and (min-width: 768px) {

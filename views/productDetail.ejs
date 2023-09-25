@@ -21,37 +21,46 @@
         <section id="detalle-producto">
             <div class="contenedor-detalle">
             <div class="producto">
-                <img class="fotopedido" src="<%= product.imagen %>" alt="<%= product.nombre %>">
+                <img class="fotopedido" src="<%= product.image %>" alt="<%= product.name %>">
                 <div class="descripcion">
-                    <h2 class="burger"><%= product.nombre %></h2>
-                    <p><%= product.descripcion %></p>
-                    <p>Precio: $<%= product.precio.toFixed(2) %></p>
-                    <p>Calorías por porción: <%= product.calorias %> kcal</p>
-                    <p>Grasas por porción: <%= product.grasas %> g</p>
-                    <p>Proteínas por porción: <%= product.proteinas %> g</p>
-                    <p>Carbohidratos por porción: <%= product.carbohidratos %> g</p>
-                    <p>Tamaño de la hamburguesa: <%= product.tamano %> g</p>
-                    <p>Ingredientes adicionales: <%= product.ingredientesAdicionales.join(', ') %></p>
-                    <p>Nivel de picante: <%= product.picante ? 'Picante' : 'No picante' %></p>
-                    <p>Sugerencias de acompañamientos: <%= product.sugerenciasAcompanamiento.join(', ') %></p>
-                    <p>Información adicional: <%= product.informacionAdicional %></p>
+                    <h2 class="burger"><%= product.name %></h2>
+                    <p><%= product.description %></p>
+                    <p>Precio: $<%= product.price%></p>
+                    <p>Calorías por porción: <%= product.calories %> kcal</p>
+                    <p>Grasas por porción: <%= product.fat %> g</p>
+                    <p>Proteínas por porción: <%= product.protein %> g</p>
+                    <p>Carbohidratos por porción: <%= product.carbohydrates %> g</p>
+                    <p>Tamaño de la hamburguesa: <%= product.size %> g</p>
+                    <p>Ingredientes adicionales: <%= product.additional_ingredients %></p>
+                    <p>Nivel de picante: <%= product.spicy ? 'Picante' : 'No picante' %></p>
+                    <p>Sugerencias de acompañamientos: <%= product.suggested_Acompaniments %></p>
+                    <p>Información adicional: <%= product.additional_Information %></p>
                    
                     </form>
-                    <br></br>
-                    <a href="#" class="ver-detalle">Añadir al carrito</a>
+                    <br></br>             
+                    <form action="/cart/carrito" method="post">
+                        <!-- campo oculto con el ID del producto -->
+                        <input type="hidden" name="productId" value="<%= product.id %>">
+                        <!-- campo para seleccionar la cantidad -->
+                        <label for="quantity"><p>Cantidad:</p></label>
+                        <input type="number" id="quantity" name="quantity" value="1" min="1">
+                        <br></br> 
+                        <button type="submit" class="ver-detalle">Añadir al carrito</button>
+                    </form>
                 </div>
             </div>
         </div>
         </section>
+        <% if (locals.isLogged) { %>
+            <% if (locals.userType === 2) { %>
         <section id="content-eliminar-modificar">
             <a href="/products/<%= product.id %>/edit" class="ver-editar">Editar producto</a>
             <br></br>
             <form action="/products/<%= product.id %>/delete?_method=DELETE" method="post">
-            <button type="submit" class="ver-eliminar">Eliminar producto</button>
-            
-                    
-
+            <button type="submit" class="ver-eliminar">Eliminar producto</button>      
         </section>
+        <% } %>
+        <% } %>
     </body>
 
     <%-include ('./partials/footer') %>

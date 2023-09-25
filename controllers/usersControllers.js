@@ -1,176 +1,289 @@
-const path = require ("path");
-const fs = require('fs');
+const User = require('../database/models/User');
+const db = require('../database/models')
 const bcrypt = require('bcrypt');
-const userModel = require('../models/userModels');
 const { validationResult } = require('express-validator');
-const { error } = require("console");
+const { Op } = require('sequelize');
 
+const userController = {
+  register: (req, res) => {
+    res.render('register');
+  },
 
-const controller = {
-    login: (req, res) => {
-        res.render("login");
-    }, 
-    processLogin: (req, res) => {
-        let userToLogin = userModel.findByFields('correo_electronico', req.body.correo_electronico);
-        
-        if(userToLogin) {
-            let isOkThePassword = bcrypt.compareSync(req.body.contrasena, userToLogin.contrasena);
-            if (isOkThePassword) {
-                delete userToLogin.contrasena; 
-                req.session.userLogged = userToLogin
-                return res.redirect('/user/profile');
+  processRegister: async (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.render('register', { errors: errors.array() });
     }
 
-    return res.render('login', {
-        errors: {
-            correo_electronico: {
-                msg: 'Las credenciales son incorrectas'
-            }
-        }
-    });
+    const { name, alias, email, password } = req.body;
+
+    try {
+      const existingUser = await db.User.findOne({ where: { email } });
+      if (existingUser) {
+        return res.render('register', { error: 'El correo electrónico ya está en uso.' });
+      }
+
+      const hashedPassword = await bcrypt.hash(password, 10);
+
+      let avatar = null;
+
+      if (req.file) {    
+        avatar = req.file.filename;
+      }
+
+      const newUser = await db.User.create({
+        name,
+        alias,
+        email,
+        password: hashedPassword,
+        user_type: 1,
+        avatar, 
+      });
+
+      
+      res.redirect('/user/login');
+    } catch (error) {
+      console.error(error);
+      res.render('register', { error: 'Error en el registro. Inténtalo de nuevo más tarde.' });
     }
-    },
-    /*processLogin: (req, res) => {
-        let errors = validationResult(req);
-    
-        if (errors.isEmpty()) { 
-            const users = userModel.findAll();
-    
-            let userToLogin;
-    
-            for (let i = 0; i < users.length; i++) {
-                if (users[i].correo_electronico == req.body.correo_electronico){
-                    if (bcrypt.compareSync(req.body.contrasena, users[i].contrasena)){
-                        userToLogin = users[i];
-                        break;
-                    }
-                }
-            }
-    
-            if (userToLogin) {
-                req.session.UserLoggedIn = userToLogin;
+  },
 
-                if (req.body.recordame != undefined) {
-                    res.cookie('recordame', userToLogin.correo_electronico, { maxAge: 1000 *60 *60 *24 *365})
-                }
+  login: (req, res) => {
+    res.render('login');
+  },
+  getEditProfile: async (req, res) => {
+    try {
+        const user = await db.User.findByPk(req.params.id);
 
-                return res.send('Inicio de sesión exitoso'); 
-            } else {
-                return res.render('login', {errors: [
-                    {msg: 'Credenciales inválidas'}
-                ]});
-            }
-        } else {
-            return res.render('login', {errors: errors.array()});
-        }
-    },*/
-
-    register: (req, res) => {
-        res.render("register");
-    },
-    processRegister: (req, res) => {
-        let resultValidation = validationResult(req);
-      
-        if (resultValidation.errors.length > 0) {
-          return res.render("register", {
-            errors: resultValidation.mapped(),
-            oldData: req.body,
-          });
-        }
-        let userInDB = userModel.findByFields('correo_electronico', req.body.correo_electronico);
-
-        if (userInDB){
-            return res.render("register", {
-                errors: { 
-                    correo_electronico:  { 
-                        msg: 'El Email proporcionado corresponde a un usuario registrado'
-                    }
-                },
-                oldData: req.body,
-              });
-        }
-
-        const { confirmar_contrasena, ...userDataWithoutConfirm } = req.body;
-
-        let imageName = req.file.filename;
-        let newUser = userModel.createUser(userDataWithoutConfirm, imageName);
-        return res.redirect('login');
-    
-    },
-    profile: (req, res) => {
-        return res.render('profile', {
-            user: req.session.userLogged
-        });
-    },
-    editProfile: (req, res) => {
-        return res.render('editProfile', {
-            users: req.session.userLogged
-        });
-    },
-    
-    processEditProfile : async (req, res) => {
-        const resultValidation = validationResult(req);
-      
-        if (resultValidation.errors.length > 0) {
-          return res.render("editProfile", {
-            errors: resultValidation.mapped(),
-            oldData: req.body,
-          });
-        }
-      
-        try {
-         
-          const userToUpdate = req.session.userLogged;
-      
-         
-          userToUpdate.nombre_completo = req.body.nombre_completo;
-          userToUpdate.nombre_usuario = req.body.nombre_usuario;
-          userToUpdate.correo_electronico = req.body.correo_electronico;
-      
-        
-          if (req.body.nueva_contrasena && req.body.confirmar_nueva_contrasena) {
-            if (req.body.nueva_contrasena === req.body.confirmar_nueva_contrasena) {
-            
-              const saltRounds = 10;
-              const hashedPassword = bcrypt.hashSync(req.body.nueva_contrasena, saltRounds);
-              userToUpdate.contrasena = hashedPassword;
-            } else {
-              return res.render('editProfile', {
-                errors: {
-                  confirmar_nueva_contrasena: {
-                    msg: 'Las contraseñas no coinciden'
-                  }
-                },
-                oldData: req.body,
-              });
-            }
-          }
-      
-          if (req.file && req.file.filename) {
-           
-            userToUpdate.avatar = `/images/avatars/${req.file.filename}`;
-          
-            
-            userModel.updateUser(userToUpdate);
-            req.session.userLogged = userToUpdate;
-          } else {
-          
-          }
-      
-         
-          res.redirect('/user/profile');
-        } catch (error) {
-         
-          console.error(error);
-          res.redirect('/user/editProfile'); 
-        }
+        res.render('editProfile', { user });
+    } catch (error) {
+        res.send(error)
+    }        
 },
-    logout: (req, res) => {
-        req.session.destroy();
-        return res.redirect('/')
+updateProfileUser: async (req, res) => {
+  try {
+    const user = await db.User.findByPk(req.params.id);
+    if (!user) {
+      return res.status(404).send('Usuario no encontrado');
     }
-}
 
+    const isPasswordValid = await bcrypt.compare(req.body.currentPassword, user.password);
+    if (!isPasswordValid) {
+      return res.status(400).send('La contraseña actual es incorrecta');
+    }
 
+    if (req.body.newPassword !== req.body.confirmNewPassword) {
+      return res.status(400).send('La nueva contraseña y la confirmación no coinciden');
+    }
 
-module.exports = controller;
+    user.name = req.body.name;
+    user.alias = req.body.alias;
+    user.email = req.body.email;
+    user.avatar = req.body.avatar;
+    user.user_type = 1;
+
+    if (req.body.newPassword) {
+
+      const hashedPassword = await bcrypt.hash(req.body.newPassword, 10); 
+      user.password = hashedPassword;
+    }
+
+    await user.save();
+
+    req.session.destroy(() => {
+      res.redirect('/user/login');
+    });
+  } catch (error) {
+    console.error('Error al actualizar el usuario:', error);
+    res.status(500).send('Error al actualizar el usuario');
+  }
+},
+deleteProfile: async (req, res) => {
+  try {
+    const user = await db.User.findByPk(req.params.id);
+
+    if (!user) {
+      return res.status(404).send('Usuario no encontrado');
+    }  
+    await user.destroy();
+    req.session.destroy(() => {
+      res.redirect('/');
+    });
+  } catch (error) {
+    console.error('Error al eliminar el usuario:', error);
+    res.status(500).send('Error al eliminar el usuario');
+  }
+},
+  processLogin: async (req, res) => {
+    const errors = validationResult(req);
+  
+    if (!errors.isEmpty()) {
+      return res.render('login', { errors: errors.array() });
+    }
+  
+    const { email, password } = req.body;
+  
+    try {
+     
+      let userToLogin = await db.User.findOne({ where: { email } });
+  
+      if (!userToLogin) {
+        return res.render('login', { error: 'Credenciales inválidas' });
+      }
+  
+   
+      let passwordMatch = await bcrypt.compare(password, userToLogin.password);
+  
+      if (!passwordMatch) {
+        return res.render('login', { error: 'Credenciales inválidas' });
+      }  
+
+      const avatarPath = '/images/avatars/' + userToLogin.avatar;
+     
+      req.session.userLogged = userToLogin
+      req.session.userType = userToLogin.user_type;
+      req.session.userLogged.avatar = avatarPath;  
+
+   console.log(req.session)
+
+      return res.redirect('/user/profile');
+    } catch (error) {
+      console.error(error);
+      res.render('login', { error: 'Error en el inicio de sesión. Inténtalo de nuevo más tarde.' });
+    }
+  },
+
+  profile: async (req, res) => {
+    try {
+  
+      const user = await db.User.findByPk(req.session.userId);
+
+      if (!user) {
+        return res.render('profile', { error: 'Usuario no encontrado' });
+      }
+
+      res.render('profile', { user });
+    } catch (error) {
+      console.error(error);
+      res.render('profile', { error: 'Error al cargar el perfil del usuario' });
+    }
+  },
+
+  logout: (req, res) => {
+ 
+    req.session.destroy(() => {
+      res.redirect('/');
+    });
+  },
+  getList: async (req,res) => {
+    try {
+      let users = await db.User.findAll()
+     
+        res.render('userList', { users });
+    } catch (error) {
+      console.error(error);
+      res.render('userList', { error: 'Error al cargar los usuarios' });
+    }
+  },
+  listDetail: function (req,res) {
+    db.User.findByPk(req.params.id)
+    .then(function(user){
+      if(user){
+        res.render('userDetail', { user: user });
+      } else {
+        res.send('Usuario no encontrado');
+      }
+    })
+  },
+  getEdit: async (req, res) => {
+    try {
+        const user = await db.User.findByPk(req.params.id);
+
+        res.render('editUser', { user });
+    } catch (error) {
+        res.send(error)
+    }        
+},
+updateUser: async (req, res) => {
+
+  try {
+    const user = await db.User.findByPk(req.params.id);  
+    if (!user) {
+      return res.status(404).send('Usuario no encontrado');
+    }  
+   
+    await user.update({
+      user_type: req.body.user_type,      
+      
+    });
+    console.log(req.body.user_type)
+    res.redirect('/user/admin/' + user.id + '/detail');
+  } catch (error) {
+    console.error('Error al actualizar el usuario:', error);
+    res.status(500).send('Error al actualizar el usuario');
+  }
+},
+deleteUser: async (req, res) => {
+  try {
+    const user = await db.User.findByPk(req.params.id);
+
+    if (!user) {
+      return res.status(404).send('Usuario no encontrado');
+    }  
+    await user.destroy();
+
+    res.redirect('/user'); 
+  } catch (error) {
+    console.error('Error al eliminar el usuario:', error);
+    res.status(500).send('Error al eliminar el usuario');
+  }
+},
+searchUsers: async (req, res) => {
+  try {
+    const query = req.query.query;
+    const criteria = req.query.criteria;
+
+    let users;
+
+    if (criteria === 'id') {
+      
+      users = await db.User.findAll({
+        where: {
+          id: query
+        }
+      });
+    } else {
+     
+      users = await db.User.findAll({
+        where: {
+          [Op.or]: [
+            {
+              name: {
+                [Op.like]: `%${query}%`
+              }
+            },
+            {
+              alias: {
+                [Op.like]: `%${query}%`
+              }
+            },
+            {
+              email: {
+                [Op.like]: `%${query}%`
+              }
+            }
+          ]
+        }
+      });
+    }
+
+    res.render('userList', { users });
+  } catch (error) {
+    console.error('Error al buscar usuarios:', error);
+    res.status(500).send('Error al buscar usuarios');
+  }
+},
+};
+
+module.exports = userController;

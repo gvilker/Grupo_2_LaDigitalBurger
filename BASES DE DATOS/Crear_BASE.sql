@@ -1,1 +1,0 @@
-CREATE SCHEMA `la_digital_burguer` ;
