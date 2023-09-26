@@ -10,35 +10,45 @@
 <!-- VINCULACION A GOOLE FONTS Y FONTS AWESOME-->
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Tektur&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/157adaf284.js" crossorigin="anonymous"></script>
+<script src="/js/carousel.js"></script>
+<script src="/js/carouselProduct.js"></script>
   <title>DigitalBurguer</title>
 </head>
 
 <body>
 <%-include("./partials/header")%>
-    <div id="home">
-        <h1 class="tituloPrinc">DIGITAL BURGER</h1>
-        
+<div id="home">
+  <h1 class="tituloPrinc">DIGITAL BURGER</h1>
+  <div class="carousel-container">
+      <div class="carousel">
+          <img src="/images/localheader1.jpg" alt="imagen 1" class="carousel-image">
+          <img src="/images/localheader2.jpg" alt="imagen 2" class="carousel-image">
+          <img src="/images/localheader3.jpg" alt="imagen 3" class="carousel-image">
+          <img src="/images/localheader4.jpg" alt="imagen 4" class="carousel-image">
+      </div>
+      <button id="prev-btn">←</button>
+      <button id="next-btn">→</button>
+  </div>
+</div>
+<a href="/products" class="titulo-productos-link">
+  <h2 class="titulo">PRODUCTOS</h2>
+</a>
+<section id="productos">
+  <div class="carousel productos-carousel">
+    <div class="carousel-inner">
+      <!-- Las imágenes se cargarán aquí desde JavaScript -->
     </div>
-    <div>
-        <img class="imgPrinc" src="/images/localheager1.jpg" alt="imagenes varias">
-      <!--  <img src="/images/localheader2.jpg" alt="imagenes varias2">
-        <img src="/images/localheader3.jpg" alt="imagenes varias3">  -->
-    </div>
-    <a href="/products" class="titulo-productos-link">
-      <h2 class="titulo">PRODUCTOS</h2>
-    </a>
-    <section id="productos" class="menu">
-        <img class="fotomenu" src="/images/products/hamburguesa1.jpg" alt="imagenes de hamburguesa">
-        <img class="fotomenu" src="/images/products/hamburguesa2.jpg" alt="imagenes de hamburguesa">
-        <img class="fotomenu" src="/images/products/hamburguesa3.jpg" alt="imagenes de hamburguesa">
-        <img class="fotomenu" src="/images/products/hamburguesa4.jpg" alt="imagenes de hamburguesa">
-    </section>
+  </div>
+  <button id="scroll-left-btn">Desplazar a la Izquierda</button> 
+  <button id="scroll-right-btn">Desplazar a la Derecha</button>
+</section>
+  
     <section id="locales">
         <h2 class="titulo">LOCALES</h2>
 
         <div class="sucursales">
             <div class="card">
-              <img src="/images/localheager1.jpg" alt="SUCPALERMO">
+              <img src="/images/localheader1.jpg" alt="SUCPALERMO">
               <div class="card-content">
                 <h5 class="card-title">PALERMO</h5>
                 <p class="card-text">Información de la sucursal Palermo.</p>
@@ -54,7 +64,7 @@
               </div>
             </div>
             <div class="card">
-                <img src="/images/localheager1.jpg" alt="SUCPALERMO">
+                <img src="/images/localheader3.jpg" alt="SUCPALERMO">
                 <div class="card-content">
                   <h5 class="card-title">PALERMO</h5>
                   <p class="card-text">Información de la sucursal Palermo.</p>
@@ -62,7 +72,7 @@
                 </div>
               </div>
               <div class="card">
-                <img src="/images/localheager1.jpg" alt="SUCPALERMO">
+                <img src="/images/localheader4.jpg" alt="SUCPALERMO">
                 <div class="card-content">
                   <h5 class="card-title">PALERMO</h5>
                   <p class="card-text">Información de la sucursal Palermo.</p>

@@ -24,7 +24,7 @@ const usersRouter = require ("./routers/usersRouter.js")
 const productRouter = require ("./routers/productRouter.js")
 const cartRouter = require ("./routers/cartRouter.js");
 const { cookie } = require("express-validator");
-
+const apiProductRouter = require('./routers/api/apiProductRouter.js');
 /*
 const modificarRouter = require ("./routers/modificarRouter.js")
 */
@@ -55,6 +55,7 @@ app.use("/", mainRouter)
 app.use("/user", usersRouter)
 app.use("/products", productRouter)
 app.use("/cart", cartRouter)
+app.use('/api/productos', apiProductRouter);
 app.use((req, res) => {
     res.render('404');
 });
