@@ -15,21 +15,34 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    showImage(currentIndex);
-
-    nextButton.addEventListener("click", () => {
+    function nextImage() {
         currentIndex++;
         if (currentIndex >= images.length) {
             currentIndex = 0;
         }
         showImage(currentIndex);
-    });
+    }
 
-    prevButton.addEventListener("click", () => {
+    function prevImage() {
         currentIndex--;
         if (currentIndex < 0) {
             currentIndex = images.length - 1;
         }
         showImage(currentIndex);
+    }
+
+    showImage(currentIndex);
+
+    nextButton.addEventListener("click", () => {
+        nextImage();
     });
+
+    prevButton.addEventListener("click", () => {
+        prevImage();
+    });
+
+    // Agregar la función para cambiar automáticamente las imágenes cada dos segundos
+    setInterval(() => {
+        nextImage();
+    }, 3500); // Cambiar de imagen cada 2 segundos (2000 ms)
 });

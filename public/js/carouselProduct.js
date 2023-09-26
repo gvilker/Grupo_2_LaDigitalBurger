@@ -11,42 +11,104 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((data) => {
       const products = data.data;
 
-      function showImages() {
-        // Limpia el contenido actual del carrusel interno
-        productCarousel.innerHTML = "";
 
-        // Crea un conjunto de imágenes para mostrar
+      function showImages() {
+
+        productCarousel.innerHTML = "";
+      
+
         const imageSet = document.createElement("div");
         imageSet.classList.add("image-set");
+      
 
-        // Agrega las imágenes al conjunto y establece el estilo para mostrarlas en línea horizontal
         for (let i = 0; i < products.length; i++) {
           const product = products[i];
+      
+
+          const productContainer = document.createElement("div");
+          productContainer.classList.add("product-container");
+      
+
           const image = document.createElement("img");
           image.src = product.image;
-          image.alt = product.name;          
-          image.style.display = "inline-block";          
-          image.style.maxWidth = "50%";         
-          imageSet.appendChild(image);
+          image.alt = product.name;
+      
+          
+          const productName = document.createElement("p");
+          productName.textContent = product.name;
+      
+          
+          productContainer.style.display = "inline-block";
+      
+          
+          productContainer.appendChild(image);
+          productContainer.appendChild(productName);
+      
+        
+          imageSet.appendChild(productContainer);
         }
-
-       
+      
         productCarousel.appendChild(imageSet);
       }
 
 
-     
-      scrollRightButton.addEventListener("click", () => {
-      
-        productCarousel.scrollLeft += 100; 
-      });
+scrollRightButton.addEventListener("click", () => {
+  productCarousel.scrollBy({
+    left: 400, 
+    behavior: "smooth", 
+  });
+});
 
-      
-      scrollLeftButton.addEventListener("click", () => {
-       
-        productCarousel.scrollLeft -= 100; 
-      });
-     
+scrollLeftButton.addEventListener("click", () => {
+  productCarousel.scrollBy({
+    left: -400, 
+    behavior: "smooth",
+  });
+});
+
+let isDragging = false;
+let startX;
+let scrollLeft;
+
+productCarousel.addEventListener("mousedown", (e) => {
+  isDragging = true;
+  startX = e.pageX - productCarousel.offsetLeft;
+  scrollLeft = productCarousel.scrollLeft;
+
+
+  document.body.style.userSelect = "none";
+  productCarousel.style.cursor = "grabbing"; 
+});
+
+document.addEventListener("mousemove", (e) => {
+  if (!isDragging) return;
+
+  e.preventDefault();
+  const x = e.pageX - productCarousel.offsetLeft;
+  const walk = (x - startX) * 2; 
+  productCarousel.scrollLeft = scrollLeft - walk;
+});
+
+document.addEventListener("mouseup", () => {
+  isDragging = false;
+
+
+  document.body.style.userSelect = "auto";
+  productCarousel.style.cursor = "grab";
+
+  
+  e.stopPropagation();
+});
+
+
+productCarousel.addEventListener("click", (e) => {
+  if (isDragging) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+});
+
+
       showImages();
     })
     .catch((error) => {
