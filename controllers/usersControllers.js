@@ -16,7 +16,11 @@ const userController = {
       return res.render('register', { errors: errors.array() });
     }
 
-    const { name, alias, email, password } = req.body;
+    const { name, alias, email, password, confirm_password } = req.body;
+
+    if (password !== confirm_password) {
+      return res.render('register', { error: 'Las contraseñas no coinciden.' });
+    }
 
     try {
       const existingUser = await db.User.findOne({ where: { email } });

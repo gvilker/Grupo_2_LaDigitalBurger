@@ -43,6 +43,7 @@
             </div>
         <% }); %>
     </section>
+
     <% if (locals.isLogged) { %>
         <% if (locals.userType === 2) { %>
     <div>
@@ -52,5 +53,6 @@
 <% } %>
 <br></br>
     <%-include ('./partials/footer') %>
+    <script src="/js/searchProduct.js"></script>
 </body>
 </html>
