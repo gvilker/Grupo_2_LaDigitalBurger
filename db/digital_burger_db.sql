@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-09-2023 a las 04:10:40
+-- Tiempo de generación: 11-10-2023 a las 02:43:18
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -107,6 +107,7 @@ INSERT INTO `users` (`id`, `name`, `alias`, `email`, `password`, `avatar`, `user
 ('40ced810-0c04-40d4-8833-94b1c3a64e90', 'Usuario20', 'User_20', 'user_20@example.com.ar', '$2b$10$tMt0u.7hae6SyRQ1nfN47uIfWMwruPsYiuBfm7crbiX.iTj0rAPgO', '1695130552102_img.jpg', 1),
 ('414057c3-3460-46cc-ae39-703b1d737e8b', 'Usuario25', 'User_25', 'user_25@example.com.ar', '$2b$10$oD11yo1oA.cAgOtfOTXbxuFMXGyIhvbaWpAHSdWMNuJgp/zBLlxHS', '1695130668365_img.jpg', 1),
 ('4718cd88-68e4-4646-8d2f-b8f9d0016d29', 'Usuario19', 'User_19', 'user_19@example.com.ar', '$2b$10$eNa9XR5ybwih4hVcfZ6IQerLxjJLeyS2PVG6pucA2x4IBBNNHSsY2', '1695130526790_img.jpg', 1),
+('4d1b0530-a66b-445d-8e72-243c8a1ea3f0', 'Gabriel Alejandro Cano ', 'Gabi', 'canogabriel89@gmail.com', '$2b$10$X2HH85ZNN1TgVEDmqIKX2eTISGg2xtCVsW1kdypsnYQ8gYXh4eBC6', '1695948180367_img.png', 1),
 ('4fae5682-2563-4e8f-a7bd-41223404cd9c', 'Usuario22', 'User_22', 'user_22@example.com.ar', '$2b$10$xatqaFnJjSRr8/LS9m4mr.iabldJnI/ZFuzZ7Cr6Wl5yq0VNywRZ6', '1695130600958_img.jpg', 1),
 ('5666951d-e71f-4206-bef5-8716661bf70b', 'Usuario5', 'User_5', 'user_5@example.com.ar', '$2b$10$aNc2pZJpe08rLGVU6XXwOuBXixl21gvDna6G2XZlNP35/HGj7YXuW', '1695060077590_img.jpg', 1),
 ('57648de0-0f05-4a9a-9e9a-3167eabaadc6', 'Usuario29', 'User_29', 'user_29@example.com.ar', '$2b$10$hE8KK9Hz4iGFdRnWi/wlJedhZm4.BQ2Lph0LNVxxVH3ifkf05HIdu', '1695130749542_img.jpg', 1),
@@ -114,6 +115,7 @@ INSERT INTO `users` (`id`, `name`, `alias`, `email`, `password`, `avatar`, `user
 ('7db36adb-ea4a-4867-907f-8cc64c800a4d', 'Usuario27', 'User_27', 'user_27@example.com.ar', '$2b$10$5WQYHWOcVmCK4sSCsM2A3enVs0kmAtz7Ximc88AZn0ZtRQ5PaGdLq', '1695130709381_img.jpg', 1),
 ('8beb7dff-635a-4d63-a8c5-ccfa8d9e8946', 'Usuario8', 'User_8', 'user_8@example.com.ar', '$2b$10$Zp4zKahVoeW9TN1UQHbnL.wSqCMHJi3j03QHF1UTe6GlkzIpsil9y', '1695060291991_img.jpg', 1),
 ('8d2bb6ec-19ce-4c7f-b0fc-415930e5cc6f', 'Usuario17', 'User_17', 'user_17@example.com.ar', '$2b$10$h8DMRPaw9mqEr2nx/4ylh.xSyEqZII2H7irjgyaBu38OwC3Yg6DK2', '1695130482749_img.jpg', 1),
+('91d0ca7f-11da-41ba-9735-cf084995fb3d', 'Ian Coella', 'Hackchele', 'ian@usuario.com', '$2b$10$SHfuXJ3.gpE4Z5Dur2C7GuW1D7VH.Y4W7umO1U7VM0/JrkbbsrA2.', '1696984767503_img.jpg', 2),
 ('945c2780-3295-4486-95a8-434a5979ea84', 'Usuario3', 'User_3', 'user_3@example.com.ar', '$2b$10$ry95Mihrq5Kn1wr0Wgam7uFJMBpI8D5GxkXNpF2sPVF8hvFmfxw2S', '1695059988029_img.jpg', 1),
 ('980c417d-bd89-4db8-9176-2af3f7d8a2db', 'Usuario11', 'User_11', 'user_11@example.com.ar', '$2b$10$HUOoRFwNSgnJo6DbykzvS.gGNxqbq/svZy.PAB55INQKKnYM/wqDa', '1695129670173_img.jpg', 1),
 ('abfd35c0-9d12-4335-8726-d30bb44493b1', 'Usuario7', 'User_7', 'user_7@example.com.ar', '$2b$10$mOl3nKFA/O.o.6xFu4jnue.Vg.ppqP84dt2nKqjwv4Ds4.1IWydIm', '1695060260366_img.jpg', 1),
@@ -186,7 +188,7 @@ ALTER TABLE `usertype`
 -- AUTO_INCREMENT de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `products`
