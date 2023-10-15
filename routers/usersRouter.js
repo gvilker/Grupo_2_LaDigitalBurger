@@ -7,6 +7,7 @@ const guestMiddleware = require('../middlewares/guestMiddleware');
 const authMiddleware = require('../middlewares/authMiddleware');
 const isAdminMiddleware = require('../middlewares/isAdminMiddleware');
 
+
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, './public/images/avatars');
