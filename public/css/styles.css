@@ -17,7 +17,8 @@ body{
 }
 
 .headerNav{
-    background-color: #5e5c5c;
+    background-color: transparent;
+    border-bottom: solid 0.7px #D5DBDB;
     overflow: auto;
     position: fixed; 
     top: 0;
@@ -35,7 +36,7 @@ body{
     border-radius: 50%; */
 }
 
-    .hamburguer-boton{
+    /* .hamburguer-boton{
         background-color: #09ff00;
         color:#ffffff;
         display: block;
@@ -46,7 +47,7 @@ body{
         font-size: 18px;
         margin:auto;
       
-      }
+      } */
 
 .fa-solid fa-cart-plus
 
@@ -148,10 +149,79 @@ footer#contacto a i {
   color: #09ff00;
 }
 
+.menu-container.show-menu {
+  display: block;
+  background-color: rgba(204, 204, 204, 0.8);
+}
+
+.menu-small {
+  display: none;
+  justify-content: center; 
+  align-items: center; 
+  text-align: center;
+}
+
+.menu-small .hamburguer-boton {
+  background-color: #09ff00;
+  color: #FFFFFF;
+  position: center;;
+  width: 60px;
+  padding: 15px 0;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 25px;
+  margin: auto;
+}
+
+.menu-small .menu-container {
+  display: none;
+}
+
+.menu-small .menu-container ul {
+  text-decoration: none;
+    color: #222222;
+    display: inline-block;
+    padding: 5px 0;
+    font-size: 17px;
+  
+}
+.menu li a {
+  text-decoration: none;
+
+}
+
+.menu-container ul.menu li a {
+  color: white;
+}
+
+.menu-container.show-menu ul.menu {
+  display: block;
+  text-align: center;
+}
+
+.menu-small .menu-container ul li {
+  padding: 10px;
+  list-style: none;
+}
+
+.top-right-elements {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.small-image {
+  width: 50px;
+  height: 50px;
+  /* Otros estilos si es necesario */
+}
 
 @media (min-width: 769px) {
   .hamburguer-boton {
       display: none;
+  }
+  .top-right-elements {
+    display: none;
   }
 
 
@@ -171,13 +241,18 @@ footer#contacto a i {
 
 
 @media (max-width: 768px) {
-  .hamburguer-boton {
-      display: block; 
+  .menu-small {
+    display: block;
+    width: 30%;
+    margin: 0 auto; /* Centra el menú horizontalmente */
+    text-align: center;
+  
   }
-
-
   .main-navbar {
       display: none; 
+  }
+  .logo{
+    width: 10vw;
   }
 }
 

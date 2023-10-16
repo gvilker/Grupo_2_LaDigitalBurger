@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-09-2023 a las 04:10:40
+-- Tiempo de generación: 16-10-2023 a las 20:21:51
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -74,7 +74,8 @@ INSERT INTO `products` (`id`, `name`, `description`, `price`, `image`, `calories
 (14, 'HTML5 Hawaiian Delight', 'Una hamburguesa tropical con piña y sabores innovadores.', 5250.00, '/images/products/1695135798753-HTML5 Hawaiian Delight.jpg', 18, 6, 18, 30, 265, 1, 'Salsa de ajo y hierbas', 'Aros de cebolla', ''),
 (15, 'IA Burger', 'Una hamburguesa \"inteligente\" con ingredientes sorprendentes y sabores innovadores.', 5200.00, '/images/products/1695135996961-OIG.mgLG1DWPjJtXEfp.jpg', 14, 5, 16, 21, 200, 0, 'Salsa de mostaza y miel', 'Batatas fritas o asadas', ''),
 (16, 'Robot Roaster', 'Una hamburguesa con carne asada a la parrilla.', 4900.00, '/images/products/1695136091336-Robot-Roaster---Una-hamburguesa-con-carne-asada-a-la-parrilla--inspirada-en-robots-y-su-precisi-n-.png', 15, 6, 15, 22, 195, 0, 'Queso', 'Papas fritas', ''),
-(17, 'Quantum Cheesebruger', 'Una hamburguesa que combina texturas y sabores en un estado cuántico.', 4800.00, '/images/products/1695136301149-Quantum-Cheeseburger---Una-hamburguesa-que-combina-sabores-y-texturas-en-un-estado-cu-ntico- (1).png', 16, 6, 18, 26, 205, 1, 'Lechuga y tomate', 'Coleslaw', '');
+(17, 'Quantum Cheesebruger', 'Una hamburguesa que combina texturas y sabores en un estado cuántico.', 4800.00, '/images/products/1695136301149-Quantum-Cheeseburger---Una-hamburguesa-que-combina-sabores-y-texturas-en-un-estado-cu-ntico- (1).png', 16, 6, 18, 26, 205, 1, 'Lechuga y tomate', 'Coleslaw', ''),
+(18, 'Digital Full Stack', 'La hamburguesa \"Digital Full Stack\" es una deliciosa creación que combina sabores argentinos con un toque contemporáneo. Esta hamburguesa es una experiencia culinaria única que seguramente te dejará con ganas de más.', 20.00, '/images/products/1697480306681-Dig_FULL_STACK.jpg', 1600, 60, 80, 900, 200, 0, 'queso provolone, chedar. Bacon', 'Papas fritas crujientes, salsa de ajo, cerveza artesanal.', '');
 
 -- --------------------------------------------------------
 
@@ -124,6 +125,7 @@ INSERT INTO `users` (`id`, `name`, `alias`, `email`, `password`, `avatar`, `user
 ('ceb58e35-b7e5-4e05-bbad-b5517cee5f5a', 'Usuario18', 'User_18', 'user_18@example.com.ar', '$2b$10$WJ/RlA70cGxOxptIkMxGSeIOIj7v0uMiCHS7MG2/MEqcPdVFBFfaG', '1695130503868_img.jpg', 1),
 ('dd2b17cf-1dab-48e1-9e35-47b5e1a3e2e9', 'Usuario14', 'User_14', 'user_14@example.com.ar', '$2b$10$Pm9O8wDDpvaX/NHoDejBdO1pzUGxud4r5M7QJcxybHV1MdRj6VETC', '1695130341439_img.jpg', 1),
 ('e9e4f972-87cf-47ca-929e-bb9c016af460', 'Usuario1', 'User_1', 'user_1@example.com.ar', '$2b$10$ZUEAZxFAt7OlX5BwokFCPeUr/ewSrExp0qy0j2UlYZoFPrU/1wBKi', '1695059891331_img.jpg', 1),
+('edffd4e2-6b77-4d4f-8c19-fc07c1945214', 'PEPE', 'ADMINpepe', 'pepe@argento.com', '$2b$10$eMwF/1kstyDFSMU3GPaZtOCJV0QZUpkkcUOf3YXO8GXl1Y7QTd0MK', '1697407340397_img.jpg', 2),
 ('ee004127-9ea8-4c88-b1cb-d58c7603b3c0', 'Administrador', 'Admin', 'admin@example.com', '$2b$10$Cy6DRd3W6xhQLOn2kKtCQ.CsKTBgzYFdQjoC2lPWpU5MD628O9IDe', '1695059692682_img.jpg', 2),
 ('f3bdf97e-12df-450e-b742-056f02745e64', 'Usuario2', 'User_2', 'user_2@example.com.ar', '$2b$10$boZhyJGyCU2Il.zVJq4Dee8GCcZuoN.pkfCkd/cVOf6OlkgC5WEye', '1695059932001_img.jpg', 1),
 ('f6212bbe-4c3b-4a8c-ad58-da9fd158b6cd', 'Usuario28', 'User_28', 'user_28@example.com.ar', '$2b$10$n5lVxnBXV3R5mpJ6Tu7JyOppqHDlpAuPQ5ZaTet5UNhojhqSZ2AEe', '1695130729274_img.jpg', 1);
@@ -192,7 +194,7 @@ ALTER TABLE `carrito`
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `usertype`

@@ -18,11 +18,17 @@ html {
   
   .tituloPrinc{
       text-align: center;
-      margin-top: 100px;
-      margin-bottom: 30px;
+      margin-top: 150px;
+      margin-bottom: 70px;
       color: white;
   }
-  
+
+  .img404 {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    height: auto
+  }
   .menu{
       display: flex;
       width: 60%;
