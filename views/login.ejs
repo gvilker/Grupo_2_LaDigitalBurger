@@ -19,8 +19,11 @@
 </div>
 <form action="/user/login" method="POST" class="form-login">          
     <div class="formulario">
-        <input type="email" name="email" placeholder="escriba su Email" class="control <%= locals.errors && errors.email ? 'is-invalid' : null %>"
+        <input type="email" name="email" id="inputEmail" placeholder="escriba su Email" class="control <%= locals.errors && errors.email ? 'is-invalid' : null %>"
         value="<%= locals.oldData ? oldData.email : null %>">
+        <div>
+          <small class="erEmail"></small>
+        </div>
         <% if (locals.errors && errors.email) { %>
           <div>
             <%= errors.email.msg %>
@@ -29,7 +32,10 @@
       </div> 
      
     <div class="formulario">
-       <input type="password" name="password" placeholder="Contraseña" class="control">
+       <input type="password" name="password" id="inputPassword" placeholder="Contraseña" class="control">
+       <div>
+        <small class="erPassword"></small>
+      </div>
        <% if (locals.errors && errors.password) { %>
         <div>
           <%= errors.password.msg %>
@@ -40,13 +46,14 @@
       <label class = "control">Recordame</label>
       <input type="checkbox" name="recordame" class="control">
     <div>
-    <button type="submit" class="boton-formulario">Iniciar sesión</button>
+    <button type="submit" id="button" class="boton-formulario" >Iniciar sesión</button>
     </div>
     <div>
      <p>¿Olvidaste tu contraseña? <a href="#">Recupérala aquí</a></p>
     </div>
   </form>
 </div>
+<script src="../js/loginValidator.js"></script>
 <%-include ('./partials/footer') %>
 </body>
 </html>

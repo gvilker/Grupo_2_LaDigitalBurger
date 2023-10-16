@@ -89,7 +89,7 @@ document.addEventListener("mousemove", (e) => {
   productCarousel.scrollLeft = scrollLeft - walk;
 });
 
-document.addEventListener("mouseup", () => {
+document.addEventListener("mouseup", (e) => {
   isDragging = false;
 
 

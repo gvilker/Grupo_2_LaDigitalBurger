@@ -8,6 +8,7 @@
     <script src="https://kit.fontawesome.com/157adaf284.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Tektur&display=swap" rel="stylesheet">
     <title>Login DigitalBurguer</title>
+
 </head>
 <body>
     
@@ -19,65 +20,51 @@
       <h1 class="tituloPrinc">DIGITAL REGISTER - CREAR CUENTA</h1>
     </div>
     <form action="/user/register" method="POST" class="form-login" enctype="multipart/form-data">
+      
       <div class="formulario">
-        <input type="text" name="name" placeholder="Nombre completo" class="control <%= locals.errors && errors.name ? 'is-invalid' : null %>"
-        value="<%= locals.oldData ? oldData.name : null %>">
-        <% if (locals.errors && errors.name) { %>
-          <div>
-            <%= errors.name.msg %>
-          </div>         
-        <% } %>
-      </div>  
+        <input type="text" name="name" id="inputName" placeholder="Nombre completo" class="control" value="">
+        <div>
+          <small class="erName"><%= locals.errors && locals.errors.find(error => error.param === 'name') ? locals.errors.find(error => error.param === 'name').msg : '' %></small>
+        </div>
+      </div>
   
       <div class="formulario">
-        <input type="text" name="alias" placeholder="Nombre de usuario" class="control <%= locals.errors && errors.alias ? 'is-invalid' : null %>"
-        value="<%= locals.oldData ? oldData.alias : null %>">
-        <% if (locals.errors && errors.alias) { %>
-          <div>
-            <%= errors.alias.msg %>
-          </div>         
-        <% } %>
+        <input type="text" name="alias" id="inputAlias" placeholder="Nombre de usuario" class="control" value="">
+        <div>
+          <small class="erAlias"><%= locals.errors && locals.errors.find(error => error.param === 'alias') ? locals.errors.find(error => error.param === 'alias').msg : '' %></small>
+        </div>
       </div>  
 
       <div class="formulario">
-        <input type="email" name="email" placeholder="Correo electrónico" class="control <%= locals.errors && errors.email ? 'is-invalid' : null %>"
-        value="<%= locals.oldData ? oldData.email : null %>">
-        <% if (locals.errors && errors.email) { %>
-          <div>
-            <%= errors.email.msg %>
-          </div>         
-        <% } %>
+        <input type="email" name="email" id="inputEmail" placeholder="Correo electrónico" class="control" value="">
+        <div>
+          <small class="erEmail"><%= locals.errors && locals.errors.find(error => error.param === 'email') ? locals.errors.find(error => error.param === 'email').msg : '' %></small>
+        </div>
       </div>  
  
       <div class="formulario">
-        <input type="file" name="avatar" class="control">
-        <% if (locals.errors && errors.avatar) { %>
-          <div>
-            <%= errors.avatar.msg %>
-          </div>         
-        <% } %>
+        <input type="file" name="avatar" id="inputFile" class="control">
+        <div>
+          <small class="erFile"><%= locals.errors && locals.errors.find(error => error.param === 'avatar') ? locals.errors.find(error => error.param === 'avatar').msg : '' %></small>
+        </div>
       </div> 
 
       <div class="formulario">
-        <input type="password" name="password" placeholder="Contraseña" class="control <%= locals.errors && errors.password ? 'is-invalid' : null %>">
-        <% if (locals.errors && errors.password) { %>
-          <div>
-            <%= errors.password.msg %>
-          </div>         
-        <% } %>
+        <input type="password" name="password" id="inputPassword" placeholder="Contraseña" class="control">
+        <div>
+          <small class="erPassword"><%= locals.errors && locals.errors.find(error => error.param === 'password') ? locals.errors.find(error => error.param === 'password').msg : '' %></small>
+        </div>
       </div> 
   
       <div class="formulario">
-        <input type="password" name="confirm_password" placeholder="Confirmar contraseña" class="control <%= locals.errors && errors.confirm_password ? 'is-invalid' : null %>">
-        <% if (locals.errors && errors.confirm_password) { %>
-          <div>
-            <%= errors.confirm_password.msg %>
-          </div>         
-        <% } %>
+        <input type="password" name="confirm_password" id="inputRePassword" placeholder="Confirmar contraseña" class="control">
+        <div>
+          <small class="erRePassword"><%= locals.errors && locals.errors.find(error => error.param === 'confirm_password') ? locals.errors.find(error => error.param === 'confirm_password').msg : '' %></small>
+        </div>
       </div> 
   
       <div>
-        <button type="submit" class="boton-formulario">Registrarse</button>
+        <button type="submit" class="boton-formulario" id="button">Registrarse</button>
       </div>
   
       <div>
@@ -85,6 +72,8 @@
       </div>
     </form>
   </div>
+  <script src="../js/registerValidator.js"></script>
   <%-include ('./partials/footer') %>
+
 </body>
 </html>
