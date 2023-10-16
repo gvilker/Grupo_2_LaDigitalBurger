@@ -1,7 +1,7 @@
-const express = require ("express");
+const express = require("express");
 const router = express.Router();
-const cartController = require ("../controllers/cartControllers");
-const authMiddleware = require('../middlewares/authMiddleware');
+const cartController = require("../controllers/cartControllers");
+const authMiddleware = require("../middlewares/authMiddleware");
 
 // @GET a la vista carrito
 router.get("/carrito", authMiddleware, cartController.carrito);
