@@ -21,14 +21,23 @@
     <form action="/products" method="POST" class="form-login" enctype="multipart/form-data">
       <label class="formulario" for="name">Nombre:
         <input class="control" type="text" id="name" name="name" required>
+        <div>
+          <small class="erName"></small>
+        </div>
       </label>
     
       <label class="formulario" for="description">Descripción:
         <textarea class="control" id="description" name="description" required></textarea>
+        <div>
+          <small class="erDescription"></small>
+        </div>
       </label>
     
       <label class="formulario" for="price">Precio:
-        <input class="control" type="number" id="price" name="price" required>
+        <input class="control" type="number" id="price" name="price" required>      
+        <div>
+          <small class="erPrice"></small>
+        </div>
       </label>
     
       <label class="formulario" for="image">Imagen:
@@ -74,12 +83,13 @@
         <textarea class="control" id="additional_Information" name="additional_Information"></textarea>
       </label>
     
-      <button type="submit" class="boton-formulario">
+      <button type="submit" id="button" class="boton-formulario">
         Crear Producto
       </button>
     </form>
 
   </div>
   <%-include ('./partials/footer') %>
+  <script src="../js/productValidator.js"></script>
 </body>
 </html>
