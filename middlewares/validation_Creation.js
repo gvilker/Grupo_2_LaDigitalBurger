@@ -39,6 +39,24 @@ const productValidationRules = [
   check('suggested_Acompaniments')
     //.notEmpty().withMessage('Debes proporcionar sugerencias de acompañamiento')
     .isLength({ max: 300 }).withMessage('Las sugerencias de acompañamiento no deben exceder los 300 caracteres'),
+    check("img").custom((value, { req }) => {
+      let file = req.file;
+      let acceptedExtensions = [".jpg", ".png", ".jpeg", ".gif"];
+  
+      if (!file) {
+        throw new Error("Tienes que subir una imagen");
+      } else {
+        let fileExtension = path.extname(file.originalname);
+        if (!acceptedExtensions.includes(fileExtension)) {
+          throw new Error(
+            `Las extensiones de archivo permitidas son ${acceptedExtensions.join(
+              ", "
+            )}`
+          );
+        }
+      }
+      return true;
+    }),
 ];
 
 module.exports = {
