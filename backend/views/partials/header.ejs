@@ -1,0 +1,74 @@
+<header class="headerNav">
+    <script src="/js/hamButton.js"></script>
+    <a href="/"><img class="logo" src="/images/dig.png" alt="Logo de la marca"></a>
+    
+   
+<!-- Botón de hamburguesa y menú desplegable para pantallas pequeñas -->
+<div class="menu-small">
+    <!--<a href="#" class="hamburguer-boton"><i class="fa-solid fa-bars"></i></a>-->
+    <button class="hamburguer-boton"><i class="fa-solid fa-bars"></i></button>
+    <div class="menu-container">
+        <ul class="menu">
+            <li><a href="/products">Productos</a></li>
+            <li><a href="/#locales">Locales</a></li>
+            <li><a href="/#nosotros">Nosotros</a></li>
+            <li><a href="#contacto">Contacto</a></li>      
+            <% if (locals.isLogged) { %>
+                <% if (locals.userType === 2) { %>
+                    <li><a href="/user">Usuarios</a></li>
+                <% } %>
+            <% } %>
+            <% if (locals.isLogged) { %>         
+                <li><a href="/user/profile"><%= locals.userLogged.alias %></a></li>
+                <li><a href="/user/logout">Salir</a></li>
+                <% } else {  %>
+            
+            <li><a href="/user/login">Iniciar Sesión</a></li>
+            <li><a href="/user/register">Registrarme</a></li>
+            <% } %>
+            <!-- Agrega aquí tus otras opciones de menú -->
+        </ul>
+    </div>
+</div>
+<div class="top-right-elements"> 
+    <% if (locals.isLogged) { %>
+        <a href="/cart/carrito"><img class="small-image" src="/images/carrito.png" alt="Carrito"></a>
+        <img class="small-image" src="<%= locals.userLogged.avatar %>" alt="Usuario"></a>
+        <% } %>
+</div>    
+
+
+    
+
+    <nav class="main-navbar">
+
+        <ul class="left-navbar">
+            <li><a href="/products">Productos</a></li>
+            <li><a href="/#locales">Locales</a></li>
+            <li><a href="/#nosotros">Nosotros</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+            <% if (locals.isLogged) { %>
+                <% if (locals.userType === 2) { %>
+                    <li><a href="/user">Usuarios</a></li>
+                <% } %>
+            <% } %>
+        </ul>
+    
+    <ul class="right-navbar">
+    <% if (locals.isLogged) { %>
+        <a href="/cart/carrito"><img class="carrito" src="/images/carrito.png" alt="Carrito"></a>
+        <img class="carrito" src="<%= locals.userLogged.avatar %>" alt="Usuario"></a>
+        <li class="loging"><a href="/user/profile"><%= locals.userLogged.alias %></a></li>
+        <li class="loging"><a href="/user/logout">Salir</a></li>
+        <% } else {  %>
+    
+    <li class="loging"><a href="/user/login">Iniciar Sesión</a></li>
+    <li class="loging"><a href="/user/register">Registrarme</a></li>
+    <% } %>
+</ul>
+
+
+      
+
+    </nav>
+</header>

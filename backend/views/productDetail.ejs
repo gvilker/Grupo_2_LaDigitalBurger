@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es"></html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+  <link rel="stylesheet" type="text/css" href="/css/productoDetail.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- VINCULACION A GOOLE FONTS Y FONTS AWESOME-->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Tektur&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/157adaf284.js" crossorigin="anonymous"></script>
+  <title>DigitalBurguer</title>
+</head>
+
+<body>
+    <%-include("./partials/header")%>
+
+    <body>
+        <h1 class="titulo">DETALLE DEL PRODUCTO</h1>
+        <section id="detalle-producto">
+            <div class="contenedor-detalle">
+            <div class="producto">
+                <img class="fotopedido" src="<%= product.image %>" alt="<%= product.name %>">
+                <div class="descripcion">
+                    <h2 class="burger"><%= product.name %></h2>
+                    <p><%= product.description %></p>
+                    <p>Precio: $<%= product.price%></p>
+                    <p>Calorías por porción: <%= product.calories %> kcal</p>
+                    <p>Grasas por porción: <%= product.fat %> g</p>
+                    <p>Proteínas por porción: <%= product.protein %> g</p>
+                    <p>Carbohidratos por porción: <%= product.carbohydrates %> g</p>
+                    <p>Tamaño de la hamburguesa: <%= product.size %> g</p>
+                    <p>Ingredientes adicionales: <%= product.additional_ingredients %></p>
+                    <p>Nivel de picante: <%= product.spicy ? 'Picante' : 'No picante' %></p>
+                    <p>Sugerencias de acompañamientos: <%= product.suggested_Acompaniments %></p>
+                    <p>Información adicional: <%= product.additional_Information %></p>
+                   
+                    </form>
+                    <br></br>             
+                    <form action="/cart/carrito" method="post">
+                        <!-- campo oculto con el ID del producto -->
+                        <input type="hidden" name="productId" value="<%= product.id %>">
+                        <!-- campo para seleccionar la cantidad -->
+                        <label for="quantity"><p>Cantidad:</p></label>
+                        <input type="number" id="quantity" name="quantity" value="1" min="1">
+                        <br></br> 
+                        <button type="submit" class="ver-detalle">Añadir al carrito</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </section>
+        <% if (locals.isLogged) { %>
+            <% if (locals.userType === 2) { %>
+        <section id="content-eliminar-modificar">
+            <a href="/products/<%= product.id %>/edit" class="ver-editar">Editar producto</a>
+            <br></br>
+            <form action="/products/<%= product.id %>/delete?_method=DELETE" method="post">
+            <button type="submit" class="ver-eliminar">Eliminar producto</button>      
+        </section>
+        <% } %>
+        <% } %>
+    </body>
+
+    <%-include ('./partials/footer') %>
+</body>
+</html>

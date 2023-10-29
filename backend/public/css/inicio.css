@@ -1,0 +1,294 @@
+html {
+    scroll-behavior: smooth;
+  }
+   .titulo{
+      text-align: center;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      color: white;
+  }
+  
+  .titulo-productos-link { 
+    text-decoration: none; 
+  }
+  
+  .titulo-productos-linkk:hover {
+    color: #09ff00;  
+  }
+  
+  .tituloPrinc{
+      text-align: center;
+      margin-top: 150px;
+      margin-bottom: 70px;
+      color: white;
+  }
+
+  .img404 {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    height: auto
+  }
+  .menu{
+      display: flex;
+      width: 60%;
+      height: 470px;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  
+  section .fotomenu{
+      width: 0px;
+      flex-grow: 1;
+      object-fit: cover;
+      opacity: .55;
+      transition: 0.7s ease;
+  }
+  
+  section .fotomenu:hover{
+      width: 50%;
+      opacity: 1;
+      filter: contrast(120%);
+  } 
+  
+  .imgPrinc{
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+  }
+  .sucursales {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 80%; /* Anchura total de las imágenes y descripciones */
+      margin: 0 auto; /* Centrar el contenido en el contenedor */
+    }
+    
+    .card {
+      width: 100%; /* Cada tarjeta ocupa el 100% del ancho del contenedor */
+      display: flex;
+      flex-direction: column; /* Las tarjetas se apilan verticalmente */
+      margin-bottom: 20px;
+      padding: 10px;
+      box-shadow: 0 2px 4px black
+    }
+    
+    .card img {
+      width: 100%; /* Cada imagen ocupa el 100% del ancho de su tarjeta */
+      height: auto;
+      margin-bottom: 10px; /* Espacio entre la imagen y el contenido */
+    }
+    
+    .card-content {
+      flex: 1; /* El contenido restante (descripción y botón) se expandirá para ocupar el espacio restante en la tarjeta */
+      text-align: center; /* Centrar el texto en la tarjeta */
+    }
+    
+    /* Estilos para los títulos dentro de las tarjetas */
+    .card-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 0;
+      color: white;
+    }
+    
+    /* Estilos para los textos dentro de las tarjetas */
+    .card-text {
+      font-size: 14px;
+      color:white;
+      margin-top: 0;
+      margin-bottom: 10px; /* Espacio entre la descripción y el botón */
+    }
+    
+    /* Estilos para los botones dentro de las tarjetas */
+    .btn {
+      display: inline-block;
+      padding: 6px 12px;
+      background-color:rgb(211, 211, 211);
+      color: #222222;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    
+.ver-eliminar,
+.ver-editar {
+  font-family: 'Tektur', cursive;
+  margin: 0px auto;
+  display: block;
+  text-align: center;
+  color: #fff;
+  background-color: #000000;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  max-width: 300px;
+  width: 100%;
+}
+
+.ver-eliminar:hover,
+.ver-editar:hover {
+  background-color: #09ff00;
+  color: #000000;
+}
+
+.content-eliminar-modificar {
+  background-color: #272525;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+    
+    /* Media query para pantallas grandes */
+    @media screen and (min-width: 768px) {
+      .card {
+        width: calc(50% - 20px); /* Para que dos tarjetas ocupen la mitad del ancho del contenedor, con 20px de espacio entre ellas */
+      }
+    
+      .card-content {
+        text-align: center; /* Centrar el texto en la tarjeta */
+      }
+    }
+    
+    /* Media query para pantallas pequeñas */
+    @media screen and (max-width: 767px) {
+      .card {
+        width: 100%; /* Cada tarjeta ocupa el 100% del ancho del contenedor */
+      }
+    
+      .card img {
+        margin-right: 0; /* Eliminar el margen derecho en pantallas pequeñas */
+      }
+    
+      .card-content {
+        text-align: center; /* Centrar el texto en la tarjeta en pantallas pequeñas */
+      }
+    }
+  
+    section#nosotros {
+      background-color: #272525;
+      padding: 40px;
+      text-align: justify;
+      display: flex;
+      flex-direction: column; 
+      align-items: center;
+      max-width: 800px;
+      margin: 0 auto
+  }
+  
+  
+  section#nosotros .titulo {
+      font-size: 28px;
+      color: white;
+      margin-bottom: 20px;
+  }
+  
+  
+  section#nosotros p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: white;
+  }
+  
+
+
+
+  .carousel-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 1s ease;
+}
+
+.carousel img {
+  width: 100%; /* Cada imagen ocupa el 100% del ancho de la pantalla */
+  height: auto;
+
+}
+
+#prev-btn,
+#next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+#prev-btn {
+    left: 10px;
+}
+
+#next-btn {
+    right: 10px;
+}
+
+
+
+#productos {
+  text-align: center;
+  overflow: hidden;
+}
+
+.productos-carousel {
+  max-width: 1000px; 
+  margin: 0 auto; 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  padding: 0; 
+  position: relative; 
+  overflow: hidden;
+}
+
+#productos .carousel-inner {
+  display: flex;
+  gap: 10px;
+  padding: 0;
+  align-items: center;
+  transition: transform 1s ease-in-out;
+  width: 100%;
+  overflow-x: hidden;
+  white-space: nowrap;
+  scroll-behavior: smooth; /* Agrega un desplazamiento suave */
+}
+
+
+#productos .carousel-inner img {
+  max-width: 300px;
+  min-width: 300px;
+  height: auto;
+  margin-right: 10px; /* Agrega un margen de 10px entre las imágenes */
+}
+
+#productos .carousel-inner p {
+  color: white; /* Cambia el color del texto a blanco */
+}
+
+#scroll-left-btn,
+#scroll-right-btn {
+  font-size: 16px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  margin: 0 10px; 
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  display: inline-block; 
+}
+
+#scroll-left-btn:hover,
+#scroll-right-btn:hover {
+  background-color: #555;
+}

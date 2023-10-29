@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+  <link rel="stylesheet" type="text/css" href="/css/producto.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- VINCULACION A GOOLE FONTS Y FONTS AWESOME-->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Tektur&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/157adaf284.js" crossorigin="anonymous"></script>
+  <title>DigitalBurguer</title>
+</head>
+
+<body>
+    <%-include("./partials/header")%>
+
+    <h1 class="titulo">PRODUCTOS</h1>
+
+    <form action="/products/search" method="GET" class="search-form">
+        <input type="text" name="query" placeholder="Buscar por nombre, descripción, precio, etc." class="search-input">
+        <select name="criteria" class="search-criteria">
+            <option value="name">Nombre</option>
+            <option value="description">Descripción</option>
+            <option value="price">Precio</option>           
+        </select>
+        <button type="submit" class="search-button">Buscar</button>
+    </form>
+    <br></br>
+    <section id="productos" class="menu">
+        <% products.forEach((product, index) => { %>
+            <div class="producto">
+                <img class="fotopedido" src="<%= product.image %>" alt="<%= product.name %>">
+                <div class="descripcion">
+                    <h2 class="burger"><%= product.name %></h2>
+                    <p><%= product.description %></p>
+                    <p>Precio: $<%= product.price %></p>
+                    <a href="/products/<%= product.id %>/detail" class="ver-detalle">Ver detalle</a>
+                    <br></br>
+                    
+                </div>
+            </div>
+        <% }); %>
+    </section>
+
+    <% if (locals.isLogged) { %>
+        <% if (locals.userType === 2) { %>
+    <div>
+    <a href="/products/create" class="boton-crear-producto">Crear Producto</a>
+</div>
+<% } %>
+<% } %>
+<br></br>
+    <%-include ('./partials/footer') %>
+    <script src="/js/searchProduct.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es"></html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+  <link rel="stylesheet" type="text/css" href="/css/inicio.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- VINCULACION A GOOLE FONTS Y FONTS AWESOME-->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Tektur&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/157adaf284.js" crossorigin="anonymous"></script>
+
+
+  <title>DigitalBurguer</title>
+</head>
+
+<body>
+<%-include("./partials/header")%>
+<div id="home">
+  <h1 class="tituloPrinc">DIGITAL BURGER</h1>
+  <div class="carousel-container">
+      <div class="carousel">
+          <img src="/images/localheader1.jpg" alt="imagen 1" class="carousel-image">
+          <img src="/images/localheader2.jpg" alt="imagen 2" class="carousel-image">
+          <img src="/images/localheader3.jpg" alt="imagen 3" class="carousel-image">
+          <img src="/images/localheader4.jpg" alt="imagen 4" class="carousel-image">
+      </div>
+      <button id="prev-btn">←</button>
+      <button id="next-btn">→</button>
+  </div>
+</div>
+<a href="/products" class="titulo-productos-link">
+  <h2 class="titulo">PRODUCTOS</h2>
+</a>
+<section id="productos">
+  <div class="carousel productos-carousel">
+    <div class="carousel-inner">
+      <!-- Las imágenes se cargarán aquí desde JavaScript -->
+    </div>
+  </div>
+  <br></br>
+  <button id="scroll-left-btn">Desplazar a la Izquierda</button> 
+  <button id="scroll-right-btn">Desplazar a la Derecha</button>
+</section>
+  
+    <section id="locales">
+        <h2 class="titulo">LOCALES</h2>
+
+        <div class="sucursales">
+            <div class="card">
+              <img src="/images/localheader1.jpg" alt="SUCPALERMO">
+              <div class="card-content">
+                <h5 class="card-title">PALERMO</h5>
+                <p class="card-text">Información de la sucursal Palermo.</p>
+                <a href="https://www.google.com.ar/maps/place/Sta.+Rosa+5061,+C1414BOC+CABA/@-34.5877959,-58.4324174,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x95bcb59c771eb933:0x6b3113b596d78c69!2sPalermo,+CABA!3b1!8m2!3d-34.5780655!4d-58.4265317!16zL20vMDQ3a3ps!3m5!1s0x95bcb5889691c061:0xb114121ca55aad6d!8m2!3d-34.5878003!4d-58.4298425!16s%2Fg%2F11crx5z9pw?entry=ttu" target = "_blank" class="btn btn-primary">Ver</a>
+              </div>
+            </div>
+            <div class="card">
+                <img src="/images/localheader2.jpg" alt="SUCBELGRANO">
+                <div class="card-content">
+                <h5 class="card-title">Belgrano</h5>
+                <p class="card-text">informacion de la sucursal</p>
+                <a href="https://www.google.com.ar/maps/place/Vuelta+de+Obligado+2199,+C1428AAD+CABA/@-34.5613816,-58.4577146,17.12z/data=!4m15!1m8!3m7!1s0x95bcb5d28526611d:0xbcb585a9ddc70069!2sBelgrano,+CABA!3b1!8m2!3d-34.5620844!4d-58.4566864!16zL20vMDNubmZi!3m5!1s0x95bcb5d36a2ccbad:0x841226e6e618857a!8m2!3d-34.5604339!4d-58.4561751!16s%2Fg%2F11bw449xgf?entry=ttu" target="_blank" class="btn btn-primary">Ver</a>
+              </div>
+            </div>
+            <div class="card">
+                <img src="/images/localheader3.jpg" alt="SUCPALERMO">
+                <div class="card-content">
+                  <h5 class="card-title">PALERMO</h5>
+                  <p class="card-text">Información de la sucursal Palermo.</p>
+                  <a href="#" class="btn btn-primary">Ver</a>
+                </div>
+              </div>
+              <div class="card">
+                <img src="/images/localheader4.jpg" alt="SUCPALERMO">
+                <div class="card-content">
+                  <h5 class="card-title">PALERMO</h5>
+                  <p class="card-text">Información de la sucursal Palermo.</p>
+                  <a href="#" class="btn btn-primary">Ver</a>
+                </div>
+              </div>                  
+        </div> 
+      
+                
+    </section>
+    <section id="nosotros">
+        <h2 class="titulo">SOBRE NOSOTROS</h2>
+        <p>
+          Bienvenido a Digital Burger, el lugar donde la pasión por las hamburguesas se encuentra con la innovación digital.
+          Somos más que una simple hamburguesería, somos una experiencia gastronómica que combina lo mejor de ambos mundos:
+          deliciosas hamburguesas artesanales y tecnología de vanguardia.
+      </p>
+      <p>
+          En Digital Burger, nos enorgullecemos de ofrecer hamburguesas de la más alta calidad, elaboradas con ingredientes
+          frescos y locales. Nuestros chefs expertos trabajan con pasión para crear combinaciones únicas de sabores que
+          deleitarán tu paladar en cada bocado.
+      </p>
+      <p>
+          Pero no nos detenemos ahí. Somos una marca comprometida con la innovación y la comodidad. Nuestro sitio web te permite
+          explorar nuestro menú en línea, hacer pedidos desde la comodidad de tu hogar y realizar seguimiento en tiempo real
+          de tu entrega. ¿Prefieres visitarnos en persona? Contamos con diversas sucursales estratégicamente ubicadas para
+          que puedas disfrutar de la experiencia Digital Burger donde quiera que estés.
+      </p>
+      <p>
+          En Digital Burger, también valoramos a nuestra comunidad y el medio ambiente. Nos esforzamos por utilizar envases
+          y materiales sostenibles, minimizando nuestro impacto en el planeta. Además, colaboramos con organizaciones locales
+          para apoyar causas importantes y devolver a la comunidad que tanto nos apoya.
+      </p>
+      <p>
+          Nuestro equipo está formado por apasionados amantes de la comida y la tecnología, comprometidos en brindarte la mejor
+          experiencia posible. Nos esforzamos por superar tus expectativas en cada visita y convertirte en parte de la familia
+          Digital Burger.
+      </p>
+      <p>
+          Gracias por acompañarnos en este viaje culinario y digital. Te invitamos a sumergirte en el sabor único de nuestras
+          hamburguesas y a descubrir el mundo de posibilidades que ofrece Digital Burger. ¡Esperamos verte pronto!
+      </p>
+    </section>
+
+    <%-include ('./partials/footer') %>
+
+    <script src="/js/carousel.js"></script>
+    <script src="/js/carouselProduct.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
+    <script src="https://kit.fontawesome.com/157adaf284.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Tektur&display=swap" rel="stylesheet">
+    <title>Create DigitalBurguer</title>
+</head>
+<body>
+  <%- include("./partials/header") %>
+
+  <div class="Contenido">
+    <div>
+      <h1 class="tituloPrinc">DIGITAL BURGER - EDICIÓN DE PRODUCTO</h1>
+    </div>
+
+    <form action="/products/<%= product.id %>/edit?_method=PUT" method="POST" class="form-login" enctype="multipart/form-data">
+      <label class="formulario" for="name">Nombre:
+        <input class="control" type="text" id="name" name="name" value="<%= product ? product.name : '' %>" required>
+      </label>
+
+      <label class="formulario" for="description">Descripción:
+        <textarea class="control" id="description" name="description" required><%= product ? product.description : '' %></textarea>
+      </label>
+
+      <label class="formulario" for="price">Precio:
+        <input class="control" type="number" id="price" name="price" value="<%= product ? (product.price ? product.price : '') : '' %>" required>
+      </label>
+
+      <label class="formulario" for="image">Imagen:
+        <input class="control" type="file" id="image" name="img" accept="image/*">
+      </label>
+
+      <p>Imagen actual:</p>
+      <img src="<%= product.image %>" alt="Imagen actual del producto">
+
+      <label class="formulario" for="calories">Calorías por porción:
+        <input class="control" type="number" id="calories" name="calories" value="<%= product ? product.calories : '' %>" required>
+      </label>
+
+      <label class="formulario" for="fat">Grasas por porción:
+        <input class="control" type="number" step="0.01" id="fat" name="fat" value="<%= product ? product.fat : '' %>" required>
+      </label>
+
+      <label class="formulario" for="protein">Proteínas por porción:
+        <input class="control" type="number" step="0.01" id="protein" name="protein" value="<%= product ? product.protein : '' %>" required>
+      </label>
+
+      <label class="formulario" for="carbohydrates">Carbohidratos por porción:
+        <input class="control" type="number" step="0.01" id="carbohydrates" name="carbohydrates" value="<%= product ? product.carbohydrates : '' %>" required>
+      </label>
+
+      <label class="formulario" for="size">Tamaño de la hamburguesa (en gramos):
+        <input class="control" type="number" id="size" name="size" value="<%= product ? product.size : '' %>" required>
+      </label>
+
+      <label class="formulario" for="additional_ingredients">Ingredientes adicionales (separados por coma):
+        <input class="control" type="text" id="additional_ingredients" name="additional_ingredients" value="<%= product ? product.additional_ingredients : '' %>" required>
+      </label>
+
+      <label class="formulario" for="spicy">Nivel de picante:
+        <select class="control" id="spicy" name="spicy">
+          <option value="true" <%= product && product.spicy ? 'selected' : '' %>>Picante</option>
+          <option value="false" <%= product && !product.spicy ? 'selected' : '' %>>No picante</option>
+        </select>
+      </label>
+
+      <label class="formulario" for="suggested_Acompaniments">Sugerencias de acompañamientos (separados por coma):
+        <input class="control" type="text" id="suggested_Acompaniments" name="suggested_Acompaniments" value="<%= product ? product.suggested_Acompaniments : '' %>" required>
+      </label>
+
+      <label class="formulario" for="additional_Information">Información adicional:
+        <textarea class="control" id="additional_Information" name="additional_Information"><%= product ? product.additional_Information : '' %></textarea>
+      </label>
+
+      <button type="submit" class="boton-formulario">
+        Guardar Cambios
+      </button>
+    </form>
+
+  </div>
+  <%- include('./partials/footer') %>
+</body>
+</html>
