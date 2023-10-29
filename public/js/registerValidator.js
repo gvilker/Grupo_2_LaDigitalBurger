@@ -89,4 +89,30 @@ window.addEventListener('load', function() {
         registerForm.submit();
       }
     });
+    // Borra el mensaje de error cuando el usuario comienza a escribir
+
+    inputName.addEventListener('input', function () {
+      erName.innerText = ''; 
+    });
+
+    inputAlias.addEventListener('input', function () {
+      erAlias.innerText = '';
+    });
+
+    inputEmail.addEventListener('input', function () {
+      erEmail.innerText = '';
+    });
+
+    inputFile.addEventListener('change', function () {
+      erFile.innerText = ''; 
+    });
+
+    inputPassword.addEventListener('input', function () {
+      erPassword.innerText = '';
+    });
+
+    inputRePassword.addEventListener('input', function () {
+      erRePassword.innerText = '';
+    });
+    
   });
