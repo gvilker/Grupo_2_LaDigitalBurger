@@ -30,7 +30,7 @@ let productController = {
   postProduct: async (req, res) => {
     try {
       const filenames = req.files.map(file => file.filename);
-      console.log('Filenames:', filenames);
+      //console.log('Filenames:', filenames);
   
       const imagePath = '/images/products/' + filenames[0];
   
@@ -38,7 +38,7 @@ let productController = {
       const price = parseFloat(req.body.price);
   
       if (isNaN(price)) {   
-        console.log('Precio inválido:', req.body.price);
+        //console.log('Precio inválido:', req.body.price);
         return res.render('createProduct', { product: null, errors: [{ msg: 'Precio inválido' }] });
       }
 
@@ -61,7 +61,7 @@ let productController = {
       };
   
       const createdProduct = await db.Product.create(newProduct);
-      console.log('Producto creado:', createdProduct);
+      //console.log('Producto creado:', createdProduct);
   
       res.redirect('/products/' + createdProduct.id + '/detail');
     } catch (error) {
@@ -87,7 +87,7 @@ let productController = {
     }
   
     const filenames = req.files && req.files.length > 0 ? req.files.map(file => file.filename) : [];
-    console.log(filenames);
+    //console.log(filenames);
   
     let imagePath = req.files && req.files.length > 0
       ? '/images/products/' + req.files[0].filename
@@ -181,5 +181,3 @@ let productController = {
 }
 
 module.exports = productController;
-
-

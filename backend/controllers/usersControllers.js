@@ -149,7 +149,7 @@ deleteProfile: async (req, res) => {
       req.session.userType = userToLogin.user_type;
       req.session.userLogged.avatar = avatarPath;  
 
-   console.log(req.session)
+   //console.log(req.session)
 
       return res.redirect('/user/profile');
     } catch (error) {
@@ -221,7 +221,7 @@ updateUser: async (req, res) => {
       user_type: req.body.user_type,      
       
     });
-    console.log(req.body.user_type)
+    //console.log(req.body.user_type)
     res.redirect('/user/admin/' + user.id + '/detail');
   } catch (error) {
     console.error('Error al actualizar el usuario:', error);

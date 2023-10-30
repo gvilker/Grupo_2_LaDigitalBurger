@@ -1,4 +1,0 @@
-iniciar sesión con admin@example.com y user 12345678 como contraseña para ver las funcionalidades de la página como Administrador
-
-Iniciar sesión con user_1@example.com.ar y 12345678 como contraseña para ver las funcionalidades de la página como Usuario
-
