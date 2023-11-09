@@ -2,10 +2,16 @@ const db = require('../../database/models');
 const { Op } = require('sequelize');
 
 module.exports = {
-  getList: async (req,res) => {
+  getList: async (req, res) => {
     try {
-        let statusCode = 200;
-        const usuarios = await db.User.findAll();
+      let statusCode = 200;
+      const usuarios = await db.User.findAll({
+        attributes: { exclude: ['password'] },
+      });
+
+      usuarios.forEach((usuario) => {
+        usuario.avatar = `/images/avatars/${usuario.avatar}`;
+      });
 
         statusCode = usuarios.length > 0 ? statusCode : 204;
 

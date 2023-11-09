@@ -65,9 +65,9 @@ function SearchMovies() {
                   <div className="text-center">
                     <img
                       className="img-fluid px-3 px-sm-4 mt-3 mb-4"
-                      src={product.image} // Utiliza la propiedad 'image' de la API
+                      src={`http://localhost:3010${product.image}`} // Utiliza la propiedad 'image' de la API
                       alt={product.name} // Utiliza la propiedad 'name' de la API
-                      style={{ width: '90%', height: '400px', objectFit: 'cover' }}
+                      style={{ width: '90%', height: '400px', objectFit: 'contain' }}
                     />
                   </div>
                   <p>Descripción: {product.description}</p>
