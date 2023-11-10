@@ -1,50 +1,43 @@
-import React from 'react';
+// ContentRowMovies.js
+import React, { useEffect, useState } from 'react';
 import SmallCard from './SmallCard';
+import { fetchProductData, fetchUserData } from './apiUtils';
 
-/*  Cada set de datos es un objeto literal */
+function ContentRowMovies() {
+  const [productData, setProductData] = useState(null);
+  const [userData, setUserData] = useState(null);
 
-/* <!-- Movies in DB --> */
+  useEffect(() => {
+    async function fetchData() {
+      const productData = await fetchProductData();
+      const userData = await fetchUserData();
 
-let moviesInDB = {
-    title: 'Movies in Data Base',
-    color: 'primary', 
-    cuantity: 21,
-    icon: 'fa-clipboard-list'
-}
+      setProductData(productData);
+      setUserData(userData);
+    }
 
-/* <!-- Total awards --> */
+    fetchData();
+  }, []);
 
-let totalAwards = {
-    title:' Total awards', 
-    color:'success', 
-    cuantity: '79',
-    icon:'fa-award'
-}
+  if (!productData || !userData) {
+    return <div>Loading...</div>;
+  }
 
-/* <!-- Actors quantity --> */
+  const userCount = userData.filter(user => user.user_type === 1).length;
+  const adminCount = userData.filter(user => user.user_type === 2).length;
 
-let actorsQuantity = {
-    title:'Actors quantity' ,
-    color:'warning',
-    cuantity:'49',
-    icon:'fa-user-check'
-}
+  const cartProps = [
+    { title: 'Productos en Data Base', color: 'primary', cuantity: productData.length, icon: 'fa-clipboard-list' },
+    { title: 'Total Usuarios', color: 'success', cuantity: userCount, icon: 'fa-user-check' },
+    { title: 'Total Administradores', color: 'warning', cuantity: adminCount, icon: 'fa-user-shield' },
+    // Otros elementos de cartProps según tus necesidades...
+  ];
 
-let cartProps = [moviesInDB, totalAwards, actorsQuantity];
-
-function ContentRowMovies(){
-    return (
-    
-        <div className="row">
-            
-            {cartProps.map( (movie, i) => {
-
-                return <SmallCard {...movie} key={i}/>
-            
-            })}
-
-        </div>
-    )
+  return (
+    <div className="row">
+      {cartProps.map((item, i) => <SmallCard {...item} key={i} />)}
+    </div>
+  );
 }
 
 export default ContentRowMovies;

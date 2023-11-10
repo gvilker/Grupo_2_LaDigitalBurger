@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+// DetalleUsuario.js
+import React, { useEffect, useState } from 'react';
+import { fetchUserData } from './apiUtils';
 
 function DetalleUsuario({ match }) {
   const [usuario, setUsuario] = useState(null);
@@ -7,19 +9,10 @@ function DetalleUsuario({ match }) {
     async function fetchUsuario() {
       try {
         const usuarioId = match.params.id;
-        const apiUrl = `http://localhost:3010/api/usuarios/${usuarioId}/profile`;
-        const response = await fetch(apiUrl);
-
-        if (!response.ok) {
-          throw new Error(`Error en la solicitud: ${response.status}`);
-        }
-
-        const data = await response.json();
-        setUsuario(data.data || null);
-
-        
+        const data = await fetchUserData(usuarioId);
+        setUsuario(data);
       } catch (error) {
-        console.error('Error al cargar detalles del producto desde la API', error.message);
+        console.error('Error al cargar detalles del usuario desde la API', error.message);
       }
     }
 
@@ -29,6 +22,8 @@ function DetalleUsuario({ match }) {
   if (!usuario) {
     return <div>Loading...</div>;
   }
+
+  // Resto del código para mostrar detalles del usuario...
 
   return (
     <div className="container mt-5">

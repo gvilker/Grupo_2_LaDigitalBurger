@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { useEffect, useState } from 'react';
+import { fetchDataFromAPI } from './apiUtils';
 
 function DetalleProducto({ match }) {
   const [producto, setProducto] = useState(null);
@@ -8,16 +10,8 @@ function DetalleProducto({ match }) {
       try {
         const productId = match.params.id;
         const apiUrl = `http://localhost:3010/api/productos/${productId}/detail`;
-        const response = await fetch(apiUrl);
-
-        if (!response.ok) {
-          throw new Error(`Error en la solicitud: ${response.status}`);
-        }
-
-        const data = await response.json();
-        setProducto(data.data || null);
-
-        
+        const data = await fetchDataFromAPI(apiUrl);
+        setProducto(data);
       } catch (error) {
         console.error('Error al cargar detalles del producto desde la API', error.message);
       }
