@@ -1,12 +1,13 @@
 import React from 'react';
 import image from '../assets/images/dig.png';
 import ContentWrapper from './ContentWrapper';
-import GenresInDb from './GenresInDb';
 import UsersInDb from './UsersInDb';
-import ProductsInDb from './ProductsInDb';
 import LastMovieInDb from './LastMovieInDb';
 import ContentRowMovies from './ContentRowMovies';
-import SearchMovies from './SearchMovies';
+import ListaProductos from './ListaProductos';
+import ListaUsuarios from './ListaUsuarios';
+import DetalleProducto from './DetalleProducto';
+import DetalleUsuario from './DetalleUsuario';
 import NotFound from './NotFound';
 import {Link, Route, Switch} from 'react-router-dom';
 
@@ -42,23 +43,15 @@ function SideBar(){
                 {/*<!-- Heading -->*/}
                 <div className="sidebar-heading">Acciones</div>
 
-                {/*<!-- buscar pelicula -->*/}
-                <li className="nav-item">
-                    <Link className="nav-link" to="/search">
-                    <i className="fas fa-search"></i> {/* Icono de búsqueda, ajusta según tu diseño */}
-                    <span>Buscar Productos</span>
-                    </Link>
-                 </li>
-
                 {/*<!-- Nav Item - Pages -->*/}
                 <li className="nav-item">
-                <Link className="nav-link" to="/ProductsInDb">
+                <Link className="nav-link" to="/ListaProductos">
                         <i className="fas fa-fw fa-folder"></i>
                         <span>Productos</span>
                     </Link>
                 </li>
                 <li className="nav-item">
-                <Link className="nav-link" to="/UsersInDb">
+                <Link className="nav-link" to="/ListaUsuarios">
                         <i className="fas fa-fw fa-folder"></i>
                         <span>Usuarios</span>
                     </Link>
@@ -103,14 +96,8 @@ function SideBar(){
                 <Route exact path="/">
                     <ContentWrapper />
                 </Route>
-                <Route path="/GenresInDb">
-                    <GenresInDb />
-                </Route>
                 <Route path="/UsersInDb">
                     <UsersInDb />
-                </Route>
-                <Route path="/ProductsInDb">
-                    <ProductsInDb />
                 </Route>
                 <Route path="/LastMovieInDb">
                     <LastMovieInDb />
@@ -118,8 +105,19 @@ function SideBar(){
                 <Route path="/ContentRowMovies">
                     <ContentRowMovies />
                 </Route>
-                <Route path="/search">
-                <SearchMovies />
+                <Route path="/ListaProductos">
+                <ListaProductos />
+                </Route>
+                <Route path="/producto/:id/detail" component={DetalleProducto} />
+                <Route path="/ListaProductos">
+                    <ListaProductos />
+                </Route>
+                <Route path="/ListaUsuarios">
+                <ListaUsuarios />
+                </Route>
+                <Route path="/usuarios/:id/profile" component={DetalleUsuario} />
+                <Route path="/ListaUsuarios">
+                    <ListaUsuarios />
                 </Route>
                 <Route component={NotFound} />
             </Switch>

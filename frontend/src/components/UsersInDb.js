@@ -18,7 +18,7 @@ function UsersInDb() {
             </div>
             <div className="col-lg-6 mb-4">
               <div className="card bg-dark text-white shadow">
-                <div className="card-body">administradores</div>
+                <div className="card-body">Administradores</div>
               </div>
             
             </div>
