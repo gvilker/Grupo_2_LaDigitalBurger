@@ -2,6 +2,8 @@ import React from 'react';
 import image from '../assets/images/dig.png';
 import ContentWrapper from './ContentWrapper';
 import GenresInDb from './GenresInDb';
+import UsersInDb from './UsersInDb';
+import ProductsInDb from './ProductsInDb';
 import LastMovieInDb from './LastMovieInDb';
 import ContentRowMovies from './ContentRowMovies';
 import SearchMovies from './SearchMovies';
@@ -38,7 +40,7 @@ function SideBar(){
                 
 
                 {/*<!-- Heading -->*/}
-                <div className="sidebar-heading">Actions</div>
+                <div className="sidebar-heading">Acciones</div>
 
                 {/*<!-- buscar pelicula -->*/}
                 <li className="nav-item">
@@ -50,9 +52,15 @@ function SideBar(){
 
                 {/*<!-- Nav Item - Pages -->*/}
                 <li className="nav-item">
-                <Link className="nav-link" to="/GenresInDb">
+                <Link className="nav-link" to="/ProductsInDb">
                         <i className="fas fa-fw fa-folder"></i>
-                        <span>Pages</span>
+                        <span>Productos</span>
+                    </Link>
+                </li>
+                <li className="nav-item">
+                <Link className="nav-link" to="/UsersInDb">
+                        <i className="fas fa-fw fa-folder"></i>
+                        <span>Usuarios</span>
                     </Link>
                 </li>
 
@@ -97,6 +105,12 @@ function SideBar(){
                 </Route>
                 <Route path="/GenresInDb">
                     <GenresInDb />
+                </Route>
+                <Route path="/UsersInDb">
+                    <UsersInDb />
+                </Route>
+                <Route path="/ProductsInDb">
+                    <ProductsInDb />
                 </Route>
                 <Route path="/LastMovieInDb">
                     <LastMovieInDb />
