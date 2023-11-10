@@ -30,7 +30,7 @@ function ContentRowMovies() {
     { title: 'Productos en Data Base', color: 'primary', cuantity: productData.length, icon: 'fa-clipboard-list' },
     { title: 'Total Usuarios', color: 'success', cuantity: userCount, icon: 'fa-user-check' },
     { title: 'Total Administradores', color: 'warning', cuantity: adminCount, icon: 'fa-user-shield' },
-    // Otros elementos de cartProps según tus necesidades...
+    
   ];
 
   return (
