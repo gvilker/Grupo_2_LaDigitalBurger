@@ -17,6 +17,7 @@ const upload = multer({ storage });
 
 // @GET - /api/products
 router.get('/', productControllers.getList);
+router.get('/:id/detail', productControllers.getDetail);
 
 /*
 // @GET - /products/:id/detail -> /products/5/detail

@@ -62,6 +62,7 @@ const loginValidator = [
 
 // @GET - /user -> Listado de todos los usuarios - Vista como Administrador
 router.get('/', /*isAdminMiddleware*/usersController.getList);
+router.get('/:id/profile', /*isAdminMiddleware*/usersController.profile);
 
 
 
