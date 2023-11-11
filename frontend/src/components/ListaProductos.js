@@ -27,7 +27,7 @@ function ListaProductos() {
 
   useEffect(() => {
     fetchProducts();
-  }, );
+  },[]);
 
   return (
     <div className="container-fluid">
