@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function GenresInDb() {
   return (
@@ -12,24 +13,18 @@ function GenresInDb() {
         <div className="card-body">
           <div className="row">
             <div className="col-lg-6 mb-4">
-              <div className="card bg-dark text-white shadow">
-                <div className="card-body">Hamburgueas picantes</div>
-              </div>
+              <Link to="/ListaProductos" style={{ textDecoration: 'none' }}>
+                <div className="card bg-dark text-white shadow">
+                  <div className="card-body">Productos</div>
+                </div>
+              </Link>
             </div>
             <div className="col-lg-6 mb-4">
-              <div className="card bg-dark text-white shadow">
-                <div className="card-body">Hamburgueas no picantes</div>
-              </div>
-            </div>
-            <div className="col-lg-6 mb-4">
-              <div className="card bg-dark text-white shadow">
-                <div className="card-body">Usuarios</div>
-              </div>
-            </div>
-            <div className="col-lg-6 mb-4">
-              <div className="card bg-dark text-white shadow">
-                <div className="card-body">Administradores</div>
-              </div>
+              <Link to="/ListaUsuarios" style={{ textDecoration: 'none' }}>
+                <div className="card bg-dark text-white shadow">
+                  <div className="card-body">Usuarios</div>
+                </div>
+              </Link>
             </div>
           </div>
         </div>
