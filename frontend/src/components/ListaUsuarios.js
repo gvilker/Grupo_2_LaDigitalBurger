@@ -27,7 +27,7 @@ function ListaUsuarios() {
 
   useEffect(() => {
     fetchUsuarios();
-  }, []);
+  }, );
 
   return (
     <div className="container-fluid">
