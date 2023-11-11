@@ -6,7 +6,7 @@ function ContentRowCenter(){
     return (
         <div className="row">
             
-           
+            
             <LastProductInDb />
            
             <GenresInDb />

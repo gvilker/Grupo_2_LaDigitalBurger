@@ -5,7 +5,7 @@ import foto from '../assets/images/avatars/1695059692682_img.jpg';
 function TopBar() {
   return (
     <React.Fragment>
-      {/*<!-- Topbar -->*/}
+     
       <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
         {/*<!-- Sidebar Toggle (Topbar) -->*/}
         <button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3">
@@ -44,7 +44,7 @@ function TopBar() {
           </li>
         </ul>
       </nav>
-      {/*<!-- End of Topbar -->*/}
+     
     </React.Fragment>
   );
 }

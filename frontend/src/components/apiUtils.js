@@ -1,5 +1,3 @@
-// apiUtils.js
-
 export async function fetchDataFromAPI(apiUrl) {
   try {
     const response = await fetch(apiUrl);

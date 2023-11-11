@@ -1,4 +1,3 @@
-// Alertas.jsx
 import React from 'react';
 
 function Alertas() {
