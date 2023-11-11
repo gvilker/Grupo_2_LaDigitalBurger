@@ -1,6 +1,6 @@
 // DetalleUsuario.js
 import React, { useEffect, useState } from 'react';
-import { fetchUserData } from './apiUtils';
+import { fetchDataFromAPI } from './apiUtils';
 
 function DetalleUsuario({ match }) {
   const [usuario, setUsuario] = useState(null);
@@ -9,7 +9,8 @@ function DetalleUsuario({ match }) {
     async function fetchUsuario() {
       try {
         const usuarioId = match.params.id;
-        const data = await fetchUserData(usuarioId);
+        const apiUrl = `http://localhost:3010/api/usuarios/${usuarioId}/profile`;
+        const data = await fetchDataFromAPI(apiUrl);
         setUsuario(data);
       } catch (error) {
         console.error('Error al cargar detalles del usuario desde la API', error.message);
