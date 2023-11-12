@@ -18,7 +18,26 @@
 <body>
 <%-include("./partials/header")%>
 <div id="home">
-  <h1 class="tituloPrinc">DIGITAL BURGER</h1>
+  <div class="tituloPrinc">
+    <div class="animated-text-container">
+      <svg viewBox="0 0 960 300">
+        <symbol id="s-text">
+          <text text-anchor="middle" x="50%" y="80%">DIGITAL BURGER</text>
+        </symbol>
+  
+        <g class="g-ants">
+          <use xlink:href="#s-text" class="text-copy"></use>
+          <use xlink:href="#s-text" class="text-copy"></use>
+          <use xlink:href="#s-text" class="text-copy"></use>
+          <use xlink:href="#s-text" class="text-copy"></use>
+          <use xlink:href="#s-text" class="text-copy"></use>
+          <use xlink:href="#s-text" class="text-copy"></use>
+          <use xlink:href="#s-text" class="text-copy"></use>
+        </g>
+      </svg>
+    </div>
+  </div>
+
   <div class="carousel-container">
       <div class="carousel">
           <img src="/images/localheader1.jpg" alt="imagen 1" class="carousel-image">
