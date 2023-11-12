@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-10-2023 a las 20:21:51
+-- Tiempo de generación: 12-11-2023 a las 02:39:21
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -32,8 +32,47 @@ CREATE TABLE `carrito` (
   `user_Id` varchar(36) NOT NULL,
   `product_Id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL DEFAULT 1,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `totalPrice` decimal(10,2) DEFAULT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `carrito`
+--
+
+INSERT INTO `carrito` (`id`, `user_Id`, `product_Id`, `quantity`, `created_at`, `totalPrice`, `updated_at`) VALUES
+(23, '980c417d-bd89-4db8-9176-2af3f7d8a2db', 6, 3, '2023-11-11 19:22:30', 13500.00, '2023-11-11 19:22:59'),
+(24, '980c417d-bd89-4db8-9176-2af3f7d8a2db', 15, 4, '2023-11-11 19:23:24', 20800.00, '2023-11-11 19:23:24'),
+(25, 'e9e4f972-87cf-47ca-929e-bb9c016af460', 15, 2, '2023-11-11 19:31:47', 10400.00, '2023-11-11 19:31:47'),
+(26, 'e9e4f972-87cf-47ca-929e-bb9c016af460', 13, 1, '2023-11-11 19:36:05', 4750.00, '2023-11-11 19:36:05'),
+(27, 'f3bdf97e-12df-450e-b742-056f02745e64', 14, 1, '2023-11-11 19:36:40', 5250.00, '2023-11-11 19:36:40'),
+(28, 'f3bdf97e-12df-450e-b742-056f02745e64', 9, 1, '2023-11-11 19:36:55', 3900.00, '2023-11-11 19:36:55'),
+(29, '945c2780-3295-4486-95a8-434a5979ea84', 11, 2, '2023-11-11 19:37:22', 9380.00, '2023-11-11 19:37:22'),
+(30, 'b4de7c24-4927-4e46-824d-f1743cace1ec', 12, 1, '2023-11-11 19:37:56', 4500.00, '2023-11-11 19:37:56'),
+(31, 'b4de7c24-4927-4e46-824d-f1743cace1ec', 8, 1, '2023-11-11 19:38:04', 4750.00, '2023-11-11 19:38:04'),
+(32, '5666951d-e71f-4206-bef5-8716661bf70b', 18, 2, '2023-11-11 19:38:31', 40.00, '2023-11-11 19:38:31'),
+(33, 'abfd35c0-9d12-4335-8726-d30bb44493b1', 10, 1, '2023-11-11 19:39:29', 4860.00, '2023-11-11 19:39:29'),
+(34, '8beb7dff-635a-4d63-a8c5-ccfa8d9e8946', 13, 2, '2023-11-11 19:40:05', 9500.00, '2023-11-11 19:40:05'),
+(35, '2146fc0b-0478-4f2d-b264-047e0476cd8c', 11, 2, '2023-11-11 19:40:41', 9380.00, '2023-11-11 19:40:41'),
+(36, '2146fc0b-0478-4f2d-b264-047e0476cd8c', 8, 2, '2023-11-11 19:40:50', 9500.00, '2023-11-11 19:40:50'),
+(37, 'c340c39b-63e8-46a6-aaed-6e1bb88720f9', 16, 1, '2023-11-11 19:41:51', 4900.00, '2023-11-11 19:41:51'),
+(38, 'c340c39b-63e8-46a6-aaed-6e1bb88720f9', 12, 1, '2023-11-11 19:42:15', 4500.00, '2023-11-11 19:42:15'),
+(39, 'c340c39b-63e8-46a6-aaed-6e1bb88720f9', 6, 2, '2023-11-11 19:42:27', 9000.00, '2023-11-11 19:42:27'),
+(40, 'c5da9bc0-0e33-49ab-ab86-fa645365bd87', 17, 2, '2023-11-11 19:43:28', 9600.00, '2023-11-11 19:43:28'),
+(41, 'c5da9bc0-0e33-49ab-ab86-fa645365bd87', 7, 2, '2023-11-11 19:43:35', 9900.00, '2023-11-11 19:43:35'),
+(42, '5fc66609-e314-42cb-9e76-28ca5152adeb', 8, 1, '2023-11-11 19:44:00', 4750.00, '2023-11-11 19:44:00'),
+(43, '5fc66609-e314-42cb-9e76-28ca5152adeb', 9, 2, '2023-11-11 19:44:07', 7800.00, '2023-11-11 19:44:07'),
+(44, 'dd2b17cf-1dab-48e1-9e35-47b5e1a3e2e9', 13, 2, '2023-11-11 19:45:22', 9500.00, '2023-11-11 19:45:22'),
+(45, 'dd2b17cf-1dab-48e1-9e35-47b5e1a3e2e9', 11, 2, '2023-11-11 19:45:35', 9380.00, '2023-11-11 19:45:35'),
+(46, '00c657b6-1555-42ab-9bb0-78d033dad1a8', 6, 1, '2023-11-11 19:46:15', 4500.00, '2023-11-11 19:46:15'),
+(47, '00c657b6-1555-42ab-9bb0-78d033dad1a8', 13, 4, '2023-11-11 19:46:23', 19000.00, '2023-11-11 19:46:23'),
+(48, '00c657b6-1555-42ab-9bb0-78d033dad1a8', 18, 3, '2023-11-11 19:46:32', 60.00, '2023-11-11 19:46:32'),
+(49, '35b77f5a-6031-41a0-8bc7-609969056fee', 12, 2, '2023-11-11 19:47:19', 9000.00, '2023-11-11 19:47:19'),
+(50, '35b77f5a-6031-41a0-8bc7-609969056fee', 16, 1, '2023-11-11 19:47:27', 4900.00, '2023-11-11 19:47:27'),
+(51, '35b77f5a-6031-41a0-8bc7-609969056fee', 9, 2, '2023-11-11 19:47:36', 7800.00, '2023-11-11 19:47:36'),
+(52, '8d2bb6ec-19ce-4c7f-b0fc-415930e5cc6f', 14, 2, '2023-11-11 19:48:00', 10500.00, '2023-11-11 19:48:00'),
+(53, '8d2bb6ec-19ce-4c7f-b0fc-415930e5cc6f', 9, 4, '2023-11-11 19:48:09', 15600.00, '2023-11-11 19:48:09');
 
 -- --------------------------------------------------------
 
@@ -75,7 +114,7 @@ INSERT INTO `products` (`id`, `name`, `description`, `price`, `image`, `calories
 (15, 'IA Burger', 'Una hamburguesa \"inteligente\" con ingredientes sorprendentes y sabores innovadores.', 5200.00, '/images/products/1695135996961-OIG.mgLG1DWPjJtXEfp.jpg', 14, 5, 16, 21, 200, 0, 'Salsa de mostaza y miel', 'Batatas fritas o asadas', ''),
 (16, 'Robot Roaster', 'Una hamburguesa con carne asada a la parrilla.', 4900.00, '/images/products/1695136091336-Robot-Roaster---Una-hamburguesa-con-carne-asada-a-la-parrilla--inspirada-en-robots-y-su-precisi-n-.png', 15, 6, 15, 22, 195, 0, 'Queso', 'Papas fritas', ''),
 (17, 'Quantum Cheesebruger', 'Una hamburguesa que combina texturas y sabores en un estado cuántico.', 4800.00, '/images/products/1695136301149-Quantum-Cheeseburger---Una-hamburguesa-que-combina-sabores-y-texturas-en-un-estado-cu-ntico- (1).png', 16, 6, 18, 26, 205, 1, 'Lechuga y tomate', 'Coleslaw', ''),
-(18, 'Digital Full Stack', 'La hamburguesa \"Digital Full Stack\" es una deliciosa creación que combina sabores argentinos con un toque contemporáneo. Esta hamburguesa es una experiencia culinaria única que seguramente te dejará con ganas de más.', 20.00, '/images/products/1697480306681-Dig_FULL_STACK.jpg', 1600, 60, 80, 900, 200, 0, 'queso provolone, chedar. Bacon', 'Papas fritas crujientes, salsa de ajo, cerveza artesanal.', '');
+(18, 'Digital Full Stack', 'La hamburguesa \"Digital Full Stack\" es una deliciosa creación que combina sabores argentinos con un toque contemporáneo. Esta hamburguesa es una experiencia culinaria única que seguramente te dejará con ganas de más.', 2950.00, '/images/products/1697589060858-1697480865278-Dig_FULL_STACK.jpg', 1600, 60, 80, 900, 200, 0, 'queso provolone, chedar. Bacon', 'Papas fritas crujientes, salsa de ajo, cerveza artesanal.', '');
 
 -- --------------------------------------------------------
 
@@ -125,7 +164,7 @@ INSERT INTO `users` (`id`, `name`, `alias`, `email`, `password`, `avatar`, `user
 ('ceb58e35-b7e5-4e05-bbad-b5517cee5f5a', 'Usuario18', 'User_18', 'user_18@example.com.ar', '$2b$10$WJ/RlA70cGxOxptIkMxGSeIOIj7v0uMiCHS7MG2/MEqcPdVFBFfaG', '1695130503868_img.jpg', 1),
 ('dd2b17cf-1dab-48e1-9e35-47b5e1a3e2e9', 'Usuario14', 'User_14', 'user_14@example.com.ar', '$2b$10$Pm9O8wDDpvaX/NHoDejBdO1pzUGxud4r5M7QJcxybHV1MdRj6VETC', '1695130341439_img.jpg', 1),
 ('e9e4f972-87cf-47ca-929e-bb9c016af460', 'Usuario1', 'User_1', 'user_1@example.com.ar', '$2b$10$ZUEAZxFAt7OlX5BwokFCPeUr/ewSrExp0qy0j2UlYZoFPrU/1wBKi', '1695059891331_img.jpg', 1),
-('edffd4e2-6b77-4d4f-8c19-fc07c1945214', 'PEPE', 'ADMINpepe', 'pepe@argento.com', '$2b$10$eMwF/1kstyDFSMU3GPaZtOCJV0QZUpkkcUOf3YXO8GXl1Y7QTd0MK', '1697407340397_img.jpg', 2),
+('edffd4e2-6b77-4d4f-8c19-fc07c1945214', 'PEPE', 'ADMINpepe', 'pepe@argento.com', '$2b$10$kMHjQJ/CFHuUv/Yl4iEM0u37H6Sgu3iXxI53LQToqqU3Bk647pNT6', 'Guille1.jpg', 2),
 ('ee004127-9ea8-4c88-b1cb-d58c7603b3c0', 'Administrador', 'Admin', 'admin@example.com', '$2b$10$Cy6DRd3W6xhQLOn2kKtCQ.CsKTBgzYFdQjoC2lPWpU5MD628O9IDe', '1695059692682_img.jpg', 2),
 ('f3bdf97e-12df-450e-b742-056f02745e64', 'Usuario2', 'User_2', 'user_2@example.com.ar', '$2b$10$boZhyJGyCU2Il.zVJq4Dee8GCcZuoN.pkfCkd/cVOf6OlkgC5WEye', '1695059932001_img.jpg', 1),
 ('f6212bbe-4c3b-4a8c-ad58-da9fd158b6cd', 'Usuario28', 'User_28', 'user_28@example.com.ar', '$2b$10$n5lVxnBXV3R5mpJ6Tu7JyOppqHDlpAuPQ5ZaTet5UNhojhqSZ2AEe', '1695130729274_img.jpg', 1);
@@ -188,13 +227,13 @@ ALTER TABLE `usertype`
 -- AUTO_INCREMENT de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `usertype`

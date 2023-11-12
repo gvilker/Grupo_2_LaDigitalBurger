@@ -83,6 +83,7 @@ let productController = {
   
     if (!errors.isEmpty()) {     
       const product = await db.Product.findByPk(req.params.id);
+      console.log('Producto antes de la actualización:', product);
       return res.render('editProduct', { product, errors: errors.array() });
     }
   
@@ -114,7 +115,7 @@ let productController = {
         suggested_Acompaniments: req.body.suggested_Acompaniments,
         additional_Information: req.body.additional_Information,
       });
-  
+      console.log('Producto después de la actualización:', product);
       res.redirect('/products/' + product.id + '/detail');
     } catch (error) {
       console.error('Error al actualizar el producto:', error);
