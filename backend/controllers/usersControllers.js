@@ -8,26 +8,22 @@ const userController = {
   register: (req, res) => {
     res.render('register');
   },
-
   processRegister: async (req, res) => {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
       return res.render('register', { errors: errors.array() });
     }
-
     const { name, alias, email, password, confirm_password } = req.body;
 
     if (password !== confirm_password) {
       return res.render('register', { error: 'Las contraseñas no coinciden.' });
     }
-
     try {
       const existingUser = await db.User.findOne({ where: { email } });
       if (existingUser) {
         return res.render('register', { error: 'El correo electrónico ya está en uso.' });
       }
-
       const hashedPassword = await bcrypt.hash(password, 10);
 
       let avatar = null;
@@ -35,7 +31,6 @@ const userController = {
       if (req.file) {    
         avatar = req.file.filename;
       }
-
       const newUser = await db.User.create({
         name,
         alias,
@@ -43,18 +38,18 @@ const userController = {
         password: hashedPassword,
         user_type: 1,
         avatar, 
-      });
-
-      
+      });      
       res.redirect('/user/login');
     } catch (error) {
       console.error(error);
       res.render('register', { error: 'Error en el registro. Inténtalo de nuevo más tarde.' });
     }
   },
-
   login: (req, res) => {
     res.render('login');
+  },
+  passRecovery: (req, res) => {
+    res.render('passRecovery');
   },
   getEditProfile: async (req, res) => {
     try {
@@ -71,25 +66,24 @@ updateProfileUser: async (req, res) => {
     if (!user) {
       return res.status(404).send('Usuario no encontrado');
     }
-
     const isPasswordValid = await bcrypt.compare(req.body.currentPassword, user.password);
     if (!isPasswordValid) {
       return res.status(400).send('La contraseña actual es incorrecta');
     }
-
     if (req.body.newPassword !== req.body.confirmNewPassword) {
       return res.status(400).send('La nueva contraseña y la confirmación no coinciden');
     }
-
+    if (req.body.userType && req.body.userType !== user.user_type) {
+      return res.status(400).send('No está permitido modificar el userType desde esta función');
+    }
     user.name = req.body.name;
     user.alias = req.body.alias;
-    user.email = req.body.email;
-    user.avatar = req.body.avatar;
-    user.user_type = 1;
-
+    user.email = req.body.email; 
+    if (req.file) {
+      user.avatar = req.file.filename;
+    }
     if (req.body.newPassword) {
-
-      const hashedPassword = await bcrypt.hash(req.body.newPassword, 10); 
+      const hashedPassword = await bcrypt.hash(req.body.newPassword, 10);
       user.password = hashedPassword;
     }
 
@@ -124,32 +118,24 @@ deleteProfile: async (req, res) => {
   
     if (!errors.isEmpty()) {
       return res.render('login', { errors: errors.array() });
-    }
-  
+    }  
     const { email, password } = req.body;
   
-    try {
-     
-      let userToLogin = await db.User.findOne({ where: { email } });
-  
+    try {     
+      let userToLogin = await db.User.findOne({ where: { email } });  
       if (!userToLogin) {
         return res.render('login', { error: 'Credenciales inválidas' });
-      }
-  
+      }  
    
-      let passwordMatch = await bcrypt.compare(password, userToLogin.password);
-  
+      let passwordMatch = await bcrypt.compare(password, userToLogin.password);  
       if (!passwordMatch) {
         return res.render('login', { error: 'Credenciales inválidas' });
       }  
-
       const avatarPath = '/images/avatars/' + userToLogin.avatar;
      
       req.session.userLogged = userToLogin
       req.session.userType = userToLogin.user_type;
       req.session.userLogged.avatar = avatarPath;  
-
-   //console.log(req.session)
 
       return res.redirect('/user/profile');
     } catch (error) {
@@ -157,25 +143,20 @@ deleteProfile: async (req, res) => {
       res.render('login', { error: 'Error en el inicio de sesión. Inténtalo de nuevo más tarde.' });
     }
   },
-
   profile: async (req, res) => {
-    try {
-  
+    try {  
       const user = await db.User.findByPk(req.session.userId);
 
       if (!user) {
         return res.render('profile', { error: 'Usuario no encontrado' });
       }
-
       res.render('profile', { user });
     } catch (error) {
       console.error(error);
       res.render('profile', { error: 'Error al cargar el perfil del usuario' });
     }
   },
-
-  logout: (req, res) => {
- 
+  logout: (req, res) => { 
     req.session.destroy(() => {
       res.redirect('/');
     });
@@ -221,7 +202,6 @@ updateUser: async (req, res) => {
       user_type: req.body.user_type,      
       
     });
-    //console.log(req.body.user_type)
     res.redirect('/user/admin/' + user.id + '/detail');
   } catch (error) {
     console.error('Error al actualizar el usuario:', error);
@@ -257,8 +237,7 @@ searchUsers: async (req, res) => {
           id: query
         }
       });
-    } else {
-     
+    } else {     
       users = await db.User.findAll({
         where: {
           [Op.or]: [
@@ -281,7 +260,6 @@ searchUsers: async (req, res) => {
         }
       });
     }
-
     res.render('userList', { users });
   } catch (error) {
     console.error('Error al buscar usuarios:', error);

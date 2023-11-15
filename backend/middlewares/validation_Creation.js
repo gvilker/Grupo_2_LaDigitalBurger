@@ -29,15 +29,13 @@ const productValidationRules = [
   check('size')
     .isInt({ min: 1 }).withMessage('El tamaño debe ser un número entero positivo'),
 
-  check('additional_ingredients')
-    //.notEmpty().withMessage('Debes proporcionar ingredientes adicionales')
+  check('additional_ingredients')  
     .isLength({ max: 300 }).withMessage('Los ingredientes adicionales no deben exceder los 300 caracteres'),
 
   check('spicy')
     .isBoolean().withMessage('El nivel de picante debe ser verdadero o falso'),
 
-  check('suggested_Acompaniments')
-    //.notEmpty().withMessage('Debes proporcionar sugerencias de acompañamiento')
+  check('suggested_Acompaniments')  
     .isLength({ max: 300 }).withMessage('Las sugerencias de acompañamiento no deben exceder los 300 caracteres'),
     check("img").custom((value, { req }) => {
       let file = req.file;

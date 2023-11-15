@@ -28,8 +28,8 @@ module.exports = (sequelize) => {
   }, {
     tableName: "carrito",
     timestamps: true,
-    createdAt: 'created_at', // Personaliza el nombre de la columna createdAt
-    updatedAt: 'updated_at', // Personaliza el nombre de la columna updatedAt
+    createdAt: 'created_at', 
+    updatedAt: 'updated_at', 
   });
 
   Carrito.associate = function (models) {
@@ -42,8 +42,7 @@ module.exports = (sequelize) => {
       foreignKey: "product_Id",
     });
   };
-
-  // Hooks de Sequelize para calcular el totalPrice antes de crear o actualizar el registro
+ 
   Carrito.beforeCreate((carrito, options) => {
     calculateTotalPrice(carrito);
   });
@@ -52,12 +51,10 @@ module.exports = (sequelize) => {
     calculateTotalPrice(carrito);
   });
 
-  // Función para calcular el totalPrice
   function calculateTotalPrice(carrito) {
     if (carrito.quantity && carrito.producto && carrito.product_Id.price) {
       carrito.totalPrice = carrito.quantity * carrito.product_Id.price;
     }
   }
-
   return Carrito;
 };

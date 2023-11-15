@@ -29,10 +29,11 @@
   <section id="content-eliminar-modificar">
     <a href="/user/<%= locals.userLogged.id %>/edit" class="ver-editar">Editar perfil</a>
     <br></br>
-    <form action="/user/<%= locals.userLogged.id %>/delete?_method=DELETE" method="post">
+    <form id="deleteForm" action="/user/<%= locals.userLogged.id %>/delete?_method=DELETE" method="post">
     <button type="submit" class="ver-eliminar">Eliminar cuenta</button>      
 </section>
   <br></br>
 </div>
+<script src="/js/deleteUserAlert.js"></script>
 
 <%- include('./partials/footer') %>

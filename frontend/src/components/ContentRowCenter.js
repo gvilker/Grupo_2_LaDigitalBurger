@@ -4,8 +4,7 @@ import GenresInDb from './GenresInDb';
 
 function ContentRowCenter(){
     return (
-        <div className="row">
-            
+        <div className="row">            
             
             <LastProductInDb />
            

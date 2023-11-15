@@ -16,7 +16,6 @@
 <body>
     <%-include("./partials/header")%>
 
-    <body>
         <h1 class="titulo">DETALLE DEL PRODUCTO</h1>
         <section id="detalle-producto">
             <div class="contenedor-detalle">
@@ -56,13 +55,13 @@
         <section id="content-eliminar-modificar">
             <a href="/products/<%= product.id %>/edit" class="ver-editar">Editar producto</a>
             <br></br>
-            <form action="/products/<%= product.id %>/delete?_method=DELETE" method="post">
+            <form id="deleteForm" action="/products/<%= product.id %>/delete?_method=DELETE" method="post">
             <button type="submit" class="ver-eliminar">Eliminar producto</button>      
         </section>
         <% } %>
         <% } %>
-    </body>
 
     <%-include ('./partials/footer') %>
+    <script src="/js/deleteAlert.js"></script>
 </body>
 </html>

@@ -16,7 +16,6 @@
 <body>
     <%-include("./partials/header")%>
 
-    <body>
         <h1 class="titulo">DETALLE DEL USUARIO</h1>
         <section id="detalle-producto">
             <div class="contenedor-detalle">
@@ -37,11 +36,11 @@
         <section id="content-eliminar-modificar">
             <a href="/user/admin/<%= user.id %>/edit" class="ver-editar">Modificar permisos de usuario</a>
             <br></br>
-            <form action="/user/admin/<%= user.id %>/delete?_method=DELETE" method="post">
+            <form id="deleteForm" action="/user/admin/<%= user.id %>/delete?_method=DELETE" method="post">
             <button type="submit" class="ver-eliminar">Eliminar usuario</button>                  
 
         </section>
-    </body>
     <%-include ('./partials/footer') %>
+    <script src="/js/deleteUserAlert.js"></script>
 </body>
 </html>

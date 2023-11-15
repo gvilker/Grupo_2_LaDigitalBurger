@@ -14,37 +14,40 @@
 
   <div class="Contenido">
     <div>
-      <h1 class="tituloPrinc">MODIFICAR PERFIL DE USUARIO</h1>
+      <h1 class="tituloPrinc">EDITAR PERFIL DE USUARIO</h1>
     </div>
 
     <form action="/user/<%= user.id %>/edit?_method=PUT" method="POST" class="form-login">
 
-      <label class="formulario" for="name">Tipo de Usuario:
+      <label class="formulario" for="name">Nombre Usuario:
         <input class="control" type="text" id="name" name="name" value="<%= user ? user.name : '' %>" required>
       </label>
 
-      <label class="formulario" for="name">Tipo de Usuario:
+      <label class="formulario" for="alias">Alias:
         <input class="control" type="text" id="alias" name="alias" value="<%= user ? user.alias : '' %>" required>
       </label>
 
-      <label class="formulario" for="name">Tipo de Usuario:
+      <label class="formulario" for="email">Email de Usuario:
         <input class="control" type="email" id="email" name="email" value="<%= user ? user.email : '' %>" required>
       </label>
 
-      <label class="formulario" for="name">Tipo de Usuario:
-        <input class="control" type="file" id="avatar" name="avatar" value="<%= user ? user.avatar : '' %>" required>
+      <label class="formulario" for="avatar">Foto de perfil:
+        <input class="control" type="file" id="avatar" name="avatar" accept="image/*">
       </label>
-
+    
+      <p class="formulario">Imagen actual:</p>
+      <img src="http://localhost:3010/images/avatars/<%= user.avatar %>" alt="Imagen actual del usuario">
+      <br>
       <label class="formulario" for="currentPassword">Contraseña Actual:
         <input class="control" type="password" id="currentPassword" name="currentPassword" required>
       </label>
 
       <label class="formulario" for="newPassword">Nueva Contraseña:
-        <input class="control" type="password" id="newPassword" name="newPassword" required>
+        <input class="control" type="password" id="newPassword" name="newPassword">
       </label>
 
       <label class="formulario" for="confirmNewPassword">Confirmar Nueva Contraseña:
-        <input class="control" type="password" id="confirmNewPassword" name="confirmNewPassword" required>
+        <input class="control" type="password" id="confirmNewPassword" name="confirmNewPassword">
       </label>
       <br></br>
       <br></br>

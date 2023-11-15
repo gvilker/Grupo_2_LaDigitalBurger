@@ -24,8 +24,6 @@ function DetalleUsuario({ match }) {
     return <div>Loading...</div>;
   }
 
-  // Resto del código para mostrar detalles del usuario...
-
   return (
     <div className="container mt-5">
       <div className="row justify-content-center">

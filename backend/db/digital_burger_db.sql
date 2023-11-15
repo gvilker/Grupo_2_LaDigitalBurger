@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-11-2023 a las 02:39:21
+-- Tiempo de generación: 15-11-2023 a las 04:18:44
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -72,7 +72,8 @@ INSERT INTO `carrito` (`id`, `user_Id`, `product_Id`, `quantity`, `created_at`, 
 (50, '35b77f5a-6031-41a0-8bc7-609969056fee', 16, 1, '2023-11-11 19:47:27', 4900.00, '2023-11-11 19:47:27'),
 (51, '35b77f5a-6031-41a0-8bc7-609969056fee', 9, 2, '2023-11-11 19:47:36', 7800.00, '2023-11-11 19:47:36'),
 (52, '8d2bb6ec-19ce-4c7f-b0fc-415930e5cc6f', 14, 2, '2023-11-11 19:48:00', 10500.00, '2023-11-11 19:48:00'),
-(53, '8d2bb6ec-19ce-4c7f-b0fc-415930e5cc6f', 9, 4, '2023-11-11 19:48:09', 15600.00, '2023-11-11 19:48:09');
+(53, '8d2bb6ec-19ce-4c7f-b0fc-415930e5cc6f', 9, 4, '2023-11-11 19:48:09', 15600.00, '2023-11-11 19:48:09'),
+(54, 'ee004127-9ea8-4c88-b1cb-d58c7603b3c0', 8, 1, '2023-11-15 03:06:04', 4750.00, '2023-11-15 03:06:04');
 
 -- --------------------------------------------------------
 
@@ -165,7 +166,7 @@ INSERT INTO `users` (`id`, `name`, `alias`, `email`, `password`, `avatar`, `user
 ('dd2b17cf-1dab-48e1-9e35-47b5e1a3e2e9', 'Usuario14', 'User_14', 'user_14@example.com.ar', '$2b$10$Pm9O8wDDpvaX/NHoDejBdO1pzUGxud4r5M7QJcxybHV1MdRj6VETC', '1695130341439_img.jpg', 1),
 ('e9e4f972-87cf-47ca-929e-bb9c016af460', 'Usuario1', 'User_1', 'user_1@example.com.ar', '$2b$10$ZUEAZxFAt7OlX5BwokFCPeUr/ewSrExp0qy0j2UlYZoFPrU/1wBKi', '1695059891331_img.jpg', 1),
 ('edffd4e2-6b77-4d4f-8c19-fc07c1945214', 'PEPE', 'ADMINpepe', 'pepe@argento.com', '$2b$10$kMHjQJ/CFHuUv/Yl4iEM0u37H6Sgu3iXxI53LQToqqU3Bk647pNT6', 'Guille1.jpg', 2),
-('ee004127-9ea8-4c88-b1cb-d58c7603b3c0', 'Administrador', 'Admin', 'admin@example.com', '$2b$10$Cy6DRd3W6xhQLOn2kKtCQ.CsKTBgzYFdQjoC2lPWpU5MD628O9IDe', '1695059692682_img.jpg', 2),
+('ee004127-9ea8-4c88-b1cb-d58c7603b3c0', 'Hacker Cat', 'Admin', 'admin@example.com', '$2b$10$9ApArwUP3JZ0zCYnboRzN.JesGW0iO5Sj/dSw5juusHAX8wPNJv3u', '1695059692682_img.jpg', 2),
 ('f3bdf97e-12df-450e-b742-056f02745e64', 'Usuario2', 'User_2', 'user_2@example.com.ar', '$2b$10$boZhyJGyCU2Il.zVJq4Dee8GCcZuoN.pkfCkd/cVOf6OlkgC5WEye', '1695059932001_img.jpg', 1),
 ('f6212bbe-4c3b-4a8c-ad58-da9fd158b6cd', 'Usuario28', 'User_28', 'user_28@example.com.ar', '$2b$10$n5lVxnBXV3R5mpJ6Tu7JyOppqHDlpAuPQ5ZaTet5UNhojhqSZ2AEe', '1695130729274_img.jpg', 1);
 
@@ -227,13 +228,13 @@ ALTER TABLE `usertype`
 -- AUTO_INCREMENT de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `usertype`

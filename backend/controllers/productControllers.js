@@ -11,7 +11,6 @@ let productController = {
       res.render('productList', { products: products });
     })
   },
-
   getDetail: function (req,res) {
     db.Product.findByPk(req.params.id)
     .then(function(product){
@@ -21,27 +20,21 @@ let productController = {
         res.send('Producto no encontrado');
       }
     })
-  },
-  
+  },  
   getCreate: function (req, res) {
     res.render ('createProduct')
   },
-
   postProduct: async (req, res) => {
     try {
       const filenames = req.files.map(file => file.filename);
-      //console.log('Filenames:', filenames);
   
-      const imagePath = '/images/products/' + filenames[0];
-  
+      const imagePath = '/images/products/' + filenames[0];  
 
       const price = parseFloat(req.body.price);
   
-      if (isNaN(price)) {   
-        //console.log('Precio inválido:', req.body.price);
+      if (isNaN(price)) {  
         return res.render('createProduct', { product: null, errors: [{ msg: 'Precio inválido' }] });
       }
-
       const formattedPrice = price.toFixed(2);
   
       const newProduct = {
@@ -58,10 +51,8 @@ let productController = {
         additional_ingredients: req.body.additional_ingredients,
         suggested_Acompaniments: req.body.suggested_Acompaniments,
         additional_Information: req.body.additional_Information,
-      };
-  
+      };  
       const createdProduct = await db.Product.create(newProduct);
-      //console.log('Producto creado:', createdProduct);
   
       res.redirect('/products/' + createdProduct.id + '/detail');
     } catch (error) {
@@ -72,15 +63,13 @@ let productController = {
   getEdit: async (req, res) => {
     try {
         const product = await db.Product.findByPk(req.params.id);
-
         res.render('editProduct', { product });
     } catch (error) {
         res.send(error)
     }        
 },
   updateProduct: async (req, res) => {
-    const errors = validationResult(req);
-  
+    const errors = validationResult(req);  
     if (!errors.isEmpty()) {     
       const product = await db.Product.findByPk(req.params.id);
       console.log('Producto antes de la actualización:', product);
@@ -88,18 +77,15 @@ let productController = {
     }
   
     const filenames = req.files && req.files.length > 0 ? req.files.map(file => file.filename) : [];
-    //console.log(filenames);
   
     let imagePath = req.files && req.files.length > 0
       ? '/images/products/' + req.files[0].filename
-      : req.body.image; 
-  
+      : req.body.image;   
     try {
       const product = await db.Product.findByPk(req.params.id);  
       if (!product) {
         return res.status(404).send('Producto no encontrado');
-      }  
-     
+      }       
       await product.update({
         name: req.body.name,
         description: req.body.description,
@@ -144,8 +130,7 @@ let productController = {
   
       let products;
   
-      if (criteria === 'name') {
-     
+      if (criteria === 'name') {     
         products = await db.Product.findAll({
           where: {
             name: {
@@ -153,8 +138,7 @@ let productController = {
             }
           }
         });
-      } else if (criteria === 'description') {
-      
+      } else if (criteria === 'description') {      
         products = await db.Product.findAll({
           where: {
             description: {
@@ -162,8 +146,7 @@ let productController = {
             }
           }
         });
-      } else if (criteria === 'price') {
-        
+      } else if (criteria === 'price') {        
         products = await db.Product.findAll({
           where: {
             price: {
@@ -171,8 +154,7 @@ let productController = {
             }
           }
         });
-      }     
-  
+      }       
       res.render('productList', { products });
     } catch (error) {
       console.error('Error al buscar productos:', error);

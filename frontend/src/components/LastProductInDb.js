@@ -10,13 +10,11 @@ function LastProductInDb() {
       try {
         const productData = await fetchProductData();
 
-        // Encuentra el producto con el ID más alto
         const lastProductId = productData.reduce(
           (maxId, product) => (product.id > maxId ? product.id : maxId),
           0
         );
 
-        // Llama a la API para obtener los detalles del último producto
         const apiUrl = `http://localhost:3010/api/productos/${lastProductId}/detail`;
         const lastProductDetail = await fetchDataFromAPI(apiUrl);
 

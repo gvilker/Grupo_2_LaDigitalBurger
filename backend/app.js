@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser');
 const logMiddleware = require('./middlewares/logMiddleware');
 const maintenanceMiddleware = require('./middlewares/maintenanceMiddleware');
 const cookieAuthMiddleware = require('./middlewares/cookieAuthMiddleware');
-const cors = require('cors'); // Importa la dependencia CORS
+const cors = require('cors'); 
 
 const app = express();
 
@@ -38,7 +38,7 @@ app.use(express.json());
 app.use(methodOverride('_method'));
 
 app.use(cookieAuthMiddleware);
-app.use(cors({ origin: 'http://localhost:3000' })); // Configura CORS para permitir solicitudes desde http://localhost:3000
+app.use(cors({ origin: 'http://localhost:3000' })); 
 
 app.use("/", mainRouter);
 app.use("/user", usersRouter);
@@ -54,23 +54,3 @@ app.use((req, res) => {
 app.listen(port, () => {
     console.log("Servidor escuchando en http://localhost:" + port);
 });
-
-
-// npm i express-session,
-// npm i bcrypt,
-
-
-
-// adicionales: carrito de compras y pago con mercado pago
-
-
-
-
-
-
-
-
-
-
-
-

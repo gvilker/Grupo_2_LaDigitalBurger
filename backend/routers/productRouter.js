@@ -28,7 +28,7 @@ router.get('/:id/detail', productControllers.getDetail);
 router.get('/create', isAdminMiddleware, productControllers.getCreate);
 
 // @POST - /products como Administrador
-router.post('/', upload.any('img'), isAdminMiddleware, productValidationRules ,productControllers.postProduct);
+router.post('/', upload.any('img'), /*isAdminMiddleware, productValidationRules ,*/productControllers.postProduct);
 
 // @GET - /products/:id/edit como Administrador
 router.get('/:id/edit', isAdminMiddleware, productControllers.getEdit);

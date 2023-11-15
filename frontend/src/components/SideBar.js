@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import image from '../assets/images/dig.png';
 import ContentWrapper from './ContentWrapper';
 import UsersInDb from './UsersInDb';
@@ -10,21 +10,31 @@ import DetalleProducto from './DetalleProducto';
 import DetalleUsuario from './DetalleUsuario';
 import Alertas from './Alertas';
 import Emails from './Emails';
+import CreateProduct from './CreateProduct';
+import Login from './Login';
 import NotFound from './NotFound';
-import {Link, Route, Switch} from 'react-router-dom';
+import PrivateRoute from './PrivateRoute';
+import { Link, Route, Switch } from 'react-router-dom';
 
-function SideBar(){
+function SideBar() {
+  const [productoCreado, setProductoCreado] = useState(false);
+
+  const tuFuncion = () => {
+    setProductoCreado(true);
+  };
+  
     return(
         <React.Fragment>
             {/*<!-- Sidebar -->*/}
             <ul className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
 
                 {/*<!-- Sidebar - Brand -->*/}
-                <a className="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+                <Link className="sidebar-brand d-flex align-items-center justify-content-center" to="/">
+  
                     <div className="sidebar-brand-icon" style={{ marginTop: "10px" }}>
                         <img className="w-25 rounded-circle" src={image} alt="Digital Burger"/>
                     </div>
-                </a>
+                </Link>
 
                 {/*<!-- Divider -->*/}
                 <hr className="sidebar-divider my-0"/>
@@ -56,6 +66,7 @@ function SideBar(){
                         <span>Usuarios</span>
                     </Link>
                 </li>
+                
 
                 {/*<!-- Nav Item - Charts -->*/}
                 <li className="nav-item">
@@ -69,6 +80,13 @@ function SideBar(){
                 <Link className="nav-link" to="/ContentRowData">
                         <i className="fas fa-fw fa-table"></i>
                         <span>Tables</span></Link>
+                </li>
+
+                {/*<!-- Nav Item - Login -->*/}
+                <li className="nav-item nav-link">
+                <Link className="nav-link" to="/Login">
+                        <i className="fas fa-fw fa-table"></i>
+                        <span>Iniciar Session</span></Link>
                 </li>
 
        
@@ -104,7 +122,10 @@ function SideBar(){
                 </Route>
                 <Route path="/Alertas" component={Alertas} />
                 <Route path="/Emails" component={Emails} />
+                <PrivateRoute path="/product/create" component={() => <CreateProduct onProductoSubmit={tuFuncion} />} adminOnly />
+                <Route path='/Login'component={Login} />
                 <Route component={NotFound} />
+                
             </Switch>
             
         </React.Fragment>

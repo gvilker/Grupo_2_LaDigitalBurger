@@ -18,7 +18,6 @@ module.exports = {
                 query: req.query
             }
         }
-
         res.status(statusCode).json(response);
     } catch (error) {
         console.error(error);
@@ -40,7 +39,6 @@ module.exports = {
                 query: req.query
             }
         }
-
         res.status(statusCode).json(response);
     } catch (error) {
         console.error(error);

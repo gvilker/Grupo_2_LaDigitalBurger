@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import foto from '../assets/images/avatars/1695059692682_img.jpg';
+import { useAuth } from './AuthContext';
 
 function TopBar() {
+  const { userData } = useAuth(); 
+
   return (
     <React.Fragment>
-     
       <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
         {/*<!-- Sidebar Toggle (Topbar) -->*/}
         <button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3">
@@ -32,19 +33,24 @@ function TopBar() {
           <div className="topbar-divider d-none d-sm-block"></div>
           {/*<!-- Nav Item - User Information -->*/}
           <li className="nav-item dropdown no-arrow">
-            <a className="nav-link dropdown-toggle" href="/" id="userDropdown">
-              <span className="mr-2 d-none d-lg-inline text-gray-600 small">Hacker Cat Admin</span>
-              <img
-                className="img-profile rounded-circle"
-                src={foto}
-                alt="Hacker Cat Admin - Creador"
-                width="60"
-              />
-            </a>
+            {userData ? (
+              <Link className="nav-link dropdown-toggle" to={`/usuarios/${userData.userId}/profile`} id="userDropdown">
+                <span className="mr-2 d-none d-lg-inline text-gray-600 small">
+                  {userData.userType === 1 ? 'Usuario' : 'Administrador'}: {userData.userName}
+                </span>
+                {userData && (
+                  <img
+                    className="img-profile rounded-circle"
+                    src={`http://localhost:3010${userData.avatarPath}`} 
+                    alt={userData.userName}
+                    width="60"
+                  />
+                )}
+              </Link>
+            ) : null}
           </li>
         </ul>
       </nav>
-     
     </React.Fragment>
   );
 }
