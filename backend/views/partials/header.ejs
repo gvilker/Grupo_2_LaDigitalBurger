@@ -16,6 +16,7 @@
             <% if (locals.isLogged) { %>
                 <% if (locals.userType === 2) { %>
                     <li><a href="/user">Usuarios</a></li>
+                    <li><a href="/contact/messages">Mensajes</a></li>
                 <% } %>
             <% } %>
             <% if (locals.isLogged) { %>         
@@ -26,7 +27,6 @@
             <li><a href="/user/login">Iniciar Sesión</a></li>
             <li><a href="/user/register">Registrarme</a></li>
             <% } %>
-            <!-- Agrega aquí tus otras opciones de menú -->
         </ul>
     </div>
 </div>
@@ -50,6 +50,7 @@
             <% if (locals.isLogged) { %>
                 <% if (locals.userType === 2) { %>
                     <li><a href="/user">Usuarios</a></li>
+                    <li><a href="/contact/messages">Mensajes</a></li>
                 <% } %>
             <% } %>
         </ul>

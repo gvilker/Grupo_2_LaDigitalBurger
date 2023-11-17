@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+  <link rel="stylesheet" type="text/css" href="/css/producto.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- VINCULACION A GOOLE FONTS Y FONTS AWESOME-->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Tektur&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/157adaf284.js" crossorigin="anonymous"></script>
+  <title>DigitalBurguer</title>
+</head>
+
+<body>
+    <%-include("./partials/header")%>
+
+    <h1 class="titulo">MENSAJES DE USUARIOS</h1>
+
+    <section id="contactos" class="menu">
+        <% contactos.forEach((contacto, index) => { %>
+            <div class="producto">
+                <div class="descripcion">
+                    <h2 class="burger">Mensaje <%= index + 1 %></h2>
+                    <p><strong>Nombre:</strong> <%= contacto.name %></p><br>
+                    <p><strong>Email:</strong> <%= contacto.email %></p><br>
+                    <p><strong>Mensaje:</strong> <%= contacto.message %></p>
+                </div>
+            </div>
+        <% }); %>
+    </section>
+    
+
+<br></br>
+    <%-include ('./partials/footer') %>
+</body>
+</html>

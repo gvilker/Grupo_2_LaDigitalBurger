@@ -155,7 +155,7 @@ footer#contacto a i {
   height: 50px;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 940px) {
   .hamburguer-boton {
       display: none;
   }
@@ -179,7 +179,7 @@ footer#contacto a i {
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 939px) {
   .menu-small {
     display: block;
     width: 30%;

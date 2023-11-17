@@ -17,18 +17,16 @@
 <div>
   <h1 class="tituloPrinc">DIGITAL REGISTER - RECUPERAR CUENTA</h1>
 </div>
-<form action="/user/login" method="POST" class="form-login">    
 
+<form action="/user/login" method="GET" class="form-login">  
+  <div class="formulario">
+    <input type="email" name="email" id="inputEmail" placeholder="Escriba su Email" class="control">
+  </div> 
+  <button type="submit" id="button" class="boton-formulario">Enviar</button>
+</form>
 
-      <div class="formulario">
-        <input type="email" name="email" id="inputEmail" placeholder="escriba su Email" class="control">
-      </div> 
-
-    <button type="submit" id="button" class="boton-formulario" >Enviar</button>
-    </div>
-
-  </form>
 </div>
 <%-include ('./partials/footer') %>
+<script src="/js/RecoveryAlert.js"></script>
 </body>
 </html>

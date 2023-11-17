@@ -17,8 +17,10 @@ const mainRouter = require("./routers/mainRouter.js");
 const usersRouter = require("./routers/usersRouter.js");
 const productRouter = require("./routers/productRouter.js");
 const cartRouter = require("./routers/cartRouter.js");
+const contactRouter = require("./routers/contactRouter.js")
 const apiProductRouter = require('./routers/api/apiProductRouter.js');
 const apiUsersRouter = require('./routers/api/apiUsersRouter.js');
+const apiContactRouter = require('./routers/api/apiContactRouter.js')
 
 app.set("view engine", "ejs");
 app.set('views', [path.join(__dirname, './views')]);
@@ -32,11 +34,10 @@ app.use(userLoggedMiddleware);
 app.use(maintenanceMiddleware);
 app.use(logMiddleware);
 app.use(express.static("public"));
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(express.json());
 app.use(methodOverride('_method'));
-
 app.use(cookieAuthMiddleware);
 app.use(cors({ origin: 'http://localhost:3000' })); 
 
@@ -44,8 +45,11 @@ app.use("/", mainRouter);
 app.use("/user", usersRouter);
 app.use("/products", productRouter);
 app.use("/cart", cartRouter);
+app.use("/contact", contactRouter)
 app.use('/api/productos', apiProductRouter);
 app.use('/api/usuarios', apiUsersRouter);
+app.use('/api/contactos', apiContactRouter);
+
 
 app.use((req, res) => {
     res.render('404');

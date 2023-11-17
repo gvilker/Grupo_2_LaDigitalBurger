@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-11-2023 a las 04:18:44
+-- Tiempo de generación: 17-11-2023 a las 23:16:27
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -73,7 +73,39 @@ INSERT INTO `carrito` (`id`, `user_Id`, `product_Id`, `quantity`, `created_at`, 
 (51, '35b77f5a-6031-41a0-8bc7-609969056fee', 9, 2, '2023-11-11 19:47:36', 7800.00, '2023-11-11 19:47:36'),
 (52, '8d2bb6ec-19ce-4c7f-b0fc-415930e5cc6f', 14, 2, '2023-11-11 19:48:00', 10500.00, '2023-11-11 19:48:00'),
 (53, '8d2bb6ec-19ce-4c7f-b0fc-415930e5cc6f', 9, 4, '2023-11-11 19:48:09', 15600.00, '2023-11-11 19:48:09'),
-(54, 'ee004127-9ea8-4c88-b1cb-d58c7603b3c0', 8, 1, '2023-11-15 03:06:04', 4750.00, '2023-11-15 03:06:04');
+(54, 'ee004127-9ea8-4c88-b1cb-d58c7603b3c0', 8, 1, '2023-11-15 03:06:04', 4750.00, '2023-11-15 03:06:04'),
+(55, '94f73f72-2374-4ce1-9829-b36e944e0676', 6, 1, '2023-11-17 01:28:54', 4500.00, '2023-11-17 01:28:54');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `contact`
+--
+
+CREATE TABLE `contact` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `message` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `contact`
+--
+
+INSERT INTO `contact` (`id`, `name`, `email`, `message`) VALUES
+(2, 'Cosme Fulanito', 'cosme@hotmail.com', 'Esas hamburguesas están tremendas!! '),
+(3, ' Juan Pérez', 'juan.perez@gmail.com', 'Las hamburguesas son increíbles! Me encanta el sabor y la variedad.'),
+(4, 'María Rodríguez', 'maria.rodriguez@yahoo.com', 'Fui con mis amigos y disfrutamos mucho de la comida! Definitivamente volveremos.'),
+(5, 'Carlos Gómez', 'carlos.gomez@hotmail.com', 'La experiencia en DigitalBurger fue genial. Las hamburguesas son deliciosas y el servicio es excelente.'),
+(6, 'Laura Martínez', 'laura.martinez@gmail.com', '¿Tienen alguna promoción especial para cumpleaños? Estamos planeando una celebración y nos encantaría incluir sus deliciosas hamburguesas.'),
+(7, 'Diego Sánchez', 'diego.sanchez@yahoo.com', 'Me encantó la última vez que estuve en DigitalBurger, pero me preguntaba si tienen opciones vegetarianas. ¿Ofrecen alguna hamburguesa vegetariana en su menú?'),
+(8, 'Carolina López', 'carolina.lopez@hotmail.com', 'Cuál es su hamburguesa más picante? Me encantan las cosas con un toque de picante y estoy buscando algo emocionante.'),
+(9, 'Javier Torres', 'javier.torres@gmail.com', '¿Tienen opciones sin gluten en su menú? Mi amigo tiene intolerancia al gluten y estamos buscando un lugar para cenar juntos.'),
+(10, 'Ana Rodríguez', 'ana.rodriguez@yahoo.com', 'Ofrecen servicio a domicilio? A veces, prefiero disfrutar de sus hamburguesas desde la comodidad de mi hogar.'),
+(11, 'Martín Gutiérrez', 'martin.gutierrez@gmail.com', 'Hola, ¿tienen alguna opción de hamburguesa con ingredientes locales o algún toque especial de la región? Estoy interesado en probar algo auténtico.'),
+(12, 'Paula Martínez', 'paula.martinez@yahoo.com', '¿Cuál es su hamburguesa más popular entre los clientes? Estoy buscando recomendaciones para mi próxima visita.'),
+(13, 'Alejandro Ramírez', 'alejandro.ramirez@hotmail.com', ' ¿Tienen algún programa de lealtad o membresía para clientes frecuentes? Me encanta su comida y siempre estoy buscando formas de obtener beneficios adicionales.');
 
 -- --------------------------------------------------------
 
@@ -115,7 +147,8 @@ INSERT INTO `products` (`id`, `name`, `description`, `price`, `image`, `calories
 (15, 'IA Burger', 'Una hamburguesa \"inteligente\" con ingredientes sorprendentes y sabores innovadores.', 5200.00, '/images/products/1695135996961-OIG.mgLG1DWPjJtXEfp.jpg', 14, 5, 16, 21, 200, 0, 'Salsa de mostaza y miel', 'Batatas fritas o asadas', ''),
 (16, 'Robot Roaster', 'Una hamburguesa con carne asada a la parrilla.', 4900.00, '/images/products/1695136091336-Robot-Roaster---Una-hamburguesa-con-carne-asada-a-la-parrilla--inspirada-en-robots-y-su-precisi-n-.png', 15, 6, 15, 22, 195, 0, 'Queso', 'Papas fritas', ''),
 (17, 'Quantum Cheesebruger', 'Una hamburguesa que combina texturas y sabores en un estado cuántico.', 4800.00, '/images/products/1695136301149-Quantum-Cheeseburger---Una-hamburguesa-que-combina-sabores-y-texturas-en-un-estado-cu-ntico- (1).png', 16, 6, 18, 26, 205, 1, 'Lechuga y tomate', 'Coleslaw', ''),
-(18, 'Digital Full Stack', 'La hamburguesa \"Digital Full Stack\" es una deliciosa creación que combina sabores argentinos con un toque contemporáneo. Esta hamburguesa es una experiencia culinaria única que seguramente te dejará con ganas de más.', 2950.00, '/images/products/1697589060858-1697480865278-Dig_FULL_STACK.jpg', 1600, 60, 80, 900, 200, 0, 'queso provolone, chedar. Bacon', 'Papas fritas crujientes, salsa de ajo, cerveza artesanal.', '');
+(18, 'Digital Full Stack', 'La hamburguesa \"Digital Full Stack\" es una deliciosa creación que combina sabores argentinos con un toque contemporáneo. Esta hamburguesa es una experiencia culinaria única que seguramente te dejará con ganas de más.', 2950.00, '/images/products/1697589060858-1697480865278-Dig_FULL_STACK.jpg', 1600, 60, 80, 900, 200, 0, 'queso provolone, chedar. Bacon', 'Papas fritas crujientes, salsa de ajo, cerveza artesanal.', ''),
+(30, 'Termolar', 'fdsfdsafdsafdsa', 100.00, '/images/products/1700184143228-1694611134553_img.jpg', 100, 100, 0, 0, 0, 0, '', '', '');
 
 -- --------------------------------------------------------
 
@@ -156,6 +189,7 @@ INSERT INTO `users` (`id`, `name`, `alias`, `email`, `password`, `avatar`, `user
 ('8beb7dff-635a-4d63-a8c5-ccfa8d9e8946', 'Usuario8', 'User_8', 'user_8@example.com.ar', '$2b$10$Zp4zKahVoeW9TN1UQHbnL.wSqCMHJi3j03QHF1UTe6GlkzIpsil9y', '1695060291991_img.jpg', 1),
 ('8d2bb6ec-19ce-4c7f-b0fc-415930e5cc6f', 'Usuario17', 'User_17', 'user_17@example.com.ar', '$2b$10$h8DMRPaw9mqEr2nx/4ylh.xSyEqZII2H7irjgyaBu38OwC3Yg6DK2', '1695130482749_img.jpg', 1),
 ('945c2780-3295-4486-95a8-434a5979ea84', 'Usuario3', 'User_3', 'user_3@example.com.ar', '$2b$10$ry95Mihrq5Kn1wr0Wgam7uFJMBpI8D5GxkXNpF2sPVF8hvFmfxw2S', '1695059988029_img.jpg', 1),
+('94f73f72-2374-4ce1-9829-b36e944e0676', 'Cosme Fulanito', 'El Cosme', 'cosme@gmail.com', '$2b$10$5J7/j4tIfF3KfO1.bT5GSuwmSDV/0.FRBONaxquBzHQmOewZJ6GPq', '1700184291604_img.jpg', 1),
 ('980c417d-bd89-4db8-9176-2af3f7d8a2db', 'Usuario11', 'User_11', 'user_11@example.com.ar', '$2b$10$HUOoRFwNSgnJo6DbykzvS.gGNxqbq/svZy.PAB55INQKKnYM/wqDa', '1695129670173_img.jpg', 1),
 ('abfd35c0-9d12-4335-8726-d30bb44493b1', 'Usuario7', 'User_7', 'user_7@example.com.ar', '$2b$10$mOl3nKFA/O.o.6xFu4jnue.Vg.ppqP84dt2nKqjwv4Ds4.1IWydIm', '1695060260366_img.jpg', 1),
 ('b4de7c24-4927-4e46-824d-f1743cace1ec', 'Usuario4', 'User_4', 'user_4@example.com.ar', '$2b$10$PAjZL/DXXQQhazugY1R8xOWs0JflgmwZDO.9xBjK/r9OKgADe8RhC', '1695060023678_img.jpg', 1),
@@ -202,6 +236,12 @@ ALTER TABLE `carrito`
   ADD KEY `product_Id` (`product_Id`);
 
 --
+-- Indices de la tabla `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `products`
 --
 ALTER TABLE `products`
@@ -228,13 +268,19 @@ ALTER TABLE `usertype`
 -- AUTO_INCREMENT de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+
+--
+-- AUTO_INCREMENT de la tabla `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `usertype`

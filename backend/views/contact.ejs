@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
+    <script src="https://kit.fontawesome.com/157adaf284.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Tektur&display=swap" rel="stylesheet">
+    <title>Contacto DigitalBurguer</title>
+</head>
+<body>
+    <%-include("./partials/header")%>
+
+  <div class="Contenido">
+    <div>
+        <h1 class="tituloPrinc">DIGITAL BURGER - CONTACTO</h1>
+      </div>
+    
+      <form action="/contact" method="POST" class="form-login">
+        <div class="formulario">
+            <input type="text" id="contactName" name="contactName" placeholder="Escriba su nombre" class="control" required>
+        </div>
+    
+        <div class="formulario">
+            <input type="email" id="contactEmail" name="contactEmail" placeholder="Escriba su correo electrónico" class="control" required>
+        </div>
+    
+        <div class="formulario">
+            <textarea id="contactMessage" name="contactMessage" placeholder="escriba su Mensaje" class="control" required></textarea>
+        </div>
+    
+        <button type="submit" id="button" class="boton-formulario">Enviar consulta</button>
+    </form>
+</div>  
+    
+
+    <%-include ('./partials/footer') %>
+</body>
+</html>
