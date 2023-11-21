@@ -37,7 +37,7 @@ router.get('/:id/edit', isAdminMiddleware, productControllers.getEdit);
 router.delete('/:id/delete',isAdminMiddleware, productControllers.deleteProduct);
 
 // @UPDATE - /products/:id/edit  como Administrador
-router.put('/:id/edit',isAdminMiddleware, upload.any('img'), productValidationRules , productControllers.updateProduct);// Le quité las validaciones ya que no dejaba enviar el formulario.
+router.put('/:id/edit',isAdminMiddleware, upload.any('img'), /*productValidationRules*/  productControllers.updateProduct);// Le quité las validaciones ya que no dejaba enviar el formulario.
 
 // buscar productos
 router.get('/search', productControllers.searchProducts);
