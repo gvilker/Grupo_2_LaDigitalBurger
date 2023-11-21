@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import image from '../assets/images/dig.png';
 import ContentWrapper from './ContentWrapper';
 import UsersInDb from './UsersInDb';
@@ -10,18 +10,11 @@ import DetalleProducto from './DetalleProducto';
 import DetalleUsuario from './DetalleUsuario';
 import Alertas from './Alertas';
 import Emails from './Emails';
-import CreateProduct from './CreateProduct';
 import Login from './Login';
 import NotFound from './NotFound';
-import PrivateRoute from './PrivateRoute';
 import { Link, Route, Switch } from 'react-router-dom';
 
 function SideBar() {
-  const [productoCreado, setProductoCreado] = useState(false);
-
-  const tuFuncion = () => {
-    setProductoCreado(true);
-  };
   
     return(
         <React.Fragment>
@@ -68,12 +61,7 @@ function SideBar() {
                 </li>
                 
 
-                {/*<!-- Nav Item - Charts -->*/}
-                <li className="nav-item">
-                    <Link className="nav-link" to="/LastProductInDb">
-                        <i className="fas fa-fw fa-chart-area"></i>
-                        <span>Charts</span></Link>
-                </li>
+                
 
                 {/*<!-- Nav Item - Tables -->*/}
                 <li className="nav-item nav-link">
@@ -122,7 +110,7 @@ function SideBar() {
                 </Route>
                 <Route path="/Alertas" component={Alertas} />
                 <Route path="/Emails" component={Emails} />
-                <PrivateRoute path="/product/create" component={() => <CreateProduct onProductoSubmit={tuFuncion} />} adminOnly />
+            
                 <Route path='/Login'component={Login} />
                 <Route component={NotFound} />
                 

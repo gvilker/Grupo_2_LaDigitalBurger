@@ -26,13 +26,6 @@ function GenresInDb() {
                 </div>
               </Link>
             </div>
-            <div className="col-lg-6 mb-4">
-              <Link to="/product/create" style={{ textDecoration: 'none' }}>
-                <div className="card bg-dark text-white shadow">
-                  <div className="card-body">Nuevo Producto</div>
-                </div>
-              </Link>
-            </div>
           </div>
         </div>
       </div>

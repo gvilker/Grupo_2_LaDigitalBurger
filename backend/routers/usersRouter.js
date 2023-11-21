@@ -68,7 +68,7 @@ router.post("/register", uploadFile.single('avatar'), registerValidations,  user
 router.get("/login", guestMiddleware, usersController.login);
 
 // Procesar el login
-router.post("/login", /*loginValidator,*/ usersController.processLogin);
+router.post("/login", loginValidator,  usersController.processLogin);
 
 // Formulario de Recuperar contraseña
 router.get("/passRecovery", usersController.passRecovery);
