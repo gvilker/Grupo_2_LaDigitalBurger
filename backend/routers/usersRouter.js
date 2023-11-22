@@ -7,7 +7,6 @@ const guestMiddleware = require('../middlewares/guestMiddleware');
 const authMiddleware = require('../middlewares/authMiddleware');
 const isAdminMiddleware = require('../middlewares/isAdminMiddleware');
 
-
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, './public/images/avatars');
@@ -68,7 +67,7 @@ router.post("/register", uploadFile.single('avatar'), registerValidations,  user
 router.get("/login", guestMiddleware, usersController.login);
 
 // Procesar el login
-router.post("/login", loginValidator,  usersController.processLogin);
+router.post("/login", loginValidator, usersController.processLogin);
 
 // Formulario de Recuperar contraseña
 router.get("/passRecovery", usersController.passRecovery);

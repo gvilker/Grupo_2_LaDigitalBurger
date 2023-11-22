@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const { validationResult } = require('express-validator');
 const { Op } = require('sequelize');
 
+
 const userController = {
   register: (req, res) => {
     res.render('register');
@@ -119,8 +120,7 @@ deleteProfile: async (req, res) => {
     if (!errors.isEmpty()) {
       return res.render('login', { errors: errors.array() });
     }  
-    const { email, password } = req.body;
-  
+    const { email, password, recordame } = req.body;
     try {     
       let userToLogin = await db.User.findOne({ where: { email } });  
       if (!userToLogin) {
@@ -136,6 +136,10 @@ deleteProfile: async (req, res) => {
       req.session.userLogged = userToLogin
       req.session.userType = userToLogin.user_type;
       req.session.userLogged.avatar = avatarPath;  
+
+      if (recordame === 'on') { 
+        res.cookie('recordame', userToLogin.email, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
+      }
 
       return res.redirect('/user/profile');
     } catch (error) {
